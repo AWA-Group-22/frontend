@@ -23,7 +23,7 @@ function App() {
           <Link to="/searchfield"><div>Search__________________</div></Link>
           <Link to="/loginpage"><div>Login</div></Link>
           <Link to="/signup-page"><div>Create account</div></Link>
-          <Link to="/contacts"><div className="orderText">Orders</div></Link>
+          <Link to="/orders"><div className="orderText">Orders</div></Link>
         </div>
         <Routes>
           <Route path="/" element={ <Home /> } />
