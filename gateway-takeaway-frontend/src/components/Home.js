@@ -28,15 +28,15 @@ export default class Home extends Component {
             </div>
           </div>
           <div className={styles.container2}>
-            <img src="https://www.poppamies.fi/wp-content/uploads/2016/06/beercanbaconburger.jpg" width="336" height="180" />
-              <div className={styles.restName}>McDonalds Rotuaari</div>
-              <div className={styles.restMotto}>Big mac palace</div>
+            <img src="https://pannukakkutalo.fi/wp-content/uploads/2017/03/pannukakkutalo-makea-300x251.jpg" width="336" height="180" />
+              <div className={styles.restName}>pannukakkutalo Oulu</div>
+              <div className={styles.restMotto}>Very good pancakes</div>
                 <Link to="Home"><button>Order now</button></Link>
           </div>
           <div className={styles.container3}>
-            <img src="https://www.poppamies.fi/wp-content/uploads/2016/06/beercanbaconburger.jpg" width="336" height="180" />
-              <div className={styles.restName}>McDonalds Rotuaari</div>
-              <div className={styles.restMotto}>Big mac palace</div>
+            <img src="https://hailong.fi/wp-content/uploads/2020/12/sushi-300x300.jpeg" width="336" height="180" />
+              <div className={styles.restName}>Hai Long Oulu</div>
+              <div className={styles.restMotto}>Good sushi better prices</div>
                 <Link to="Home"><button>Order now</button></Link>
           </div>
           <div className={styles.container}>

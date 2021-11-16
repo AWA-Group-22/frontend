@@ -1,8 +1,6 @@
 .headerContainer {
-  color: inherit;
-  text-decoration: inherit;
   background-color: whitesmoke;
-  font-family: Arial, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
   display: flex;
   gap: 50px;
   height: 70px;
@@ -10,46 +8,36 @@
   align-items: center;
   margin-right: auto;
   padding-top: 13px;
+  border-bottom-color: black;
+  border-bottom-width: 2px;
 }
 
 .brandText {
-  color: inherit;
-  text-decoration: inherit;
-  font-family: sans-serif;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   font-size: 30px;
-  font-weight: 700;
-  margin: 50px;
+  font-weight: 600;
+  margin: 70px;
 }
 
 .orderText {
-  color: inherit;
-  text-decoration: inherit;
-  margin: 400px;
+  margin-left: 400px;
 }
 
 .contactListElement {
-  color: inherit;
-  text-decoration: inherit;
   padding: 5px;
   border-top: 1px solid lightgrey;
 }
 
 .contactListElement:hover {
-  color: inherit;
-  text-decoration: inherit;
   background-color: lightyellow;
   color: red;
 }
 
 .contactListView {
-  color: inherit;
-  text-decoration: inherit;
   display: flex;
 }
 
 .contactList {
-  color: inherit;
-  text-decoration: inherit;
   width: 25%;
   border-right: 1px solid lightgrey;
 }

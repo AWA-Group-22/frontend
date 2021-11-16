@@ -1,4 +1,5 @@
 .carousel {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     padding-left: 100px;
     width: 1700px;
 }
@@ -11,19 +12,19 @@
 }
 
 .container {
-    margin-left: 100px;
+    margin-left: 200px;
     font-family: sans-serif;
     padding: 40px;
 }
 
 .container2 {
-    margin-right: 100px;
+    margin-left: 50px;
     font-family: sans-serif;
     padding: 40px;
 }
 
 .container3 {
-    margin-right: 100px;
+    margin-left: -100px;
     font-family: sans-serif;
     padding: 40px;
 }
