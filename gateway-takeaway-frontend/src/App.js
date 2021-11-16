@@ -17,9 +17,9 @@ function App() {
 
   return (
     <BrowserRouter>
-      <div className="headerBackground">
+      <div>
         <div className="headerContainer">
-          <Link to="/"><div className="brandText">Gateway Takeaway</div></Link>
+          <Link to="/" style={{ textDecoration: 'none' }}><div className="brandText">Gateway Takeaway</div></Link>
           <Link to="/searchfield"><div>Search__________________</div></Link>
           <Link to="/loginpage"><div>Login</div></Link>
           <Link to="/signup-page"><div>Create account</div></Link>

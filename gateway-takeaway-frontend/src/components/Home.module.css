@@ -1,0 +1,42 @@
+.carousel {
+    padding-left: 100px;
+    width: 1700px;
+}
+
+.browse {
+    font-family: sans-serif;
+    font-size: 26px;
+    padding: 40px;
+    margin-left: 710px;
+}
+
+.container {
+    margin-left: 100px;
+    font-family: sans-serif;
+    padding: 40px;
+}
+
+.container2 {
+    margin-right: 100px;
+    font-family: sans-serif;
+    padding: 40px;
+}
+
+.container3 {
+    margin-right: 100px;
+    font-family: sans-serif;
+    padding: 40px;
+}
+
+.restName {
+    padding-top: 20px;
+    padding-bottom: 12px;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.restMotto {
+    padding-bottom: 30px;
+}
