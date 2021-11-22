@@ -1,0 +1,88 @@
+.deliveryText {
+    padding: 2px 2px 2px 2px;
+    box-shadow: 1px 0px 1px 0px lightslategrey;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 19px;
+    color: white;
+    position: absolute;
+    top: 120px;
+    left: 70px;
+}
+
+.hourText {
+    padding: 2px 2px 2px 2px;
+    box-shadow: 1px 0px 1px 0px lightslategrey;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 19px;
+    color: white;
+    position: absolute;
+    top: 120px;
+    left: 500px;
+}
+
+.backButton {
+    padding: 2px 2px 2px 2px;
+    box-shadow: 1px 0px 1px 0px lightslategrey;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 28px;
+    color: white;
+    position: absolute;
+    top: 120px;
+    right: 50px;
+}
+
+.restaurantTitle {
+    position: absolute;
+    top: 330px;
+    left: 200px;
+    color: white;
+    font-size: 90px;
+    font-weight: 700;
+}
+
+.restaurantMotto {
+    position: absolute;
+    top: 440px;
+    left: 205px;
+    color: white;
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.deliveryCost {
+    width: 50px;
+    height: 50px;
+    padding: 2px 2px 2px 2px;
+    box-shadow: 1px 3px 6px 6px lightgrey;
+    border-radius: 4px;
+    box-sizing: border-box;
+    position: absolute;
+
+}
+
+.minOrder {
+    width: 50px;
+    height: 50px;
+    padding: 2px 2px 2px 2px;
+    box-shadow: 1px 3px 6px 6px lightgrey;
+    border-radius: 4px;
+    box-sizing: border-box;
+    position: absolute;
+
+}
+
+.subContainer {
+    width: 500px;
+    height: 514px;
+    padding: 2px 2px 2px 2px;
+    box-shadow: 1px 3px 6px 6px lightgrey;
+    border-radius: 4px;
+    box-sizing: border-box;
+    position: absolute;
+    left: 690px;
+    top: 190px;
+}
+

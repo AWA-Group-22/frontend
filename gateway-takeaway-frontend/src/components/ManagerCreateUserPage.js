@@ -4,7 +4,7 @@ export default class ManagerCreateUserPage extends Component {
     render() {
         return (
             <div>
-                
+                Create user
             </div>
         )
     }

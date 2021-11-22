@@ -9,7 +9,7 @@ export default class ManagerPage extends Component {
                 <div className={ styles.title }>Manager page</div>
 
                 <div className={ styles.container1 }>
-                    <Link to="/managercreateuserpage" style={{ color: 'inherit', textDecoration: 'none' }}>Create user account / login</Link>
+                    <Link to="/managercreateuser" style={{ color: 'inherit', textDecoration: 'none' }}>Create user account / login</Link>
                 </div>
 
                 <div className={ styles.container2 }>
