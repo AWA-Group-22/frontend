@@ -4,7 +4,7 @@ export default class SignUpPage extends Component {
     render() {
         return (
             <div>
-                
+                ggg
             </div>
         )
     }

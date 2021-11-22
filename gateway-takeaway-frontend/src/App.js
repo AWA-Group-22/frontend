@@ -8,6 +8,7 @@ import ContactDetailView from './components/ContactDetailView';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import ContactData from './data.json';
 import { v4 as uuidv4 } from 'uuid';
+import ManagerPage from './components/ManagerPage';
 
 function App() {
 
@@ -22,13 +23,16 @@ function App() {
           <Link to="/" style={{ color: 'inherit', textDecoration: 'none' }}><div className="brandText">Gateway Takeaway</div></Link>
           <Link to="/searchfield" style={{ color: 'inherit', textDecoration: 'none' }}><div>🔍Search</div></Link>
           <Link to="/loginpage" style={{ color: 'inherit', textDecoration: 'none' }}><div>Login</div></Link>
-          <Link to="/signup-page" style={{ color: 'inherit', textDecoration: 'none' }}><div>Create account</div></Link>
+          <Link to="/signup" style={{ color: 'inherit', textDecoration: 'none' }}><div>Create account</div></Link>
           <Link to="/orders" style={{ color: 'inherit', textDecoration: 'none' }}><div className="orderText">Orders</div></Link>
+          <Link to="/managerpage"></Link>
         </div>
         <Routes>
           <Route path="/" element={ <Home /> } />
           <Route path="/shoppingcart" element={ <ShoppingCart /> } />
           <Route path="/loginpage" element={ <LoginPage /> } />
+          <Route path="/signup" element={ <SignUpPage /> } />
+          <Route path="/managerpage" element={ <ManagerPage /> } />
           <Route path="/contacts" element={ <ContactList contacts={ contacts }/> } >
             <Route path=":contactId" element={ <ContactDetailView contacts={ contacts } /> } />
           </Route>
