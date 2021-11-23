@@ -43,33 +43,43 @@
 }
 
 .emailField {
-    display: flex;
-    justify-content: center;
-    margin-left: -175px;
+    position: absolute;
+    top: 250px;
+    margin-left: 85px;
     padding-top: 8px;
-    height: 40px;
+    height: 30px;
+    width: 300px;
 }
 
 .passwordText {
     display: flex;
     padding-top: 35px;
     margin-left: 85px;
+    margin-top: 50px;
 }
 
 .passwordField {
-    display: flex;
-    justify-content: center;
-    margin-left: -175px;
+    position: absolute;
+    margin-left: 85px;
     padding-top: 8px;
-    height: 40px;
+    height: 30px;
+    width: 300px;
+    margin-top: 20px;
 }
 
 .signInButton {
-    display: flex;
-    justify-content: center;
-    padding-top: 23px;
-    background-color: #2596be;
-    margin-top: 45px;
-    margin-left: 86px;
-    margin-right: 86px;
+    position: absolute;
+    margin-top: 95px;
+    left: 85px;
+    width: 310px;
+    height: 45px;
+    padding: 2px 2px 2px 2px;
+    border-radius: 4px;
+    background-color: #1e98d7;
+    box-sizing: border-box;
+    font-size: 19px;
+    font-family: "Roboto", sans-serif;
+    color: #ffffff;
+    text-align: center;
+    line-height: normal;
 }

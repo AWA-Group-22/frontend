@@ -1,0 +1,53 @@
+.titleText {
+    padding-left: 50px;
+    padding-top: 30px;
+    font-size: 26px;
+    font-family: "Arial Normaali", "Arial", sans-serif;
+}
+
+.subTitle {
+    padding-left: 50px;
+    padding-top: 15px;
+    font-size: 26px;
+    font-family: "Arial Normaali", "Arial", sans-serif;
+}
+
+.container1 {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-left: 450px;
+    margin-top: 150px;
+    width: 300px;
+    height: 150px;
+    padding: 2px 2px 2px 2px;
+    box-shadow: 5px 5px 20px 0px rgba(0, 0, 0, 0.18);
+    border-radius: 4px;
+}
+
+.container2 {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-left: 1000px;
+    margin-top: -150px;
+    width: 300px;
+    height: 150px;
+    padding: 2px 2px 2px 2px;
+    box-shadow: 5px 5px 20px 0px rgba(0, 0, 0, 0.18);
+    border-radius: 4px;
+}
+
+.buttonStyle {
+    padding: 2px 2px 2px 2px;
+    border-radius: 5px;
+    border: none;
+    background-color: #ffffff;
+    box-sizing: border-box;
+    font-size: 26px;
+    font-family: "Arial Normaali", "Arial", sans-serif;
+    font-weight: 700;
+    color: #000000;
+    text-align: center;
+    line-height: normal;
+}

@@ -1,21 +1,17 @@
 import './App.css';
+import StartPage from './components/StartPage';
 import Home from './components/Home';
 import LoginPage from './components/LoginPage';
 import SignUpPage from './components/SignUpPage';
 import ShoppingCart from './components/ShoppingCart';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
-import RestaurantData from './data.json';
-import { v4 as uuidv4 } from 'uuid';
+import React, { useState, useEffect } from 'react';
 import ManagerPage from './components/ManagerPage';
 import ManagerOrderPage from './components/ManagerOrderPage';
 import RestaurantMenuPage from './components/RestaurantMenuPage';
 import ManagerCreateUserPage from './components/ManagerCreateUserPage';
 
 function App() {
-
-  const restaurants = RestaurantData.map(restaurant => {
-    return { ...restaurant, id: uuidv4() }
-  })
 
   return (
     <BrowserRouter>
@@ -30,7 +26,8 @@ function App() {
           <Link to="/restaurantmenu"></Link>
         </div>
         <Routes>
-          <Route path="/" element={ <Home /> } />
+          <Route path="/" element={ <StartPage /> } />
+          <Route path="/home" element={ <Home /> } />
           <Route path="/shoppingcart" element={ <ShoppingCart /> } />
           <Route path="/login" element={ <LoginPage /> } />
           <Route path="/signup" element={ <SignUpPage /> } />
