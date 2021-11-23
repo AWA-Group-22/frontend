@@ -41,3 +41,18 @@
 .restMotto {
     padding-bottom: 30px;
 }
+
+.buttonStyle {
+    width: 147px;
+    height: 40px;
+    padding: 2px 2px 2px 2px;
+    border-radius: 5px;
+    border: 1px solid #797979;
+    background-color: #ffffff;
+    box-sizing: border-box;
+    font-family: "Arial Normaali", "Arial", sans-serif;
+    font-weight: 700;
+    color: #000000;
+    text-align: center;
+    line-height: normal;
+}

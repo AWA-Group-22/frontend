@@ -1,6 +1,6 @@
 .deliveryText {
     padding: 2px 2px 2px 2px;
-    box-shadow: 1px 0px 1px 0px lightslategrey;
+    box-shadow: 5px 5px 20px 0px rgba(0, 0, 0, 0.18);
     border-radius: 4px;
     box-sizing: border-box;
     font-size: 19px;
@@ -12,7 +12,7 @@
 
 .hourText {
     padding: 2px 2px 2px 2px;
-    box-shadow: 1px 0px 1px 0px lightslategrey;
+    box-shadow: 5px 5px 20px 0px rgba(0, 0, 0, 0.18);
     border-radius: 4px;
     box-sizing: border-box;
     font-size: 19px;
@@ -24,7 +24,7 @@
 
 .backButton {
     padding: 2px 2px 2px 2px;
-    box-shadow: 1px 0px 1px 0px lightslategrey;
+    box-shadow: 5px 5px 20px 0px rgba(0, 0, 0, 0.18);
     border-radius: 4px;
     box-sizing: border-box;
     font-size: 28px;
@@ -53,36 +53,146 @@
 }
 
 .deliveryCost {
-    width: 50px;
-    height: 50px;
+    text-align: center;
+    background-color: white;
+    width: 130px;
+    height: 27px;
     padding: 2px 2px 2px 2px;
-    box-shadow: 1px 3px 6px 6px lightgrey;
+    box-shadow: 5px 5px 20px 0px rgba(0, 0, 0, 0.18);
     border-radius: 4px;
     box-sizing: border-box;
     position: absolute;
-
+    top: 510px;
+    left: 205px;
 }
 
 .minOrder {
-    width: 50px;
-    height: 50px;
+    text-align: center;
+    background-color: white;
+    width: 135px;
+    height: 27px;
     padding: 2px 2px 2px 2px;
-    box-shadow: 1px 3px 6px 6px lightgrey;
+    box-shadow: 5px 5px 20px 0px rgba(0, 0, 0, 0.18);
     border-radius: 4px;
     box-sizing: border-box;
     position: absolute;
-
+    top: 510px;
+    left: 350px;
 }
 
 .subContainer {
-    width: 500px;
-    height: 514px;
+    background-color: white;
+    width: 850px;
+    height: 140px;
     padding: 2px 2px 2px 2px;
-    box-shadow: 1px 3px 6px 6px lightgrey;
-    border-radius: 4px;
     box-sizing: border-box;
+    box-shadow: 5px 5px 20px 0px rgba(0, 0, 0, 0.18);
+    border-radius: 4px;
     position: absolute;
-    left: 690px;
-    top: 190px;
+    left: 500px;
+    top: 610px;
+    text-align: left;
+    padding: 46px;
+    font-size: 30px;
+    font-family: "Open Sans Bold", "Open Sans Regular", "Open Sans", sans-serif;
+    text-align: left;
+    line-height: normal;
 }
 
+.outText {
+    box-sizing: border-box;
+    font-family: "Open Sans Bold", "Open Sans Regular", "Open Sans", sans-serif;
+    color: #333333;
+    text-align: left;
+    line-height: normal;
+    position: absolute;
+    left: 645px;
+    top: 673px;
+}
+
+.foodCategory1 {
+    position: absolute;
+    top: 850px;
+    left: 350px;
+    background-color: rgba(255, 255, 255, 0);
+    box-sizing: border-box;
+    font-size: 25px;
+    font-family: "Open Sans Bold", "Open Sans Regular", "Open Sans", sans-serif;
+    font-weight: 700;
+    color: #333333;
+    text-align: left;
+    line-height: normal;
+}
+
+.foodCategory2 {
+    position: absolute;
+    top: 1250px;
+    left: 350px;
+    background-color: rgba(255, 255, 255, 0);
+    box-sizing: border-box;
+    font-size: 25px;
+    font-family: "Open Sans Bold", "Open Sans Regular", "Open Sans", sans-serif;
+    font-weight: 700;
+    color: #333333;
+    text-align: left;
+    line-height: normal;
+}
+
+.foodCategory3 {
+    position: absolute;
+    top: 1650px;
+    left: 350px;
+    background-color: rgba(255, 255, 255, 0);
+    box-sizing: border-box;
+    font-size: 25px;
+    font-family: "Open Sans Bold", "Open Sans Regular", "Open Sans", sans-serif;
+    font-weight: 700;
+    color: #333333;
+    text-align: left;
+    line-height: normal;
+}
+
+.foodCategoryContainer1 {
+    background-color: white;
+    width: 755px;
+    position: absolute;
+    margin-top: 165px;
+    left: 500px;
+    height: 240px;
+    padding: 2px 2px 2px 2px;
+    box-shadow: 5px 5px 20px 0px rgba(0, 0, 0, 0.18);
+    border-radius: 4px;
+    padding: 46px;
+    font-size: 30px;
+    font-family: "Open Sans Bold", "Open Sans Regular", "Open Sans", sans-serif;
+}
+
+.foodCategoryContainer2 {
+    background-color: white;
+    width: 755px;
+    position: absolute;
+    margin-top: 560px;
+    left: 500px;
+    height: 240px;
+    padding: 2px 2px 2px 2px;
+    box-shadow: 5px 5px 20px 0px rgba(0, 0, 0, 0.18);
+    border-radius: 4px;
+    padding: 46px;
+    font-size: 30px;
+    font-family: "Open Sans Bold", "Open Sans Regular", "Open Sans", sans-serif;
+}
+
+.foodCategoryContainer3 {
+    background-color: white;
+    width: 755px;
+    position: absolute;
+    margin-top: 960px;
+    left: 500px;
+    height: 240px;
+    padding: 2px 2px 2px 2px;
+    box-shadow: 5px 5px 20px 0px rgba(0, 0, 0, 0.18);
+    border-radius: 4px;
+    padding: 46px;
+    font-size: 30px;
+    font-family: "Open Sans Bold", "Open Sans Regular", "Open Sans", sans-serif;
+}

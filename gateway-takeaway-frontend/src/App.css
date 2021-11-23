@@ -13,9 +13,13 @@
 }
 
 .brandText {
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  font-size: 30px;
-  font-weight: 600;
+  background-color: rgba(255, 255, 255, 0);
+  box-sizing: border-box;
+  font-size: 32px;
+  font-family: "Merriweather", sans-serif;
+  color: #333333;
+  text-align: left;
+  line-height: normal;
   margin: 70px;
 }
 
