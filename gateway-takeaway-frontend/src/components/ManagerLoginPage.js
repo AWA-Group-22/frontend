@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 import { Link, useNavigate } from 'react-router-dom';
-import styles from './LoginPage.module.css'
+import styles from './ManagerLoginPage.module.css'
 import Constants from './Constants.json';
 
-export default function LoginPage() {
+export default function ManagerLoginPage() {
 
     const navigate = useNavigate();
     const [ loginProcessState, setLoginProcessState ] = useState("idle");
@@ -58,10 +58,8 @@ export default function LoginPage() {
 
     return (
             <div className={styles.container}>
-                <div className={styles.titleText}>Sign in</div>
+                <div className={styles.titleText}>Manager login page</div>
                 <div className={styles.subtitleText}>Login with your account</div>
-                <div className={styles.lowerText}>Don't have an account?
-                    <Link to="/signup" style={{ textDecoration: 'none' }}>Sign up</Link></div>
 
                 <div className={styles.emailText}>Username</div>
                 <form onSubmit ={ handleLoginSumbit }> 
@@ -91,9 +89,9 @@ export default function LoginPage() {
 /*
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import styles from './LoginPage.module.css'
+import styles from './ManagerLoginPage.module.css'
 
-export default class LoginPage extends Component {
+export default class ManagerLoginPage extends Component {
     render() {
         return (
             <div className={styles.container}>
