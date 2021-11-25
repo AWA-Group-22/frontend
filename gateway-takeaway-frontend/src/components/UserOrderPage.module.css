@@ -1,0 +1,117 @@
+.orderContainer {
+    top: 240px;
+    left: 460px;
+    width: 850px;
+    height: 220px;
+    padding: 2px 2px 2px 2px;
+    box-shadow: 5px 5px 20px 0px rgba(0, 0, 0, 0.18);
+    border-radius: 10px;
+    box-sizing: border-box;
+    position: absolute;
+}
+
+.titleText {
+    padding-left: 70px;
+    padding-top: 30px;
+    font-size: 34px;
+    font-family: "Arial Normaali", "Arial", sans-serif;
+    font-weight: 600;
+}
+
+.orderStatusText {
+    padding-left: 70px;
+    margin-top: 100px;
+    font-size: 20px;
+    font-family: "Arial Normaali", "Arial", sans-serif;
+    font-weight: 600;
+}
+
+.orderHistoryText {
+    padding-left: 70px;
+    margin-top: 350px;
+    font-size: 20px;
+    font-family: "Arial Normaali", "Arial", sans-serif;
+    font-weight: 600;
+}
+
+.restaurantName {
+    margin-top: 15px;
+    margin-left: 15px;
+    font-size: 18px;
+    font-family: "Arial Normaali", "Arial", sans-serif;
+    font-weight: 600;
+}
+
+.orderDate {
+    font-size: 15px;
+    font-family: "Open Sans Bold", "Open Sans Regular", "Open Sans", sans-serif;
+    font-weight: 700;
+    color: #7f7f7f;
+    text-align: left;
+    line-height: normal;
+    margin-top: -20px;
+    margin-left: 350px;
+}
+
+.orderCost {
+    font-size: 18px;
+    font-family: "Arial Normaali", "Arial", sans-serif;
+    font-weight: 600;
+    margin-top: -20px;
+    margin-left: 550px;
+}
+
+.statusText {
+    margin-top: -42px;
+    margin-left: 15px;
+    font-size: 20px;
+    font-family: "Open Sans", sans-serif;
+}
+
+.deliveryTime {
+    margin-left: 10px;
+    margin-top: 43px;
+    font-size: 20px;
+    font-weight: 200;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.buttonStyle {
+    margin-left: 565px;
+    margin-top: 50px;
+    height: 63px;
+    width: 165px;
+    padding: 2px 2px 2px 2px;
+    border-radius: 5px;
+    background-color: #1e98d7;
+    box-sizing: border-box;
+    font-size: 17px;
+    color: #ffffff;
+    text-align: center;
+    line-height: normal;
+}
+
+.orderHistoryContainer1 {
+    margin-left: 460px;
+    margin-top: -30px;
+    width: 630px;
+    height: 90px;
+    padding: 2px 2px 2px 2px;
+    box-shadow: 5px 5px 20px 0px rgba(0, 0, 0, 0.18);
+    border-radius: 10px;
+    box-sizing: border-box;
+    position: absolute;
+}
+
+.orderHistoryContainer2 {
+    margin-left: 460px;
+    margin-top: 100px;
+    width: 630px;
+    height: 90px;
+    padding: 2px 2px 2px 2px;
+    box-shadow: 5px 5px 20px 0px rgba(0, 0, 0, 0.18);
+    border-radius: 10px;
+    box-sizing: border-box;
+    position: absolute;
+}
+

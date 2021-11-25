@@ -11,7 +11,7 @@ import ManagerPage from './components/ManagerPage';
 import ManagerOrderPage from './components/ManagerOrderPage';
 import RestaurantMenuPage from './components/RestaurantMenuPage';
 import ManagerCreateUserPage from './components/ManagerCreateUserPage';
-import ManagerCreateUserAndLogin from './components/ManagerCreateUserAndLogin';
+import UserOrderPage from './components/UserOrderPage';
 
 function App() {
 
@@ -30,13 +30,13 @@ function App() {
         <Routes>
           <Route path="/" element={ <StartPage /> } />
           <Route path="/home" element={ <Home /> } />
+          <Route path="/orders" element={ <UserOrderPage /> } />
           <Route path="/shoppingcart" element={ <ShoppingCart /> } />
           <Route path="/login" element={ <LoginPage /> } />
           <Route path="/signup" element={ <SignUpPage /> } />
           <Route path="/managerlogin" element={ <ManagerLoginPage /> } />
           <Route path="/managerpage" element={ <ManagerPage /> } />
           <Route path="/managerorderpage" element={ <ManagerOrderPage /> } />
-          <Route path="/managercreateuserandlogin" element={ <ManagerCreateUserAndLogin /> } />
           <Route path="/managercreateuser" element={ <ManagerCreateUserPage /> } />
           <Route path="/restaurantmenu" element={ <RestaurantMenuPage /> } />
         </Routes>
