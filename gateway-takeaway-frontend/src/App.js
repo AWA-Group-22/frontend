@@ -6,12 +6,12 @@ import SignUpPage from './components/SignUpPage';
 import ShoppingCart from './components/ShoppingCart';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import React, { useState, useEffect, Component } from 'react';
-import ManagerLoginPage from './components/ManagerLoginPage';
 import ManagerPage from './components/ManagerPage';
 import ManagerOrderPage from './components/ManagerOrderPage';
 import RestaurantMenuPage from './components/RestaurantMenuPage';
 import ManagerCreateUserPage from './components/ManagerCreateUserPage';
 import UserOrderPage from './components/UserOrderPage';
+import jwt from 'jsonwebtoken';
 
 const jwtFromStorage = window.localStorage.getItem('appAuthData');
 
@@ -28,7 +28,6 @@ function App() {
                   <Route path="/home" element={ <Home /> } />
                   <Route path="/orders" element={ <UserOrderPage /> } />
                   <Route path="/shoppingcart" element={ <ShoppingCart /> } />
-                  <Route path="/managerlogin" element={ <ManagerLoginPage /> } />
                   <Route path="/managerpage" element={ <ManagerPage /> } />
                   <Route path="/managerorderpage" element={ <ManagerOrderPage /> } />
                   <Route path="/managercreateuser" element={ <ManagerCreateUserPage /> } />

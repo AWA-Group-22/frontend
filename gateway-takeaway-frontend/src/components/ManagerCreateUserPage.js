@@ -3,6 +3,7 @@ import axios from 'axios';
 import Constants from './Constants.json';
 import { Link, useNavigate } from 'react-router-dom';
 import styles from './ManagerCreateUserPage.module.css';
+import jwt from 'jsonwebtoken';
 
 export default function ManagerCreateUserPage() {
     let navigate = useNavigate();
@@ -12,7 +13,7 @@ export default function ManagerCreateUserPage() {
         event.preventDefault();
         setCreateUserProcessState("processing");
         try {
-        const result = await axios.post(Constants.API_ADDRESS + '/registerBasic', {
+        const result = await axios.post(Constants.API_ADDRESS + '/registerForJWT', {
             first_name: event.target.first_name.value,
             last_name: event.target.last_name.value,
             username: event.target.username.value,
@@ -26,7 +27,7 @@ export default function ManagerCreateUserPage() {
         setCreateUserProcessState("success");
         setTimeout(() => {
             setCreateUserProcessState("idle")
-            navigate("/login", { replace: true });
+            navigate("/managerpage", { replace: true });
         }, 1500);
         } catch (error) {
         console.error(error);
