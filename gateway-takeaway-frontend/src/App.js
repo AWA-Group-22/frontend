@@ -13,7 +13,31 @@ import RestaurantMenuPage from './components/RestaurantMenuPage';
 import ManagerCreateUserPage from './components/ManagerCreateUserPage';
 import UserOrderPage from './components/UserOrderPage';
 
+const jwtFromStorage = window.localStorage.getItem('appAuthData');
+
 function App() {
+
+  const [ userJwt, setUserJwt ] = useState(jwtFromStorage);
+
+  let authRoutes = <>
+                  <Route path="/login" element={ <LoginPage login={(token) => {
+                    window.localStorage.setItem('appAuthData', token);
+                    setUserJwt(token);
+                  }} /> } />
+                  <Route path="/signup" element={ <SignUpPage /> } />
+                  <Route path="/home" element={ <Home /> } />
+                  <Route path="/orders" element={ <UserOrderPage /> } />
+                  <Route path="/shoppingcart" element={ <ShoppingCart /> } />
+                  <Route path="/managerlogin" element={ <ManagerLoginPage /> } />
+                  <Route path="/managerpage" element={ <ManagerPage /> } />
+                  <Route path="/managerorderpage" element={ <ManagerOrderPage /> } />
+                  <Route path="/managercreateuser" element={ <ManagerCreateUserPage /> } />
+                  <Route path="/restaurantmenu" element={ <RestaurantMenuPage /> } />
+                </>
+
+  if (userJwt != null) {
+    authRoutes = <Route path="/home" element={ <Home userJwt={ userJwt } logout={() => setUserJwt(null)}/> }/>
+  }
 
   return (
     <BrowserRouter>
@@ -28,17 +52,11 @@ function App() {
           <Link to="/restaurantmenu"></Link>
         </div>
         <Routes>
-          <Route path="/" element={ <StartPage /> } />
-          <Route path="/home" element={ <Home /> } />
-          <Route path="/orders" element={ <UserOrderPage /> } />
-          <Route path="/shoppingcart" element={ <ShoppingCart /> } />
-          <Route path="/login" element={ <LoginPage /> } />
-          <Route path="/signup" element={ <SignUpPage /> } />
-          <Route path="/managerlogin" element={ <ManagerLoginPage /> } />
-          <Route path="/managerpage" element={ <ManagerPage /> } />
-          <Route path="/managerorderpage" element={ <ManagerOrderPage /> } />
-          <Route path="/managercreateuser" element={ <ManagerCreateUserPage /> } />
-          <Route path="/restaurantmenu" element={ <RestaurantMenuPage /> } />
+          <Route path="/" element={ <StartPage userJwt={ userJwt }/> }/>
+          {
+            authRoutes
+          }
+          <Route path="*" element={ <StartPage userJwt={ userJwt }/> }/>
         </Routes>
       </div>
     </BrowserRouter>

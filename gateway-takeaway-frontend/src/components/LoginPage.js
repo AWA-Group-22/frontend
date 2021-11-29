@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import styles from './LoginPage.module.css'
 import Constants from './Constants.json';
 
-export default function LoginPage() {
+export default function LoginPage(props) {
 
     const navigate = useNavigate();
     const [ loginProcessState, setLoginProcessState ] = useState("idle");
@@ -16,19 +16,21 @@ export default function LoginPage() {
         console.log(event.target.password.value);
 
         try {
-            const result = await axios.post(Constants.API_ADDRESS + '/loginBasic', null,
+            const result = await axios.post(Constants.API_ADDRESS + '/loginforJWT', null,
             {
-                email: event.target.email.value,
+                username: event.target.username.value,
                 password: event.target.password.value
             });
-            console.log(result); 
+            console.log(result);
+            console.log(result.data);
             setLoginProcessState("loginSuccess");
             setTimeout(() => {
                 setLoginProcessState("idle");
+                props.login(result.data.token);
                 navigate('/home', { replace: true });
             }, 1500);
         } catch (error) {
-            console.error(error);
+            console.error(error.message);
             setLoginProcessState("error");
             setTimeout(() => setLoginProcessState("idle"), 1500);
         }
@@ -66,11 +68,11 @@ export default function LoginPage() {
                 <div className={styles.emailText}>Username</div>
                 <form onSubmit ={ handleLoginSumbit }> 
                     <label>
-                        <input className={styles.emailField} type="text" Username="username" />
+                        <input className={styles.emailField} type="text" name="username" />
                     </label>
                         <div className={styles.passwordText}>Password</div>
                     <label>
-                        <input className={styles.passwordField} type="text" Password="password" />
+                        <input className={styles.passwordField} type="text" name="password" />
                     </label>
                     <div>
                         { loginUIControls }

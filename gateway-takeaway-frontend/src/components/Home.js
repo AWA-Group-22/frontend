@@ -1,11 +1,14 @@
-import React, { Component } from "react";
-import { Link } from 'react-router-dom'
+import React, { Component, useState } from "react"
+import { Link } from 'react-router-dom';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 import styles from "./Home.module.css";
+import jwt from 'jsonwebtoken';
+import Constants from './Constants.json';
 
 export default class Home extends Component {
+
   render() {
     const settings = {
       dots: true,
