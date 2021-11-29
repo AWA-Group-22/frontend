@@ -12,6 +12,7 @@ import ManagerOrderPage from './components/ManagerOrderPage';
 import RestaurantMenuPage from './components/RestaurantMenuPage';
 import ManagerCreateUserPage from './components/ManagerCreateUserPage';
 import ManagerCreateUserAndLogin from './components/ManagerCreateUserAndLogin';
+import ManageRestaurantsPage from './components/ManageRestaurantsPage';
 
 function App() {
 
@@ -39,6 +40,8 @@ function App() {
           <Route path="/managercreateuserandlogin" element={ <ManagerCreateUserAndLogin /> } />
           <Route path="/managercreateuser" element={ <ManagerCreateUserPage /> } />
           <Route path="/restaurantmenu" element={ <RestaurantMenuPage /> } />
+          <Route path="/managerestaurants" element={ <ManageRestaurantsPage /> } /> 
+
         </Routes>
       </div>
     </BrowserRouter>

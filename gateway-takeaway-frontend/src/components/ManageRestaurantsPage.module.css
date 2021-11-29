@@ -1,0 +1,16 @@
+.title{
+  width: 350px;
+  height: 34px;
+  background-color: rgba(255, 255, 255, 0);
+  box-sizing: border-box;
+  font-family: "Open Sans Bold", "Open Sans Regular", "Open Sans", sans-serif;
+  font-weight: 700;
+  color: #333333;
+  text-align: left;
+  line-height: normal;
+  font-size: 27px;
+  position:absolute;
+  top: 120px;
+  left: 180px;
+  
+}

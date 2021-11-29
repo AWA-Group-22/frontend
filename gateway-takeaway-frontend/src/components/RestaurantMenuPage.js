@@ -1,10 +1,10 @@
-import React, { Component } from 'react'
+import React from 'react'
 import burger1 from './burger1.jpg';
 import { Link } from 'react-router-dom';
 import styles from './RestaurantMenuPage.module.css';
 
-export default class RestaurantMenuPage extends Component {
-    render() {
+export default function RestaurantMenuPage() {
+   
         return (
             <div>
                 <img src={burger1}/>
@@ -26,5 +26,5 @@ export default class RestaurantMenuPage extends Component {
                 <div className={ styles.foodCategoryContainer3 }>asdasd</div>
             </div>
         )
-    }
+    
 }
