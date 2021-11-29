@@ -5,7 +5,7 @@ import LoginPage from './components/LoginPage';
 import SignUpPage from './components/SignUpPage';
 import ShoppingCart from './components/ShoppingCart';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Component } from 'react';
 import ManagerLoginPage from './components/ManagerLoginPage';
 import ManagerPage from './components/ManagerPage';
 import ManagerOrderPage from './components/ManagerOrderPage';
