@@ -22,6 +22,16 @@
     margin: 70px;
 }
 
+.brandText2 {
+    background-color: rgba(255, 255, 255, 0);
+    font-size: 32px;
+    font-family: "Merriweather", sans-serif;
+    color: #333333;
+    text-align: left;
+    line-height: normal;
+    margin-left: 1000px;
+}
+
 .carousel {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     width: 1700px;

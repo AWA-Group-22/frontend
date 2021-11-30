@@ -41,8 +41,12 @@ export default function Home(props) {
 
   return (
     <div>
+
     <div className={styles.headerContainer}>
-    <Link to="/home" style={{ color: 'inherit', textDecoration: 'none' }}><div className={ styles.brandText }>Gateway Takeaway</div></Link>    </div>
+    <Link to="/home" style={{ color: 'inherit', textDecoration: 'none' }}><div className={ styles.brandText }>Gateway Takeaway</div></Link>
+    <Link to="/orders" style={{ color: 'inherit', textDecoration: 'none' }}><div className={ styles.brandText2 }>Orders</div></Link>
+
+    </div>
     <div className={styles.carousel}>
       <div className={styles.browse}>Browse restaurants</div>
       <Slider {...settings}>
