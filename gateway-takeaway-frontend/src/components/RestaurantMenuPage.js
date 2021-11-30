@@ -9,6 +9,7 @@ import Constants from './Constants.json';
 export default function RestaurantMenuPage(props) {
 
     const [menuPageData, setmenuPageData] = useState([]);
+    const [MenuStatusState, setMenuStatusState] = useState([]);
 
     let decodedJwt = jwt.decode(props.userJwt);
     console.log(decodedJwt);
@@ -27,8 +28,32 @@ export default function RestaurantMenuPage(props) {
         }
     }
 
+    const handleAddToShopCartButton = async (event) => {
+        event.preventDefault();
+        setMenuStatusState("unreceived");
+        try {
+            const result = await axios.post(Constants.API_ADDRESS + '/addProductToCart', {
+                product_name: event.target.product_name.value,
+                product_price: event.target.product_price.value
+            })
+            console.log(result);
+            setMenuStatusState("received");
+            setTimeout(() => {
+                setMenuStatusState("idle")
+            }, 1500);
+        } catch (error) {
+            console.error(error);
+            setMenuStatusState("error");
+            setTimeout(() => setMenuStatusState("idle"), 1500);
+        }
+    };
+
+
     return (
         <div>
+            <div className={styles.headerContainer}>
+                <Link to="/home" style={{ color: 'inherit', textDecoration: 'none' }}><div className={ styles.brandText }>Gateway Takeaway</div></Link>
+            </div>
             <button onClick={ loadData }>Load data</button>
             { menuPageData.map(menu => 
                 <div>
@@ -49,7 +74,8 @@ export default function RestaurantMenuPage(props) {
                     Product:  { menu.product.product_name }
                     Price:  { menu.product.price } 
                     Description:  { menu.product.description } 
-                    Image:  { menu.product.product_image } 
+                    Image:  { menu.product.product_image }
+                    <button onClick={ handleAddToShopCartButton }>Add to shopping cart</button>
                 </div>
                 <div className={ styles.foodCategoryContainer2 }>
                     Product:  { menu.product.product_name }

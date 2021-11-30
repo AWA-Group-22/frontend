@@ -59,6 +59,10 @@ export default function LoginPage(props) {
     }
 
     return (
+        <div>
+            <div className={styles.headerContainer}>
+                <div className={styles.brandText}>Gateway Takeaway</div>
+            </div>
             <div className={styles.container}>
                 <div className={styles.titleText}>Sign in</div>
                 <div className={styles.subtitleText}>Login with your account</div>
@@ -78,6 +82,7 @@ export default function LoginPage(props) {
                         { loginUIControls }
                     </div>
                 </form>
+            </div>
             </div>
         )
     }

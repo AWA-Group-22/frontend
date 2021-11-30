@@ -131,6 +131,8 @@ export default function ManagerOrderPage(props) {
 
     return (
         <div>
+            <div className={styles.headerContainer}>
+            <Link to="/home" style={{ color: 'inherit', textDecoration: 'none' }}><div className={ styles.brandText }>Gateway Takeaway</div></Link>            </div>
             <button onClick={ loadData }>Load data</button>
             { ManagerOrderPageData.map(mo => 
                 <div>

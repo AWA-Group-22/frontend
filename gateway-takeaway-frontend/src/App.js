@@ -41,15 +41,6 @@ function App() {
   return (
     <BrowserRouter>
       <div>
-        <div className="headerContainer">
-          <Link to="/" style={{ color: 'inherit', textDecoration: 'none' }}><div className="brandText">Gateway Takeaway</div></Link>
-          <Link to="/searchfield" style={{ color: 'inherit', textDecoration: 'none' }}><div>🔍Search</div></Link>
-          <Link to="/login" style={{ color: 'inherit', textDecoration: 'none' }}><div>Login</div></Link>
-          <Link to="/signup" style={{ color: 'inherit', textDecoration: 'none' }}><div>Create account</div></Link>
-          <Link to="/orders" style={{ color: 'inherit', textDecoration: 'none' }}><div className="orderText">Orders</div></Link>
-          <Link to="/managerpage" style={{ color: 'inherit', textDecoration: 'none' }}><div>Manager(placeholder)</div></Link>
-          <Link to="/restaurantmenu"></Link>
-        </div>
         <Routes>
           <Route path="/" element={ <StartPage userJwt={ userJwt }/> }/>
           {
@@ -63,3 +54,14 @@ function App() {
 }
 
 export default App;
+
+
+/*
+            <Link to="/" style={{ color: 'inherit', textDecoration: 'none' }}><div className="brandText">Gateway Takeaway</div></Link>
+            <Link to="/searchfield" style={{ color: 'inherit', textDecoration: 'none' }}><div>🔍Search</div></Link>
+            <Link to="/login" style={{ color: 'inherit', textDecoration: 'none' }}><div>Login</div></Link>
+            <Link to="/signup" style={{ color: 'inherit', textDecoration: 'none' }}><div>Create account</div></Link>
+            <Link to="/orders" style={{ color: 'inherit', textDecoration: 'none' }}><div className="orderText">Orders</div></Link>
+            <Link to="/managerpage" style={{ color: 'inherit', textDecoration: 'none' }}><div>Manager(placeholder)</div></Link>
+            <Link to="/restaurantmenu"></Link>
+*/

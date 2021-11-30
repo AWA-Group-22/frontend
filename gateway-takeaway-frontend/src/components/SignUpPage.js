@@ -58,6 +58,11 @@ export default function SignUpPage() {
     }
 
     return (
+        <div>
+            <div className={styles.headerContainer}>
+                <div className={styles.brandText}>Gateway Takeaway</div>
+            </div>
+        
         <div className={styles.container}>
             <div className={styles.titleText}>User sign up</div>
             <div className={styles.subtitleText}>Create an account by filling in the details</div>
@@ -98,6 +103,7 @@ export default function SignUpPage() {
                     { signupUIControls }
                 </div>
             </form>
+        </div>
         </div>
     )
 }
