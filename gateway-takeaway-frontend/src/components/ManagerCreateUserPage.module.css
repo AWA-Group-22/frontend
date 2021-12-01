@@ -123,9 +123,16 @@
     margin-top: -57px;
 }
 
+.text9 {
+    color: rgba(0, 0, 0, 0.54);
+    display: flex;
+    margin-left: 85px;
+    margin-top: 55px;
+}
+
 .textField1 {
     position: absolute;
-    top: 180px;
+    top: 197px;
     margin-left: 85px;
     padding-top: 8px;
     height: 30px;
@@ -134,7 +141,6 @@
 
 .textField2 {
     position: absolute;
-    padding-top: 8px;
     height: 30px;
     width: 300px;
     margin-top: 7px;
@@ -144,7 +150,6 @@
 .textField3 {
     position: absolute;
     margin-left: 85px;
-    padding-top: 8px;
     height: 30px;
     width: 300px;
     margin-top: 7px;
@@ -153,7 +158,6 @@
 .textField4 {
     position: absolute;
     margin-left: 450px;
-    padding-top: 8px;
     height: 30px;
     width: 300px;
     margin-top: 7px;
@@ -195,10 +199,18 @@
     margin-top: 7px;
 }
 
+.textField9 {
+    position: absolute;
+    margin-left: 85px;
+    padding-top: 8px;
+    height: 30px;
+    width: 300px;
+    margin-top: 7px;
+}
+
 .signInButton {
     position: absolute;
-    margin-top: 95px;
-    left: 270px;
+    left: 450px;
     width: 310px;
     height: 45px;
     padding: 2px 2px 2px 2px;

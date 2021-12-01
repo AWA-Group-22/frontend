@@ -4,21 +4,42 @@ import Home from './components/Home';
 import LoginPage from './components/LoginPage';
 import SignUpPage from './components/SignUpPage';
 import ShoppingCart from './components/ShoppingCart';
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import React, { useState, useEffect, Component } from 'react';
 import ManagerPage from './components/ManagerPage';
 import ManagerOrderPage from './components/ManagerOrderPage';
 import RestaurantMenuPage from './components/RestaurantMenuPage';
 import ManagerCreateUserPage from './components/ManagerCreateUserPage';
 import UserOrderPage from './components/UserOrderPage';
-import jwt from 'jsonwebtoken';
-
-const jwtFromStorage = window.localStorage.getItem('appAuthData');
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
 
-  const [ userJwt, setUserJwt ] = useState(jwtFromStorage);
+  return (
+    <BrowserRouter>
+      <div>
+        <Routes>
+          <Route path="/" element={ <StartPage /> } />
+          <Route path="/login" element={ <LoginPage /> } />
+          <Route path="/signup" element={ <SignUpPage /> } />
+          <Route path="/home" element={ <Home /> } />
+          <Route path="/orders" element={ <UserOrderPage /> } />
+          <Route path="/shoppingcart" element={ <ShoppingCart /> } />
+          <Route path="/managerpage" element={ <ManagerPage /> } />
+          <Route path="/managerorderpage" element={ <ManagerOrderPage /> } />
+          <Route path="/managercreateuser" element={ <ManagerCreateUserPage /> } />
+          <Route path="/restaurantmenu" element={ <RestaurantMenuPage /> } />
+        </Routes>
+      </div>
+    </BrowserRouter>
+  );
+}
 
+export default App;
+
+
+
+/*
   let authRoutes = <>
                   <Route path="/login" element={ <LoginPage login={(token) => {
                     window.localStorage.setItem('appAuthData', token);
@@ -52,8 +73,8 @@ function App() {
     </BrowserRouter>
   );
 }
+*/
 
-export default App;
 
 
 /*

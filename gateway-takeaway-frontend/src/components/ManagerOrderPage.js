@@ -1,12 +1,52 @@
-import React, { useState } from 'react';
+import React, { useState, Component } from 'react';
 import styles from './ManagerOrderPage.module.css';
-import axios from 'axios'
-import { Link, useNavigate } from 'react-router-dom';
-import Constants from './Constants.json';
-import jwt from 'jsonwebtoken';
+import axios from 'axios';
+import { Link } from 'react-router-dom';
 
-export default function ManagerOrderPage(props) {
+export default class ManagerOrderPage extends Component {
 
+    constructor(props) {
+        super(props);
+        this.state ={ orderCollection: [] };
+    }
+
+    // componentDidMount() {
+    //     axios.get
+    // }
+
+    render() {
+        return (
+            <div>
+                WIP
+            </div>
+        )
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
     let navigate = useNavigate();
 
     const [ManagerOrderPageData, setManagerOrderPageData] = useState([]);
@@ -170,3 +210,5 @@ export default function ManagerOrderPage(props) {
         </div>
     )
 }
+
+*/

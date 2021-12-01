@@ -37,6 +37,11 @@
     width: 1700px;
 }
 
+.imageText {
+    height: 180px;
+    width: 336px;
+}
+
 .browse {
     font-family: sans-serif;
     font-size: 26px;
