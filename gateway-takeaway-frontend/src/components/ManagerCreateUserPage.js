@@ -83,9 +83,10 @@ export default class ManagerCreateUserPage extends Component {
             root: this.state.root
         };
 
-        axios.post('http://localhost:4000/register', userObject)
+        axios.post('https://back-end-22-group.herokuapp.com/register', userObject)
             .then((res) => {
                 console.log(res.data)
+                console.log("User account creation was successful");
             }).catch((error) => {
                 console.log(error)
             });

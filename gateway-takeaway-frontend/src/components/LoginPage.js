@@ -1,78 +1,186 @@
-import React, { useState, Component } from 'react';
-import axios from 'axios';
-import { Link, useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import styles from './LoginPage.module.css';
 
-export default class LoginPage extends Component {
-    
-    constructor(props) {
-        super(props)
+export default function LoginPage() {
 
-        this.onChangeUserName = this.onChangeUserName.bind(this);
-        this.onChangePassword = this.onChangePassword.bind(this);
-        this.onSubmit = this.onSubmit.bind(this);
+    const [loginUsername, setLoginUsername] = useState("");
+    const [loginPassword, setLoginPassword] = useState("");
 
-        this.state = {
-            username: '',
-            password: ''
-        }
-    }
+    const login = () => {};
 
-    onChangeUserName(e) {
-        this.setState({ username: e.target.value })
-    }
-
-    onChangePassword(e) {
-        this.setState({ password: e.target.value })
-    }
-
-    onSubmit(e) {
-        e.preventDefault()
-
-        const userObject = {
-            username: this.state.username,
-            password: this.state.password
-        };
-
-        axios.get('http://localhost:4000/login', userObject)
-            .then((res) => {
-                console.log(res.data)
-            }).catch((error) => {
-                console.log(error)
-            });
-
-        this.setState({ username: '', password: '' })
-    }
-
-    render() {
-        return (
+    return (
+        <div>
             <div className={styles.headerContainer}>
-                <div className={styles.brandText}>Gateway Takeaway</div>
-                <div className={styles.container}>
+            <div className={styles.brandText}>Gateway Takeaway</div>
+            <div className={styles.container}>
                 <div className={styles.titleText}>Sign in</div>
                 <div className={styles.subtitleText}>Login with your account</div>
                 <div className={styles.lowerText}>Don't have an account?
                     <Link to="/signup" style={{ textDecoration: 'none' }}>Sign up</Link></div>
-
-                <form onSubmit={this.onSubmit}>
-                    <div className="form-group">
-                        <label className={styles.emailText}>Username</label>
-                        <input className={styles.emailField} type="text" value={this.state.username} onChange={this.onChangeUserName}/>
-                    </div>
-                    <div className="form-group">
-                        <label className={styles.passwordText}>Password</label>
-                        <input className={styles.passwordField} type="text" value={this.state.password} onChange={this.onChangePassword}/>
-                    </div>
-                    <div className="form-group">
-                        <input className={styles.signInButton} type="submit" value="Sign in"/>
-                            <Link to="/home" style={{ textDecoration: 'none' }}></Link>
-                    </div>
-                </form>
+                <div>
+                    <input className={styles.usernameField} placeholder="username" onChange={e => setLoginUsername(e.target.value)} />
+                    <input className={styles.passwordField} placeholder="password" onChange={e => setLoginPassword(e.target.value)} />
+                    <button onClick={login} className={styles.signInButton}>Sign in</button>
+                        <Link to="/home" style={{ textDecoration: 'none' }}></Link>
                 </div>
             </div>
-        )
-    }
+            </div>
+        </div>
+    )
 }
+
+// import React, { useState, Component } from 'react';
+// import axios from 'axios';
+// import { Link, useNavigate } from 'react-router-dom';
+// import styles from './LoginPage.module.css';
+
+// export default class LoginPage extends Component {
+
+//     constructor(props) {
+//         super(props)
+
+//         this.onChangeUserName = this.onChangeUserName.bind(this);
+//         this.onChangePassword = this.onChangePassword.bind(this);
+//         this.onSubmit = this.onSubmit.bind(this);
+
+//         this.state = {
+//             username: '',
+//             password: ''
+//         }
+//     }
+
+//     onChangeUserName(e) {
+//         this.setState({ username: e.target.value })
+//     }
+
+//     onChangePassword(e) {
+//         this.setState({ password: e.target.value })
+//     }
+
+//     onSubmit(e) {
+//         e.preventDefault()
+
+//         const userObject = {
+//             username: this.state.username,
+//             password: this.state.password
+//         };
+
+//         axios.post('https://back-end-22-group.herokuapp.com/login', userObject)
+//             .then((res) => {
+//                 console.log(res.data)
+//             }).catch((error) => {
+//                 console.log(error)
+//             });
+
+//         this.setState({ username: '', password: '' })
+//     }
+
+    // render() {
+    //     return (
+            // <div className={styles.headerContainer}>
+            //     <div className={styles.brandText}>Gateway Takeaway</div>
+            //     <div className={styles.container}>
+            //     <div className={styles.titleText}>Sign in</div>
+            //     <div className={styles.subtitleText}>Login with your account</div>
+            //     <div className={styles.lowerText}>Don't have an account?
+            //         <Link to="/signup" style={{ textDecoration: 'none' }}>Sign up</Link></div>
+
+            //     <form onSubmit={this.onSubmit}>
+            //         <div className="form-group">
+            //             <label className={styles.emailText}>Username</label>
+            //             <input className={styles.emailField} type="text" value={this.state.username} onChange={this.onChangeUserName}/>
+            //         </div>
+            //         <div className="form-group">
+            //             <label className={styles.passwordText}>Password</label>
+            //             <input className={styles.passwordField} type="text" value={this.state.password} onChange={this.onChangePassword}/>
+            //         </div>
+            //         <div className="form-group">
+            //             <input className={styles.signInButton} type="submit" value="Sign in"/>
+            //                 <Link to="/home" style={{ textDecoration: 'none' }}></Link>
+            //         </div>
+            //     </form>
+            //     </div>
+            // </div>
+    //     )
+    // }
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /*
 export default function LoginPage(props) {

@@ -14,7 +14,7 @@ export default class Home extends Component {
   }
 
   componentDidMount() {
-    axios.get('http://localhost:4000/restaurants')
+    axios.get('https://back-end-22-group.herokuapp.com/restaurants')
         .then(res => {
           this.setState({ restaurants: res.data });
         })
@@ -39,6 +39,7 @@ export default class Home extends Component {
       <div className={styles.headerContainer}>
       <Link to="/home" style={{ color: 'inherit', textDecoration: 'none' }}><div className={ styles.brandText }>Gateway Takeaway</div></Link>
       <Link to="/orders" style={{ color: 'inherit', textDecoration: 'none' }}><div className={ styles.brandText2 }>Orders</div></Link>
+      <div> <button>Logout</button> </div>
       </div>
       <div className={styles.carousel}>
         <div className={styles.browse}>Browse restaurants</div>
@@ -47,10 +48,10 @@ export default class Home extends Component {
             this.state.restaurants.map((restaurant) => { 
               return <div className={styles.container}>
               <div>
-                  <img className="blob-to-image" src={"data:image/png;base64," + restaurant.image} width="336" height="180"></img>
+                  <input type="image" src={"data:image/png;base64," + restaurant.image} width="336" height="180"/>
                   <div className={styles.restName}>{restaurant.restaurant_name}</div>
                   <div className={styles.restMotto}>{restaurant.operating_hours}</div>
-                    <Link to="/restaurantmenu"><button className={ styles.buttonStyle }>Order now</button></Link>
+                    <Link to={{ pathname: "/restaurantmenu/" + restaurant.restaurant_id}}><button className={ styles.buttonStyle }>Order now</button></Link>
               </div>
             </div>
              })

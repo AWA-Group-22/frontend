@@ -28,7 +28,7 @@ function App() {
           <Route path="/managerpage" element={ <ManagerPage /> } />
           <Route path="/managerorderpage" element={ <ManagerOrderPage /> } />
           <Route path="/managercreateuser" element={ <ManagerCreateUserPage /> } />
-          <Route path="/restaurantmenu" element={ <RestaurantMenuPage /> } />
+          <Route path="/restaurantmenu/:restaurant_id" element={ <RestaurantMenuPage /> } />
         </Routes>
       </div>
     </BrowserRouter>
