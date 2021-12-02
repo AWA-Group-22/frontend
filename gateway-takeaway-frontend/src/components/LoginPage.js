@@ -1,18 +1,33 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import styles from './LoginPage.module.css';
+import axios from 'axios';
 
 export default function LoginPage() {
+
+    let navigate = useNavigate();
 
     const [loginUsername, setLoginUsername] = useState("");
     const [loginPassword, setLoginPassword] = useState("");
 
-    const login = () => {};
+    const login = () => {
+        axios({
+            method: "post",
+            data: {
+                username: loginUsername,
+                password: loginPassword
+            },
+            withCredentials: true,
+            url: "https://back-end-22-group.herokuapp.com/login",
+        })
+        .then((res) => console.log(res));
+        navigate('/home')
+    };
 
     return (
         <div>
             <div className={styles.headerContainer}>
-            <div className={styles.brandText}>Gateway Takeaway</div>
+                <Link to="/" style={{ color: 'inherit', textDecoration: 'none' }}><div className={ styles.brandText }>Gateway Takeaway</div></Link>
             <div className={styles.container}>
                 <div className={styles.titleText}>Sign in</div>
                 <div className={styles.subtitleText}>Login with your account</div>
