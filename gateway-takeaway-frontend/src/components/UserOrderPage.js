@@ -6,32 +6,33 @@ import axios from 'axios';
 export default function UserOrderPage() {
 
   const [orders, setOrders] = useState([]);
-  const [orderData, setOrderData] = useState(null);
   const [ordersHistory, setOrdersHistory] = useState([]);
 
-  // useEffect(() => {
-  //   axios.all([
-  //     axios.get('https://back-end-22-group.herokuapp.com/customer/order/status'),
-  //     axios.get('https://back-end-22-group.herokuapp.com/customer/order/history')
-  //   ])
-  //   .then(axios.spread(function(result1, result2) {
-  //     setOrders(result1.data);
-  //     console.log(result1.data);
-  //     setOrdersHistory(result2.data);
-  //     console.log(result2.data);
-  //   }))
-  //   .catch(function(error) {
-  //     console.log(error);
-  //   })
-  // }, [])
+  useEffect(() => {
+    getOrders();
+    getOrderHistory();
+})
 
   const getOrders = () => {
     axios({
       method: "get",
-      withCredentials: true,
+      credentials: "include",
+      headers: { "Content-Type": "application/json" },
       url: "https://back-end-22-group.herokuapp.com/customer/order/status",
     }).then((res) => {
-      setOrderData(res.data);
+      setOrders(res.data);
+      console.log(res.data);
+    });
+  };
+
+  const getOrderHistory = () => {
+    axios({
+      method: "get",
+      credentials: "include",
+      headers: { "Content-Type": "application/json" },
+      url: "https://back-end-22-group.herokuapp.com/customer/order/history",
+    }).then((res) => {
+      setOrdersHistory(res.data);
       console.log(res.data);
     });
   };
@@ -43,18 +44,20 @@ export default function UserOrderPage() {
         order_status: orders.order_status
     };
 
-    axios.post('https://back-end-22-group.herokuapp.com/customer/order/confirm', userObject)
-        .then((res) => {
-            console.log(res.data)
-            console.log("Order confirmed successfully");
-        }).catch((error) => {
-            console.log(error)
-        });
+    axios({
+      method: "post",
+      withCredentials: true,
+      url: "https://back-end-22-group.herokuapp.com/customer/order/confirm" + userObject,
+    }).then((res) => {
+      console.log(res.data)
+      console.log("Order confirmed successfully");
+    });
+      this.setState({
+      order_status: 'Confirmed'
+    });
+  };
+    
 
-    this.setState({
-        order_status: 'Confirmed'
-    })
-}
 
   return (
     <div>
@@ -68,10 +71,7 @@ export default function UserOrderPage() {
               return <div key={index}>
                 <div className={ styles.orderStatusText }>Current order status: </div>
                 <div className={ styles.orderContainer }>
-                <div>
-                  <button onClick={getOrders}>Load order data</button>
-                  {orderData ? <h1>Order status: {orderData.order_status}</h1> : null}
-                </div>
+                <div> Order status: { order.order_status } </div>
                 <div className={ styles.restaurantName }> { order.restaurant_name } </div>
                     <button onClick={ onConfirmOrder } className={ styles.buttonStyle }>Confirm received order</button>
                 <div className={ styles.statusText }>Example status text lorem ipsum datum el macaron</div>

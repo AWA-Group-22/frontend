@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import styles from './LoginPage.module.css';
 import axios from 'axios';
+import { useCookies } from 'react-cookie';
 
 export default function LoginPage() {
 
@@ -9,19 +10,20 @@ export default function LoginPage() {
 
     const [loginUsername, setLoginUsername] = useState("");
     const [loginPassword, setLoginPassword] = useState("");
+    const [cookies, setCookie] = useCookies(['user']);
 
     const login = () => {
         axios({
             method: "post",
-            data: {
-                username: loginUsername,
-                password: loginPassword
-            },
-            withCredentials: true,
+            credentials: "include",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ loginUsername, loginPassword }),
             url: "https://back-end-22-group.herokuapp.com/login",
         })
         .then((res) => console.log(res));
-        navigate('/home')
+            setCookie('LoginUsername', loginUsername, { path: '/' });
+            setCookie('LoginPassword', loginPassword, { path: '/' });
+            navigate('/home');
     };
 
     return (

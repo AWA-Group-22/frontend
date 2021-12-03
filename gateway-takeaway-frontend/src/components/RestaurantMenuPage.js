@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import burger1 from './burger1.jpg';
 import { useParams } from 'react-router';
 import { Link } from 'react-router-dom';
 import styles from './RestaurantMenuPage.module.css';
@@ -10,27 +11,52 @@ export default function RestaurantMenuPage() {
 
     const [restaurants, setRestaurants] = useState({});
     const [customers, setCustomers] = useState([]);
-    const [categories, setCategories] = useState([]);
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
-        axios.all([
-            axios.get('http://localhost:4000/restaurant/' + restaurant_id),
-            axios.get('http://localhost:4000/customer'),
-            axios.get('https://back-end-22-group.herokuapp.com/restaurant/menu'),
-            axios.get('https://back-end-22-group.herokuapp.com/restaurant/menu/' + restaurant_id)
-        ])
-            .then(axios.spread(function(result1, result2, result3, result4) {
-                setRestaurants(result1.data[0]);
-                console.log(result1.data[0]);
-                setCustomers(result2.data);
-                setCategories(result3.data);
-                setProducts(result4.data);
-            }))
-            .catch(function(error) {
-                console.log(error);
-            })
-    },[])
+        getRestaurant();
+        getCustomer();
+        getProduct();
+    })
+
+    const getCustomer = () => {
+        axios({
+          method: "get",
+          credentials: "include",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ customers }),
+          url: "https://back-end-22-group.herokuapp.com/customer",
+        }).then((res) => {
+          setCustomers(res.data);
+          console.log(res.data);
+        });
+      };
+
+    const getRestaurant = () => {
+        axios({
+            method: "get",
+            credentials: "include",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ restaurants }),
+            url: "https://back-end-22-group.herokuapp.com/restaurant/" + restaurant_id,
+        }).then((res) => {
+            setRestaurants(res.data[0]);
+            console.log(res.data[0]);
+        });
+    };
+
+    const getProduct = () => {
+        axios({
+            method: "get",
+            credentials: "include",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ products }),
+            url: "https://back-end-22-group.herokuapp.com/restaurant/menu/" + restaurant_id,
+        }).then((res) => {
+            setProducts(res.data);
+            console.log(res.data);
+        });
+    };
 
     const onSubmit = (e) => {
         e.preventDefault()
@@ -41,7 +67,7 @@ export default function RestaurantMenuPage() {
             order_status: this.state.order_status
         };
 
-        axios.post('http://localhost:4000/customer/order', userObject)
+        axios.post('https://back-end-22-group.herokuapp.com/customer/order', userObject)
             .then((res) => {
                 console.log(res.data)
                 console.log("Item added to order successfully");
@@ -58,48 +84,38 @@ export default function RestaurantMenuPage() {
     
     return (
         <div>
-        <div className={styles.headerContainer}>
-            <Link to="/home" style={{ color: 'inherit', textDecoration: 'none' }}><div className={ styles.brandText }>Gateway Takeaway</div></Link>
-        </div>
-        {/* {
-            customers.map((customer) => {
-                return <div>
-                    <div className={ styles.deliveryText } key={customer}>Delivery in 15-25 minutes to { customer.address }</div>
-                </div>
-            })
-        } */}
+            <div className={styles.headerContainer}>
+                <Link to="/home" style={{ color: 'inherit', textDecoration: 'none' }}><div className={ styles.brandText }>Gateway Takeaway</div></Link>
+            </div>
             <div>
-            <div className={ styles.hourText }>Open today: { restaurants.operating_hours } </div>
-            <div className={ styles.backButton }>
-                <Link to="/home" style={{ color: 'inherit', textDecoration: 'none' }}>Back</Link></div>
-            <div className={ styles.restaurantTitle }> { restaurants.restaurant_name } </div>
-            <div className={ styles.restaurantMotto }>Address: { restaurants.address } </div>
-            <div className={ styles.deliveryCost }>DELIVERY: null</div>
-            <div className={ styles.minOrder }>MIN. ORDER: 20</div>
-            <div className={ styles.subContainer }></div>
-            <div className={ styles.outText }>{ restaurants.price_level } </div>
-                </div>
-        {
-            categories.map((category, index) => {
-                return <div key={index}>
-                    <div className={ styles.foodCategory }> { category.category_name } </div>
-                </div>
-            })
-        }
-        {
-            products.map((product, index) => {
-                return <div key={index}>
-                    <div className={ styles.foodCategoryContainer }>
-                        { product.product_name }
-                        { product.price } 
-                        { product.description } 
-                        { product.product_image }
-                        <button onClick={ onSubmit }>Add to shopping cart</button>
+            <img src={burger1}/>
+                <div className={ styles.deliveryText }>Delivery in 15-25 minutes to { customers.address }</div>
+            </div>
+            <div>
+                <div className={ styles.hourText }>Open today: { restaurants.operating_hours } </div>
+                <div className={ styles.backButton }>
+                    <Link to="/home" style={{ color: 'inherit', textDecoration: 'none' }}>Back</Link></div>
+                <div className={ styles.restaurantTitle }> { restaurants.restaurant_name } </div>
+                <div className={ styles.restaurantMotto }>Address: { restaurants.address } </div>
+                <div className={ styles.deliveryCost }>DELIVERY: 7.90€</div>
+                <div className={ styles.minOrder }>MIN. ORDER: 20€</div>
+                <div className={ styles.subContainer }></div>
+                <div className={ styles.outText }>{ restaurants.price_level } </div>
+            </div>
+            {
+                products.map((product, index) => {
+                    return <div key={index}>
+                        <div className={ styles.foodCategoryContainer }>
+                            <div className={ styles.prodNameStyle }>{ product.product_name }</div>
+                            <div className={ styles.prodPriceStyle }>{ product.price }€</div>
+                            <div className={ styles.prodDescStyle }>{ product.description }</div>
+                            {/* <div className={ styles.prodIMGStyle }> { product.product_image }</div> */}
+                            <button className={ styles.shopCartButton } onClick={ onSubmit }>🛒</button>
+                        </div>
                     </div>
-                </div>
-            })
-        }
-    </div>
+                })
+            }
+        </div>
     )
 }
 

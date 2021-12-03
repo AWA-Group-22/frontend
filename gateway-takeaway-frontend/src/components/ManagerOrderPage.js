@@ -1,50 +1,178 @@
-import React, { useState, Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './ManagerOrderPage.module.css';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
-export default class ManagerOrderPage extends Component {
+export default function ManagerOrderPage() {
 
-    constructor(props) {
-        super(props);
-        this.state ={ orderCollection: [] };
-    }
+    const [ManagerOrderPageData, setManagerOrderPageData] = useState([]);
+    const [orders, setOrders] = useState([]);
+    const [ordersHistory, setOrdersHistory] = useState([]);
+  
+    useEffect(() => {
+      getOrders();
+      getOrderHistory();
+  })
+  
+    const getOrders = () => {
+      axios({
+        method: "get",
+        credentials: "include",
+        headers: { "Content-Type": "application/json" },
+        url: "https://back-end-22-group.herokuapp.com/customer/order/status",
+      }).then((res) => {
+        setOrders(res.data);
+        console.log(res.data);
+      });
+    };
+  
+    const getOrderHistory = () => {
+      axios({
+        method: "get",
+        credentials: "include",
+        headers: { "Content-Type": "application/json" },
+        url: "https://back-end-22-group.herokuapp.com/customer/order/history",
+      }).then((res) => {
+        setOrdersHistory(res.data);
+        console.log(res.data);
+      });
+    };
+  
+    const handleButtonReceived = (e) => {
+      e.preventDefault()
+      const userObject = {
+          order_status: orders.order_status
+      };
+      axios({
+        method: "post",
+        credentials: "include",
+        headers: { "Content-Type": "application/json" },
+        url: "https://back-end-22-group.herokuapp.com/customer/order/confirm" + userObject,
+      }).then((res) => {
+        console.log(res.data)
+        console.log("Order confirmed successfully");
+      });
+        this.setState({
+        order_status: 'Received'
+      });
+    };
 
-    // componentDidMount() {
-    //     axios.get
-    // }
+    const handleButtonPreparing = (e) => {
+        e.preventDefault()
+        const userObject = {
+            order_status: orders.order_status
+        };
+        axios({
+          method: "post",
+          credentials: "include",
+          headers: { "Content-Type": "application/json" },
+          url: "https://back-end-22-group.herokuapp.com/customer/order/confirm" + userObject,
+        }).then((res) => {
+          console.log(res.data)
+          console.log("Order confirmed successfully");
+        });
+          this.setState({
+          order_status: 'Preparing'
+        });
+      };
 
-    render() {
-        return (
-            <div>
-                WIP
-            </div>
-        )
-    }
+      const handleButtonRFD = (e) => {
+        e.preventDefault()
+        const userObject = {
+            order_status: orders.order_status
+        };
+        axios({
+          method: "post",
+          credentials: "include",
+          headers: { "Content-Type": "application/json" },
+          url: "https://back-end-22-group.herokuapp.com/customer/order/confirm" + userObject,
+        }).then((res) => {
+          console.log(res.data)
+          console.log("Order confirmed successfully");
+        });
+          this.setState({
+          order_status: 'Ready for delivery'
+        });
+      };
+
+      const handleButtonDelivering = (e) => {
+        e.preventDefault()
+        const userObject = {
+            order_status: orders.order_status
+        };
+        axios({
+          method: "post",
+          credentials: "include",
+          headers: { "Content-Type": "application/json" },
+          url: "https://back-end-22-group.herokuapp.com/customer/order/confirm" + userObject,
+        }).then((res) => {
+          console.log(res.data)
+          console.log("Order confirmed successfully");
+        });
+          this.setState({
+          order_status: 'Delivering'
+        });
+      };
+
+      const handleButtonDelivered = (e) => {
+        e.preventDefault()
+        const userObject = {
+            order_status: orders.order_status
+        };
+        axios({
+          method: "post",
+          credentials: "include",
+          headers: { "Content-Type": "application/json" },
+          url: "https://back-end-22-group.herokuapp.com/customer/order/confirm" + userObject,
+        }).then((res) => {
+          console.log(res.data)
+          console.log("Order confirmed successfully");
+        });
+          this.setState({
+          order_status: 'Delivered'
+        });
+      };
+
+    return (
+        <div>
+            <div className={styles.headerContainer}>
+            <Link to="/home" style={{ color: 'inherit', textDecoration: 'none' }}><div className={ styles.brandText }>Gateway Takeaway</div></Link>            </div>
+            { ManagerOrderPageData.map(mo => 
+                <div>
+                    <div className={ styles.styles.titleText }>Orders</div>
+                    <div className={ styles.orderStatusText }>Current order status: { mo.order.order_status } </div>
+                    <div className={ styles.titleText }>
+                        Manager order page
+                    </div>
+                    <div className={ styles.orderStatusText }>
+                        Current user orders:
+                    </div>
+                    <div className={ styles.buttonContainer }>
+                        <button onClick={ handleButtonReceived } className={ styles.buttonStyleReceived }>Received</button>
+                        <button onClick={ handleButtonPreparing } className={ styles.buttonStylePreparing }>Preparing</button>
+                        <button onClick={ handleButtonRFD } className={ styles.buttonStyleRFD}>Ready for delivery</button>
+                        <button onClick={ handleButtonDelivering } className={ styles.buttonStyleDelivering }>Delivering</button>
+                        <button onClick={ handleButtonDelivered } className={ styles.buttonStyleDelivered }>Delivered</button>
+                    </div>
+                    <div className={ styles.orderHistoryText }>
+                        Order history:
+                    </div>
+                    <div className={ styles.orderContainer }>
+                        <div className={ styles.restaurantName }>Example restaurant</div>
+                            <button className={ styles.buttonStyle }>Confirm received order</button>
+                        <div className={ styles.statusText }>Example status text lorem ipsum datum el macaron</div>
+                    </div>
+                    <div className={ styles.orderHistoryContainer1 }>
+                        <div className={ styles.restaurantName }>Example restaurant</div>
+                    </div>
+                    <div className={ styles.orderHistoryContainer2 }>
+                        <div className={ styles.restaurantName }>Example restaurant</div>
+                    </div>
+                </div>
+            )}
+        </div>
+    )
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /*
     let navigate = useNavigate();

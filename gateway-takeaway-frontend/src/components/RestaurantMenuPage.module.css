@@ -23,50 +23,55 @@
 }
 
 .deliveryText {
+    position: absolute;
     padding: 2px 2px 2px 2px;
     box-shadow: 5px 5px 20px 0px rgba(0, 0, 0, 0.18);
     border-radius: 4px;
     box-sizing: border-box;
     font-size: 19px;
-    color: black;
+    color: white;
     top: 120px;
     left: 70px;
 }
 
 .hourText {
+    position: absolute;
     padding: 2px 2px 2px 2px;
     box-shadow: 5px 5px 20px 0px rgba(0, 0, 0, 0.18);
     border-radius: 4px;
     box-sizing: border-box;
     font-size: 19px;
-    color: black;
+    color: white;
     top: 120px;
     left: 500px;
 }
 
 .backButton {
+    position: absolute;
     padding: 2px 2px 2px 2px;
     box-shadow: 5px 5px 20px 0px rgba(0, 0, 0, 0.18);
     border-radius: 4px;
     box-sizing: border-box;
     font-size: 28px;
-    color: black;
+    color: white;
     top: 120px;
     right: 50px;
 }
 
 .restaurantTitle {
+    position: absolute;
     top: 330px;
     left: 200px;
-    color: black;
+    color: white;
     font-size: 90px;
     font-weight: 700;
 }
 
 .restaurantMotto {
+    position: absolute;
     top: 440px;
     left: 205px;
-    color: black;
+    color: white;
     font-size: 30px;
     font-weight: 600;
 }
@@ -154,6 +159,25 @@
     box-shadow: 5px 5px 20px 0px rgba(0, 0, 0, 0.18);
     border-radius: 4px;
     padding: 46px;
-    font-size: 30px;
+    font-size: 19px;
     font-family: "Open Sans Bold", "Open Sans Regular", "Open Sans", sans-serif;
+}
+
+.shopCartButton {
+    background-color: none;
+}
+
+.prodNameStyle {
+    font-family: "Open Sans Bold", "Open Sans Regular", "Open Sans", sans-serif;
+    margin: 5px;
+}
+
+.prodPriceStyle {
+    font-family: "Open Sans Bold", "Open Sans Regular", "Open Sans", sans-serif;
+    margin: 5px;
+}
+
+.prodDescStyle {
+    font-family: "Open Sans Bold", "Open Sans Regular", "Open Sans", sans-serif;
+    margin: 5px;
 }
