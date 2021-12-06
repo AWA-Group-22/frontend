@@ -9,11 +9,6 @@ export default function ManagerOrderPage() {
     const [orders, setOrders] = useState([]);
     const [ordersHistory, setOrdersHistory] = useState([]);
   
-    useEffect(() => {
-      getOrders();
-      getOrderHistory();
-  })
-  
     const getOrders = () => {
       axios({
         method: "get",
@@ -64,7 +59,7 @@ export default function ManagerOrderPage() {
         };
         axios({
           method: "post",
-          credentials: "include",
+          credentials: "true",
           headers: { "Content-Type": "application/json" },
           url: "https://back-end-22-group.herokuapp.com/customer/order/confirm" + userObject,
         }).then((res) => {
@@ -83,7 +78,7 @@ export default function ManagerOrderPage() {
         };
         axios({
           method: "post",
-          credentials: "include",
+          credentials: "true",
           headers: { "Content-Type": "application/json" },
           url: "https://back-end-22-group.herokuapp.com/customer/order/confirm" + userObject,
         }).then((res) => {
@@ -102,7 +97,7 @@ export default function ManagerOrderPage() {
         };
         axios({
           method: "post",
-          credentials: "include",
+          credentials: "true",
           headers: { "Content-Type": "application/json" },
           url: "https://back-end-22-group.herokuapp.com/customer/order/confirm" + userObject,
         }).then((res) => {
@@ -121,7 +116,7 @@ export default function ManagerOrderPage() {
         };
         axios({
           method: "post",
-          credentials: "include",
+          credentials: "true",
           headers: { "Content-Type": "application/json" },
           url: "https://back-end-22-group.herokuapp.com/customer/order/confirm" + userObject,
         }).then((res) => {
@@ -136,11 +131,13 @@ export default function ManagerOrderPage() {
     return (
         <div>
             <div className={styles.headerContainer}>
-            <Link to="/home" style={{ color: 'inherit', textDecoration: 'none' }}><div className={ styles.brandText }>Gateway Takeaway</div></Link>            </div>
-            { ManagerOrderPageData.map(mo => 
+            <Link to="/home" style={{ color: 'inherit', textDecoration: 'none' }}><div className={ styles.brandText }>Gateway Takeaway</div></Link>
+                <button onClick={ getOrders }>Get orders</button>
+                <button onClick={ getOrderHistory }>Get order history</button>
+            </div>
                 <div>
                     <div className={ styles.styles.titleText }>Orders</div>
-                    <div className={ styles.orderStatusText }>Current order status: { mo.order.order_status } </div>
+                    <div className={ styles.orderStatusText }>Current order status: { orders.order.order_status } </div>
                     <div className={ styles.titleText }>
                         Manager order page
                     </div>
@@ -169,7 +166,7 @@ export default function ManagerOrderPage() {
                         <div className={ styles.restaurantName }>Example restaurant</div>
                     </div>
                 </div>
-            )}
+            
         </div>
     )
 }

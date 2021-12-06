@@ -31,7 +31,6 @@ export default function SignUpPage() {
                 date_of_birth: signupDateOfBirth,
                 root: signupRoot
             },
-            withCredentials: true,
             url: "https://back-end-22-group.herokuapp.com/register",
         })
         .then((res) => console.log(res));

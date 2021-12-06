@@ -1,16 +1,19 @@
 import React, { Component, useState } from "react"
 import { Link } from 'react-router-dom';
 import Slider from "react-slick";
-import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import styles from "./Home.module.css";
 import axios from "axios";
+import SearchView from "./SearchView";
 
 export default class Home extends Component {
 
   constructor(props) {
-    super(props)
-    this.state={ restaurants: [] };
+      super(props)
+      this.state = {
+      restaurants: [],
+    }
   }
 
   componentDidMount() {
@@ -24,7 +27,6 @@ export default class Home extends Component {
   }
 
   render() {
-
     const settings = {
       dots: true,
       arrows: true,

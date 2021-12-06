@@ -68,7 +68,6 @@
 
 .buttonStyle {
     margin-left: 565px;
-    margin-top: 50px;
     height: 63px;
     width: 165px;
     padding: 2px 2px 2px 2px;
@@ -82,7 +81,7 @@
 }
 
 .statusText {
-    margin-top: -42px;
+    margin-top: 50px;
     margin-left: 15px;
     font-size: 20px;
     font-family: "Open Sans", sans-serif;

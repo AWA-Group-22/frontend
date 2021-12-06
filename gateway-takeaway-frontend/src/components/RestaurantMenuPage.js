@@ -13,12 +13,6 @@ export default function RestaurantMenuPage() {
     const [customers, setCustomers] = useState([]);
     const [products, setProducts] = useState([]);
 
-    useEffect(() => {
-        getRestaurant();
-        getCustomer();
-        getProduct();
-    })
-
     const getCustomer = () => {
         axios({
           method: "get",
@@ -35,7 +29,6 @@ export default function RestaurantMenuPage() {
     const getRestaurant = () => {
         axios({
             method: "get",
-            credentials: "include",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ restaurants }),
             url: "https://back-end-22-group.herokuapp.com/restaurant/" + restaurant_id,
@@ -48,7 +41,6 @@ export default function RestaurantMenuPage() {
     const getProduct = () => {
         axios({
             method: "get",
-            credentials: "include",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ products }),
             url: "https://back-end-22-group.herokuapp.com/restaurant/menu/" + restaurant_id,
@@ -56,7 +48,7 @@ export default function RestaurantMenuPage() {
             setProducts(res.data);
             console.log(res.data);
         });
-    };
+    };    
 
     const onSubmit = (e) => {
         e.preventDefault()
@@ -78,7 +70,7 @@ export default function RestaurantMenuPage() {
         this.setState({
             user_id: '',
             product_id: '',
-            order_status: '',
+            order_status: 'Received',
         })
     }
     
@@ -86,10 +78,13 @@ export default function RestaurantMenuPage() {
         <div>
             <div className={styles.headerContainer}>
                 <Link to="/home" style={{ color: 'inherit', textDecoration: 'none' }}><div className={ styles.brandText }>Gateway Takeaway</div></Link>
+                    <button onClick={ getCustomer }>Get customer data</button>
+                    <button onClick={ getRestaurant }>Get restaurant data</button>
+                    <button onClick={ getProduct }>Get product data</button>
             </div>
             <div>
             <img src={burger1}/>
-                <div className={ styles.deliveryText }>Delivery in 15-25 minutes to { customers.address }</div>
+                <div className={ styles.deliveryText }>Delivery in 15-25 minutes to your address { customers.address }</div>
             </div>
             <div>
                 <div className={ styles.hourText }>Open today: { restaurants.operating_hours } </div>

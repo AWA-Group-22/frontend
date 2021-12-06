@@ -8,11 +8,6 @@ export default function UserOrderPage() {
   const [orders, setOrders] = useState([]);
   const [ordersHistory, setOrdersHistory] = useState([]);
 
-  useEffect(() => {
-    getOrders();
-    getOrderHistory();
-})
-
   const getOrders = () => {
     axios({
       method: "get",
@@ -46,7 +41,7 @@ export default function UserOrderPage() {
 
     axios({
       method: "post",
-      withCredentials: true,
+      withCredentials: "include",
       url: "https://back-end-22-group.herokuapp.com/customer/order/confirm" + userObject,
     }).then((res) => {
       console.log(res.data)
@@ -56,29 +51,24 @@ export default function UserOrderPage() {
       order_status: 'Confirmed'
     });
   };
-    
-
 
   return (
     <div>
       <div className={styles.headerContainer}>
         <Link to="/home" style={{ color: 'inherit', textDecoration: 'none' }}><div className={ styles.brandText }>Gateway Takeaway</div></Link>
+        <button onClick={ getOrders }>Get orders</button>
+        <button onClick={ getOrderHistory }>Get order history</button>
       </div>
         <div>
         <div className={ styles.titleText }>Orders</div>
-          {
-            orders.map((order, index) => {
-              return <div key={index}>
+          <div>
                 <div className={ styles.orderStatusText }>Current order status: </div>
                 <div className={ styles.orderContainer }>
-                <div> Order status: { order.order_status } </div>
-                <div className={ styles.restaurantName }> { order.restaurant_name } </div>
+                <div className={ styles.statusText }> Order status: { orders.order_status } </div>
+                <div className={ styles.restaurantName }> { orders.restaurant_name } </div>
                     <button onClick={ onConfirmOrder } className={ styles.buttonStyle }>Confirm received order</button>
-                <div className={ styles.statusText }>Example status text lorem ipsum datum el macaron</div>
             </div>
               </div>
-            })
-          }
             <div className={ styles.orderHistoryText }>Order history:</div>
 
             <div className={ styles.orderHistoryContainer }>

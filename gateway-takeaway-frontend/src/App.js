@@ -12,6 +12,7 @@ import RestaurantMenuPage from './components/RestaurantMenuPage';
 import ManagerCreateUserPage from './components/ManagerCreateUserPage';
 import UserOrderPage from './components/UserOrderPage';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import ManagerLoginPage from './components/ManagerLoginPage';
 
 function App() {
 
@@ -25,6 +26,7 @@ function App() {
           <Route path="/home" element={ <Home /> } />
           <Route path="/orders" element={ <UserOrderPage /> } />
           <Route path="/shoppingcart" element={ <ShoppingCart /> } />
+          <Route path="/managerlogin" element={ <ManagerLoginPage /> } />
           <Route path="/managerpage" element={ <ManagerPage /> } />
           <Route path="/managerorderpage" element={ <ManagerOrderPage /> } />
           <Route path="/managercreateuser" element={ <ManagerCreateUserPage /> } />
