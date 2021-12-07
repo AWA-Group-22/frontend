@@ -10,9 +10,11 @@ import ManagerPage from './components/ManagerPage';
 import ManagerOrderPage from './components/ManagerOrderPage';
 import RestaurantMenuPage from './components/RestaurantMenuPage';
 import ManagerCreateUserPage from './components/ManagerCreateUserPage';
+import ManagerCreateUserAndLogin from './components/ManagerCreateUserAndLogin';
 import UserOrderPage from './components/UserOrderPage';
-import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import ManageRestaurants from './components/ManageRestaurants';
 import ManagerLoginPage from './components/ManagerLoginPage';
+import CreateMenu from './components/CreateMenu';
 
 function App() {
 
@@ -31,6 +33,8 @@ function App() {
           <Route path="/managerorderpage" element={ <ManagerOrderPage /> } />
           <Route path="/managercreateuser" element={ <ManagerCreateUserPage /> } />
           <Route path="/restaurantmenu/:restaurant_id" element={ <RestaurantMenuPage /> } />
+          <Route path="/managerestaurants" element={ <ManageRestaurants /> } /> 
+          <Route path="/createmenu" element={<CreateMenu/>} />
         </Routes>
       </div>
     </BrowserRouter>
