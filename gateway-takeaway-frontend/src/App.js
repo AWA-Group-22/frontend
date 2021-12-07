@@ -12,7 +12,8 @@ import ManagerOrderPage from './components/ManagerOrderPage';
 import RestaurantMenuPage from './components/RestaurantMenuPage';
 import ManagerCreateUserPage from './components/ManagerCreateUserPage';
 import ManagerCreateUserAndLogin from './components/ManagerCreateUserAndLogin';
-import ManageRestaurantsPage from './components/ManageRestaurantsPage';
+import ManageRestaurants from './components/ManageRestaurants';
+import CreateMenu from './components/CreateMenu';
 
 function App() {
 
@@ -40,7 +41,8 @@ function App() {
           <Route path="/managercreateuserandlogin" element={ <ManagerCreateUserAndLogin /> } />
           <Route path="/managercreateuser" element={ <ManagerCreateUserPage /> } />
           <Route path="/restaurantmenu" element={ <RestaurantMenuPage /> } />
-          <Route path="/managerestaurants" element={ <ManageRestaurantsPage /> } /> 
+          <Route path="/managerestaurants" element={ <ManageRestaurants /> } /> 
+          <Route path="/createmenu" element={<CreateMenu/>} />
 
         </Routes>
       </div>

@@ -1,35 +1,59 @@
+.headerContainer {
+    background-color: whitesmoke;
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    gap: 50px;
+    height: 70px;
+    font-size: 20px;
+    align-items: center;
+    margin-right: auto;
+    padding-top: 13px;
+    border-bottom-color: black;
+    border-bottom-width: 2px;
+}
+
+.brandText {
+    background-color: rgba(255, 255, 255, 0);
+    font-size: 32px;
+    font-family: "Merriweather", sans-serif;
+    color: #333333;
+    text-align: left;
+    line-height: normal;
+    margin: 70px;
+}
+
 .deliveryText {
+    position: absolute;
     padding: 2px 2px 2px 2px;
     box-shadow: 5px 5px 20px 0px rgba(0, 0, 0, 0.18);
     border-radius: 4px;
     box-sizing: border-box;
     font-size: 19px;
     color: white;
-    position: absolute;
     top: 120px;
     left: 70px;
 }
 
 .hourText {
+    position: absolute;
     padding: 2px 2px 2px 2px;
     box-shadow: 5px 5px 20px 0px rgba(0, 0, 0, 0.18);
     border-radius: 4px;
     box-sizing: border-box;
     font-size: 19px;
     color: white;
-    position: absolute;
     top: 120px;
     left: 500px;
 }
 
 .backButton {
+    position: absolute;
     padding: 2px 2px 2px 2px;
     box-shadow: 5px 5px 20px 0px rgba(0, 0, 0, 0.18);
     border-radius: 4px;
     box-sizing: border-box;
     font-size: 28px;
     color: white;
-    position: absolute;
     top: 120px;
     right: 50px;
 }
@@ -110,7 +134,7 @@
     top: 673px;
 }
 
-.foodCategory1 {
+.foodCategory {
     position: absolute;
     top: 850px;
     left: 350px;
@@ -124,35 +148,7 @@
     line-height: normal;
 }
 
-.foodCategory2 {
-    position: absolute;
-    top: 1250px;
-    left: 350px;
-    background-color: rgba(255, 255, 255, 0);
-    box-sizing: border-box;
-    font-size: 25px;
-    font-family: "Open Sans Bold", "Open Sans Regular", "Open Sans", sans-serif;
-    font-weight: 700;
-    color: #333333;
-    text-align: left;
-    line-height: normal;
-}
-
-.foodCategory3 {
-    position: absolute;
-    top: 1650px;
-    left: 350px;
-    background-color: rgba(255, 255, 255, 0);
-    box-sizing: border-box;
-    font-size: 25px;
-    font-family: "Open Sans Bold", "Open Sans Regular", "Open Sans", sans-serif;
-    font-weight: 700;
-    color: #333333;
-    text-align: left;
-    line-height: normal;
-}
-
-.foodCategoryContainer1 {
+.foodCategoryContainer {
     background-color: white;
     width: 755px;
     position: absolute;
@@ -163,36 +159,26 @@
     box-shadow: 5px 5px 20px 0px rgba(0, 0, 0, 0.18);
     border-radius: 4px;
     padding: 46px;
-    font-size: 30px;
+    font-size: 19px;
     font-family: "Open Sans Bold", "Open Sans Regular", "Open Sans", sans-serif;
 }
 
-.foodCategoryContainer2 {
-    background-color: white;
-    width: 755px;
-    position: absolute;
-    margin-top: 560px;
-    left: 500px;
-    height: 240px;
-    padding: 2px 2px 2px 2px;
-    box-shadow: 5px 5px 20px 0px rgba(0, 0, 0, 0.18);
-    border-radius: 4px;
-    padding: 46px;
-    font-size: 30px;
-    font-family: "Open Sans Bold", "Open Sans Regular", "Open Sans", sans-serif;
+.shopCartButton {
+    background-color: none;
 }
 
-.foodCategoryContainer3 {
-    background-color: white;
-    width: 755px;
-    position: absolute;
-    margin-top: 960px;
-    left: 500px;
-    height: 240px;
-    padding: 2px 2px 2px 2px;
-    box-shadow: 5px 5px 20px 0px rgba(0, 0, 0, 0.18);
-    border-radius: 4px;
-    padding: 46px;
-    font-size: 30px;
+.prodNameStyle {
     font-family: "Open Sans Bold", "Open Sans Regular", "Open Sans", sans-serif;
+    margin: 5px;
+}
+
+.prodPriceStyle {
+    font-family: "Open Sans Bold", "Open Sans Regular", "Open Sans", sans-serif;
+    margin: 5px;
+}
+
+.prodDescStyle {
+    font-family: "Open Sans Bold", "Open Sans Regular", "Open Sans", sans-serif;
+    margin: 5px;
+    font-size: 15px;
 }

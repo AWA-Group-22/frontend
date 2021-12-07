@@ -20,6 +20,10 @@ export default class ManagerPage extends Component {
                     <Link to="/managerorderpage" style={{ color: 'inherit', textDecoration: 'none' }}>Manage orders</Link>
                 </div>
 
+                <div className={ styles.container4 }>
+                    <Link to="/createmenu" style={{ color: 'inherit', textDecoration: 'none' }}>Create Menu</Link>
+                </div>
+
             </div>
             
         )
