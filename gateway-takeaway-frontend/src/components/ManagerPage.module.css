@@ -1,0 +1,92 @@
+.headerContainer {
+    background-color: whitesmoke;
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    gap: 50px;
+    height: 70px;
+    font-size: 20px;
+    align-items: center;
+    margin-right: auto;
+    padding-top: 13px;
+    border-bottom-color: black;
+    border-bottom-width: 2px;
+}
+
+.brandText {
+    background-color: rgba(255, 255, 255, 0);
+    font-size: 32px;
+    font-family: "Merriweather", sans-serif;
+    color: #333333;
+    text-align: left;
+    line-height: normal;
+    margin: 70px;
+}
+
+.title {
+    font-size: 36px;
+    display: flex;
+    justify-content: center;
+    padding-top: 65px;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+}
+
+.container1 {
+    width: 310px;
+    height: 168px;
+    padding: 2px 2px 2px 2px;
+    box-shadow: 1px 3px 6px 6px lightgrey;
+    border-radius: 4px;
+    box-sizing: border-box;
+    position: absolute;
+    left: 300px;
+    top: 285px;
+    text-align: center;
+    line-height: 140px;
+    font-size: 20px;
+}
+
+.container2 {
+    width: 310px;
+    height: 168px;
+    padding: 2px 2px 2px 2px;
+    box-shadow: 1px 3px 6px 6px lightgrey;
+    border-radius: 4px;
+    box-sizing: border-box;
+    position: absolute;
+    left: 795px;
+    top: 285px;
+    text-align: center;
+    line-height: 140px;
+    font-size: 20px;
+}
+
+.container3 {
+    width: 310px;
+    height: 168px;
+    padding: 2px 2px 2px 2px;
+    box-shadow: 1px 3px 6px 6px lightgrey;
+    border-radius: 4px;
+    box-sizing: border-box;
+    position: absolute;
+    right: 300px;
+    top: 285px;
+    text-align: center;
+    line-height: 140px;
+    font-size: 20px;
+}
+
+.container4 {
+    width: 310px;
+    height: 168px;
+    padding: 2px 2px 2px 2px;
+    box-shadow: 1px 3px 6px 6px lightgrey;
+    border-radius: 4px;
+    box-sizing: border-box;
+    position: absolute;
+    left: 795px;
+    top: 525px;
+    text-align: center;
+    line-height: 140px;
+    font-size: 20px;
+}
+

@@ -1,0 +1,225 @@
+.headerContainer {
+    background-color: whitesmoke;
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    gap: 50px;
+    height: 70px;
+    font-size: 20px;
+    align-items: center;
+    margin-right: auto;
+    padding-top: 13px;
+    border-bottom-color: black;
+    border-bottom-width: 2px;
+}
+
+.brandText {
+    background-color: rgba(255, 255, 255, 0);
+    font-size: 32px;
+    font-family: "Merriweather", sans-serif;
+    color: #333333;
+    text-align: left;
+    line-height: normal;
+    margin: 70px;
+}
+
+.container {
+    width: 860px;
+    height: 690px;
+    padding: 2px 2px 2px 2px;
+    box-shadow: 5px 5px 20px 0px rgba(0, 0, 0, 0.18);
+    border-radius: 4px;
+    box-sizing: border-box;
+    position: absolute;
+    margin-top: 70px;
+    margin-left: 500px;
+}
+
+.titleText {
+    display: flex;
+    justify-content: center;
+    font-size: 26px;
+    font-weight: 700;
+    padding-bottom: 14px;
+    padding-top: 45px;
+}
+
+.subtitleText {
+    display: flex;
+    justify-content: center;
+    font-size: 19px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.lowerText {
+    display: flex;
+    justify-content: center;
+    padding-top: 35px;
+    gap: 6px;
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: grey;
+}
+
+.text1 {
+    color: rgba(0, 0, 0, 0.54);
+    display: flex;
+    padding-top: 35px;
+    margin-left: 85px;
+}
+
+.text2 {
+    color: rgba(0, 0, 0, 0.54);
+    display: flex;
+    padding-top: 35px;
+    margin-left: 450px;
+    margin-top: -57px;
+}
+
+.text3 {
+    color: rgba(0, 0, 0, 0.54);
+    display: flex;
+    padding-top: 35px;
+    margin-left: 85px;
+    margin-top: 40px;
+}
+
+.text4 {
+    color: rgba(0, 0, 0, 0.54);
+    display: flex;
+    padding-top: 35px;
+    margin-left: 450px;
+    margin-top: -57px;
+}
+
+.text5 {
+    color: rgba(0, 0, 0, 0.54);
+    display: flex;
+    padding-top: 35px;
+    margin-left: 85px;
+    margin-top: 55px;
+}
+
+.text6 {
+    color: rgba(0, 0, 0, 0.54);
+    display: flex;
+    padding-top: 35px;
+    margin-left: 450px;
+    margin-top: -57px;
+}
+
+.text7 {
+    color: rgba(0, 0, 0, 0.54);
+    display: flex;
+    padding-top: 35px;
+    margin-left: 85px;
+    margin-top: 55px;
+}
+
+.text8 {
+    color: rgba(0, 0, 0, 0.54);
+    display: flex;
+    padding-top: 35px;
+    margin-left: 450px;
+    margin-top: -57px;
+}
+
+.text9 {
+    color: rgba(0, 0, 0, 0.54);
+    display: flex;
+    margin-left: 85px;
+    margin-top: 55px;
+}
+
+.textField1 {
+    position: absolute;
+    top: 197px;
+    margin-left: 85px;
+    padding-top: 8px;
+    height: 30px;
+    width: 300px;
+}
+
+.textField2 {
+    position: absolute;
+    height: 30px;
+    width: 300px;
+    margin-top: 7px;
+    margin-left: 450px;
+}
+
+.textField3 {
+    position: absolute;
+    margin-left: 85px;
+    height: 30px;
+    width: 300px;
+    margin-top: 7px;
+}
+
+.textField4 {
+    position: absolute;
+    margin-left: 450px;
+    height: 30px;
+    width: 300px;
+    margin-top: 7px;
+}
+
+.textField5 {
+    position: absolute;
+    margin-left: 85px;
+    padding-top: 8px;
+    height: 30px;
+    width: 300px;
+    margin-top: 7px;
+}
+
+.textField6 {
+    position: absolute;
+    margin-left: 450px;
+    padding-top: 8px;
+    height: 30px;
+    width: 300px;
+    margin-top: 7px;
+}
+
+.textField7 {
+    position: absolute;
+    margin-left: 85px;
+    padding-top: 8px;
+    height: 30px;
+    width: 300px;
+    margin-top: 7px;
+}
+
+.textField8 {
+    position: absolute;
+    margin-left: 450px;
+    padding-top: 8px;
+    height: 30px;
+    width: 300px;
+    margin-top: 7px;
+}
+
+.textField9 {
+    position: absolute;
+    margin-left: 85px;
+    padding-top: 8px;
+    height: 30px;
+    width: 300px;
+    margin-top: 7px;
+}
+
+.signInButton {
+    position: absolute;
+    left: 450px;
+    width: 310px;
+    height: 45px;
+    padding: 2px 2px 2px 2px;
+    border-radius: 4px;
+    background-color: #1e98d7;
+    box-sizing: border-box;
+    font-size: 19px;
+    font-family: "Roboto", sans-serif;
+    color: #ffffff;
+    text-align: center;
+    line-height: normal;
+}
