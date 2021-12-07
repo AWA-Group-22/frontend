@@ -15,7 +15,7 @@ export default class ManagerPage extends Component {
                 </div>
 
                 <div className={ styles.container2 }>
-                    <Link to="/createrestaurant" style={{ color: 'inherit', textDecoration: 'none' }}>Create restaurants</Link>
+                    <Link to="/managerestaurants" style={{ color: 'inherit', textDecoration: 'none' }}>Create restaurants</Link>
                 </div>
 
                 <div className={ styles.container3 }>
@@ -23,7 +23,7 @@ export default class ManagerPage extends Component {
                 </div>
 
                 <div className={ styles.container4 }>
-                    <Link to="/managercreatemenu" style={{ color: 'inherit', textDecoration: 'none' }}>Create restaurant menus</Link>
+                    <Link to="/createmenu" style={{ color: 'inherit', textDecoration: 'none' }}>Create restaurant menus</Link>
                 </div>
 
             </div>
