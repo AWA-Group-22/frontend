@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styles from './ManageRestaurants.module.css';
 import axios from 'axios';
+import { Link } from "react-router-dom";
 
 
 
@@ -38,6 +39,7 @@ import axios from 'axios';
             
                <div className= {styles.ManageRestaurants}>
          <h2>Create a new restaurant</h2>
+         <div><Link to="/managerpage" style={{ color: 'inherit', textDecoration: 'none' }}><button>Back</button></Link></div>
           <form onSubmit={handleSubmit}>
            <label>Restaurant Name:</label>
            <input 
@@ -95,12 +97,6 @@ import axios from 'axios';
              onChange={(e) =>setImage(e.target.value)}
              />
              <button >Add restaurant</button>
-             <p>{name} </p>
-             <p>{address}</p>
-             <p>{hours}</p>
-             <p>{type}</p>
-             <p>{price}</p>
-             <p>{image}</p>
                  
              
        </form>

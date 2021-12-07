@@ -108,7 +108,9 @@ export default class ManagerCreateUserPage extends Component {
         return (
             <div>
             <div className={styles.headerContainer}>
-            <Link to="/home" style={{ color: 'inherit', textDecoration: 'none' }}><div className={ styles.brandText }>Gateway Takeaway</div></Link>            </div>
+            <Link to="/home" style={{ color: 'inherit', textDecoration: 'none' }}><div className={ styles.brandText }>Gateway Takeaway</div></Link>
+            <div><Link to="/managerpage" style={{ color: 'inherit', textDecoration: 'none' }}><button>Back</button></Link></div>
+            </div>
             <div className={styles.container}>
             <div className={styles.titleText}>Manager: user creation</div>
             <div className={styles.subtitleText}>Create an account by filling in the user's details</div>

@@ -1,13 +1,11 @@
 import React, { useState } from "react";
 import styles from './CreateMenu.module.css';
 import axios from 'axios';
-
-
-
+import { Link } from "react-router-dom";
 
     const  CreateMenu = () =>{       
         const [restaurant,setRestaurant] = useState('');
-        const [gategory,setGategory] = useState('');
+        const [category,setCategory] = useState('');
         const [name,setName] = useState('');
         const [description,setDescription] = useState('');
         const [price,setPrice] = useState('');
@@ -17,7 +15,7 @@ import axios from 'axios';
           const handleSubmit = () => {
             axios({
               method: "post",
-              data: {gategory_name: gategory,
+              data: {category_name: category,
                      restaurant_name: restaurant,
                      product_name:name,
                      description: description,
@@ -42,25 +40,26 @@ import axios from 'axios';
             
             <div className= {styles.CreateMenu}>
          <h2>Create a new menu for a restaurant</h2>
+         <div><Link to="/managerpage" style={{ color: 'inherit', textDecoration: 'none' }}><button>Back</button></Link></div>
           <form onSubmit={handleSubmit}>
            <label>Select restaurant:</label>
            <select
            value={restaurant}
            onChange={(e) =>setRestaurant(e.target.value)}
            >
-               <option value="Restaurant 1">Restaurant 1</option>
-               <option value="Restaurant 2">Restaurant 2</option>
-               <option value="Restaurant 3">Restaurant 3</option>
-               <option value="Restaurant 4">Restaurant 4</option>
-               <option value="Restaurant 5">Restaurant 5</option>
+               <option value="Restaurant 1">FaFa's</option>
+               <option value="Restaurant 2">MCDonalds</option>
+               <option value="Restaurant 3">Subway</option>
+               <option value="Restaurant 4">Taco bell</option>
+               <option value="Restaurant 5">Burger king</option>
             </select>
               
             <label>Food category:</label>
            <input 
              type="text"
              required
-             value={gategory}
-             onChange={(e) => setGategory(e.target.value)}
+             value={category}
+             onChange={(e) => setCategory(e.target.value)}
              />
 
              <label>Name:</label>
@@ -96,12 +95,6 @@ import axios from 'axios';
              onChange={(e) =>setImage(e.target.value)}
              />
              <button >Add restaurant</button>
-             <p>{restaurant} </p>
-             <p>{gategory}</p>
-             <p>{name}</p>
-             <p>{description}</p>
-             <p>{price}</p>
-             <p>{image}</p>
                  
              
        </form>

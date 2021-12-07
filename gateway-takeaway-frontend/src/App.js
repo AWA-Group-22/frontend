@@ -10,11 +10,11 @@ import ManagerPage from './components/ManagerPage';
 import ManagerOrderPage from './components/ManagerOrderPage';
 import RestaurantMenuPage from './components/RestaurantMenuPage';
 import ManagerCreateUserPage from './components/ManagerCreateUserPage';
-import ManagerCreateUserAndLogin from './components/ManagerCreateUserAndLogin';
 import UserOrderPage from './components/UserOrderPage';
 import ManageRestaurants from './components/ManageRestaurants';
 import ManagerLoginPage from './components/ManagerLoginPage';
 import CreateMenu from './components/CreateMenu';
+import OrderDonePage from './components/OrderDonePage';
 
 function App() {
 
@@ -35,6 +35,7 @@ function App() {
           <Route path="/restaurantmenu/:restaurant_id" element={ <RestaurantMenuPage /> } />
           <Route path="/managerestaurants" element={ <ManageRestaurants /> } /> 
           <Route path="/createmenu" element={<CreateMenu/>} />
+          <Route path="/orderdonepage" element={<OrderDonePage/>} />
         </Routes>
       </div>
     </BrowserRouter>
