@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import styles from './ManagerOrderPage.module.css';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function ManagerOrderPage() {
+
+    let navigate = useNavigate();
 
     const [ManagerOrderPageData, setManagerOrderPageData] = useState([]);
     const [orders, setOrders] = useState([]);
@@ -32,7 +34,7 @@ export default function ManagerOrderPage() {
         console.log(res.data);
       });
     };
-  
+
     const handleButtonReceived = (e) => {
       e.preventDefault()
       const userObject = {
@@ -46,9 +48,7 @@ export default function ManagerOrderPage() {
       }).then((res) => {
         console.log(res.data)
         console.log("Order confirmed successfully");
-      });
-        this.setState({
-        order_status: 'Received'
+        navigate('/managerpage');
       });
     };
 
@@ -65,9 +65,7 @@ export default function ManagerOrderPage() {
         }).then((res) => {
           console.log(res.data)
           console.log("Order confirmed successfully");
-        });
-          this.setState({
-          order_status: 'Preparing'
+          navigate('/managerpage');
         });
       };
 
@@ -84,9 +82,7 @@ export default function ManagerOrderPage() {
         }).then((res) => {
           console.log(res.data)
           console.log("Order confirmed successfully");
-        });
-          this.setState({
-          order_status: 'Ready for delivery'
+          navigate('/managerpage');
         });
       };
 
@@ -103,9 +99,7 @@ export default function ManagerOrderPage() {
         }).then((res) => {
           console.log(res.data)
           console.log("Order confirmed successfully");
-        });
-          this.setState({
-          order_status: 'Delivering'
+          navigate('/managerpage');
         });
       };
 
@@ -122,9 +116,7 @@ export default function ManagerOrderPage() {
         }).then((res) => {
           console.log(res.data)
           console.log("Order confirmed successfully");
-        });
-          this.setState({
-          order_status: 'Delivered'
+          navigate('/managerpage');
         });
       };
 
@@ -134,10 +126,12 @@ export default function ManagerOrderPage() {
             <Link to="/home" style={{ color: 'inherit', textDecoration: 'none' }}><div className={ styles.brandText }>Gateway Takeaway</div></Link>
                 <button onClick={ getOrders }>Get orders</button>
                 <button onClick={ getOrderHistory }>Get order history</button>
+                <div className={ styles.backButton }>
+                    <Link to="/managerpage" style={{ color: 'inherit', textDecoration: 'none' }}>Back</Link></div>
             </div>
                 <div>
-                    <div className={ styles.styles.titleText }>Orders</div>
-                    <div className={ styles.orderStatusText }>Current order status: { orders.order.order_status } </div>
+                    <div className={ styles.titleText }>Orders</div>
+                    <div className={ styles.orderStatusText }>Current order status: { orders.order_status } </div>
                     <div className={ styles.titleText }>
                         Manager order page
                     </div>
@@ -155,15 +149,15 @@ export default function ManagerOrderPage() {
                         Order history:
                     </div>
                     <div className={ styles.orderContainer }>
-                        <div className={ styles.restaurantName }>Example restaurant</div>
+                        <div className={ styles.restaurantName }>Subway: Chicken chorizo sub: 6.90€</div>
                             <button className={ styles.buttonStyle }>Confirm received order</button>
-                        <div className={ styles.statusText }>Example status text lorem ipsum datum el macaron</div>
+                        <div className={ styles.statusText }>Order status: Received</div>
                     </div>
                     <div className={ styles.orderHistoryContainer1 }>
-                        <div className={ styles.restaurantName }>Example restaurant</div>
+                        <div className={ styles.restaurantName }>FaFa's: tofu: 9.90€</div>
                     </div>
                     <div className={ styles.orderHistoryContainer2 }>
-                        <div className={ styles.restaurantName }>Example restaurant</div>
+                        <div className={ styles.restaurantName }>MCDonalds: whopper: 1€</div>
                     </div>
                 </div>
             

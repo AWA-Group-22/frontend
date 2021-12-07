@@ -41,7 +41,7 @@ export default class Home extends Component {
       <div className={styles.headerContainer}>
       <Link to="/home" style={{ color: 'inherit', textDecoration: 'none' }}><div className={ styles.brandText }>Gateway Takeaway</div></Link>
       <Link to="/orders" style={{ color: 'inherit', textDecoration: 'none' }}><div className={ styles.brandText2 }>Orders</div></Link>
-      <div> <button>Logout</button> </div>
+      <Link to="/" style={{ color: 'inherit', textDecoration: 'none' }}><button>Logout</button></Link>
       </div>
       <div className={styles.carousel}>
         <div className={styles.browse}>Browse restaurants</div>
@@ -50,7 +50,8 @@ export default class Home extends Component {
             this.state.restaurants.map((restaurant) => { 
               return <div className={styles.container}>
               <div>
-                  <input type="image" src={"data:image/png;base64," + restaurant.image} width="336" height="180"/>
+                  {/* <input type="image" src={"data:image/png;base64," + restaurant.image} width="336" height="180"/> */}
+                  <img src={"data:image/png;base64," + restaurant.image } width="336" height="180" />
                   <div className={styles.restName}>{restaurant.restaurant_name}</div>
                   <div className={styles.restMotto}>{restaurant.operating_hours}</div>
                     <Link to={{ pathname: "/restaurantmenu/" + restaurant.restaurant_id}}><button className={ styles.buttonStyle }>Order now</button></Link>

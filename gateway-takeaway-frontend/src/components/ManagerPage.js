@@ -15,11 +15,15 @@ export default class ManagerPage extends Component {
                 </div>
 
                 <div className={ styles.container2 }>
-                    <Link to="/createrestaurant" style={{ color: 'inherit', textDecoration: 'none' }}>Manage restaurants</Link>
+                    <Link to="/createrestaurant" style={{ color: 'inherit', textDecoration: 'none' }}>Create restaurants</Link>
                 </div>
 
                 <div className={ styles.container3 }>
                     <Link to="/managerorderpage" style={{ color: 'inherit', textDecoration: 'none' }}>Manage orders</Link>
+                </div>
+
+                <div className={ styles.container4 }>
+                    <Link to="/managercreatemenu" style={{ color: 'inherit', textDecoration: 'none' }}>Create restaurant menus</Link>
                 </div>
 
             </div>

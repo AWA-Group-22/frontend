@@ -63,8 +63,8 @@ export default function UserOrderPage() {
         <div className={ styles.titleText }>Orders</div>
           <div>
                 <div className={ styles.orderStatusText }>Current order status: </div>
-                <div className={ styles.orderContainer }>
-                <div className={ styles.statusText }> Order status: { orders.order_status } </div>
+                <div className={ styles.orderContainer }> MCDonalds order:
+                <div className={ styles.statusText }> Order status: Preparing{ orders.order_status } </div>
                 <div className={ styles.restaurantName }> { orders.restaurant_name } </div>
                     <button onClick={ onConfirmOrder } className={ styles.buttonStyle }>Confirm received order</button>
             </div>
@@ -72,7 +72,7 @@ export default function UserOrderPage() {
             <div className={ styles.orderHistoryText }>Order history:</div>
 
             <div className={ styles.orderHistoryContainer }>
-                <div className={ styles.historyRestaurantName }>Example restaurant</div>
+                <div className={ styles.historyRestaurantName }>FaFa's: halloumi tofu: 4.90€</div>
             </div>
       </div>
     </div>

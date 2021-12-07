@@ -148,12 +148,19 @@
     line-height: normal;
 }
 
+.containeri {
+    margin-left: 500px;
+    margin-top: 50px;
+}
+
 .foodCategoryContainer {
     background-color: white;
     width: 755px;
-    position: absolute;
-    margin-top: 165px;
-    left: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    justify-content: center;
     height: 240px;
     padding: 2px 2px 2px 2px;
     box-shadow: 5px 5px 20px 0px rgba(0, 0, 0, 0.18);
@@ -181,4 +188,8 @@
     font-family: "Open Sans Bold", "Open Sans Regular", "Open Sans", sans-serif;
     margin: 5px;
     font-size: 15px;
+}
+
+.shopCart {
+    margin-left: 600px;
 }

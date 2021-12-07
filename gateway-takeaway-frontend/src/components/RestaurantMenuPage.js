@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import burger1 from './burger1.jpg';
 import { useParams } from 'react-router';
 import { Link } from 'react-router-dom';
@@ -53,26 +53,14 @@ export default function RestaurantMenuPage() {
     const onSubmit = (e) => {
         e.preventDefault()
 
-        const userObject = {
-            user_id: customers.user_id,
-            product_id: products.product_id,
-            order_status: this.state.order_status
-        };
-
-        axios.post('https://back-end-22-group.herokuapp.com/customer/order', userObject)
+        axios.post('https://back-end-22-group.herokuapp.com/customer/order')
             .then((res) => {
                 console.log(res.data)
                 console.log("Item added to order successfully");
             }).catch((error) => {
                 console.log(error)
             });
-
-        this.setState({
-            user_id: '',
-            product_id: '',
-            order_status: 'Received',
-        })
-    }
+    };
     
     return (
         <div>
@@ -81,6 +69,7 @@ export default function RestaurantMenuPage() {
                     <button onClick={ getCustomer }>Get customer data</button>
                     <button onClick={ getRestaurant }>Get restaurant data</button>
                     <button onClick={ getProduct }>Get product data</button>
+                <Link to="/shoppingcart" style={{ color: 'inherit', textDecoration: 'none' }}><div className={ styles.shopCart }>Shopping cart</div></Link>
             </div>
             <div>
             <img src={burger1}/>
@@ -95,11 +84,11 @@ export default function RestaurantMenuPage() {
                 <div className={ styles.deliveryCost }>DELIVERY: 7.90€</div>
                 <div className={ styles.minOrder }>MIN. ORDER: 20€</div>
                 <div className={ styles.subContainer }></div>
-                <div className={ styles.outText }>{ restaurants.price_level } </div>
+                <div className={ styles.outText }>Price level:{ restaurants.price_level } </div>
             </div>
             {
                 products.map((product, index) => {
-                    return <div key={index}>
+                    return <div key={index} className={ styles.containeri }>
                         <div className={ styles.foodCategoryContainer }>
                             <div className={ styles.prodNameStyle }>{ product.product_name }</div>
                             <div className={ styles.prodPriceStyle }>{ product.price }€</div>
