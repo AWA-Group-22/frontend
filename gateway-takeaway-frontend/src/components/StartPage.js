@@ -9,6 +9,9 @@ export default function StartPage() {
 
     return (
       <div>
+        <div className={styles.headerContainer}>
+          <Link to="/home" style={{ color: 'inherit', textDecoration: 'none' }}><div className={ styles.brandText }>Gateway Takeaway</div></Link>
+        </div>
         <div>
           { userAuthContextValue.jwt != null ?
             <Link to="home">Go to home page</Link>

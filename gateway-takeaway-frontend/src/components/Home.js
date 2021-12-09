@@ -35,6 +35,10 @@ export default function Home(props) {
       })
   }, []);
 
+  useEffect(() => {
+    getCustomer();
+  }, []);
+
   const getCustomer = async () => {
     try {
       const results = await axios.get('https://back-end-22-group.herokuapp.com/customer', {
@@ -63,10 +67,17 @@ export default function Home(props) {
     return (
       <div>
       <div className={styles.headerContainer}>
-      <Link to="/home" style={{ color: 'inherit', textDecoration: 'none' }}><div className={ styles.brandText }>Gateway Takeaway</div></Link>
-      <button onClick={ getCustomer }>Get customer data</button>
-      <Link to="/orders" style={{ color: 'inherit', textDecoration: 'none' }}><div className={ styles.brandText2 }>Orders</div></Link>
-      <Link to="/" style={{ color: 'inherit', textDecoration: 'none' }}><button className={styles.logoutButton} onClick={() => UserAuthContextValue.logout()} >Logout</button></Link>
+        <Link to="/home" style={{ color: 'inherit', textDecoration: 'none' }}><div className={ styles.brandText }>Gateway Takeaway</div></Link>
+        <button onClick={ getCustomer }>Get customer data</button>
+        {
+          customers.map((customer) => {
+            return <div>
+              Welcome { customer.first_name } { customer.last_name }
+          </div>
+          })
+        }
+        <Link to="/orders" style={{ color: 'inherit', textDecoration: 'none' }}><div className={ styles.brandText2 }>Orders</div></Link>
+        <Link to="/" style={{ color: 'inherit', textDecoration: 'none' }}><button className={styles.logoutButton} onClick={() => UserAuthContextValue.logout()} >Logout</button></Link>
       </div>
       
       <div className={styles.carousel}>
