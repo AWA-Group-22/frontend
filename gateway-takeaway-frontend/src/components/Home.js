@@ -6,6 +6,7 @@ import "slick-carousel/slick/slick-theme.css";
 import styles from "./Home.module.css";
 import axios from "axios";
 import SearchView from "./SearchView";
+import jwt from 'jsonwebtoken';
 
 export default class Home extends Component {
 

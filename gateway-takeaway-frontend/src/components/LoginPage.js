@@ -14,7 +14,7 @@ export default function LoginPage() {
         axios({
             method: "post",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ loginUsername, loginPassword }),
+            auth: { username: loginUsername, password: loginPassword },
             url: "https://back-end-22-group.herokuapp.com/login",
         })
         .then((res) => console.log(res));

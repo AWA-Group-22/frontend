@@ -5,14 +5,13 @@ import LoginPage from './components/LoginPage';
 import SignUpPage from './components/SignUpPage';
 import ShoppingCart from './components/ShoppingCart';
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
-import React, { useState, useEffect, Component } from 'react';
+import React from 'react';
 import ManagerPage from './components/ManagerPage';
 import ManagerOrderPage from './components/ManagerOrderPage';
 import RestaurantMenuPage from './components/RestaurantMenuPage';
 import ManagerCreateUserPage from './components/ManagerCreateUserPage';
 import UserOrderPage from './components/UserOrderPage';
 import ManageRestaurants from './components/ManageRestaurants';
-import ManagerLoginPage from './components/ManagerLoginPage';
 import CreateMenu from './components/CreateMenu';
 import OrderDonePage from './components/OrderDonePage';
 
@@ -28,7 +27,6 @@ function App() {
           <Route path="/home" element={ <Home /> } />
           <Route path="/orders" element={ <UserOrderPage /> } />
           <Route path="/shoppingcart" element={ <ShoppingCart /> } />
-          <Route path="/managerlogin" element={ <ManagerLoginPage /> } />
           <Route path="/managerpage" element={ <ManagerPage /> } />
           <Route path="/managerorderpage" element={ <ManagerOrderPage /> } />
           <Route path="/managercreateuser" element={ <ManagerCreateUserPage /> } />
