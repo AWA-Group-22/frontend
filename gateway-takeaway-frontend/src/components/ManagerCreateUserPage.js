@@ -112,7 +112,7 @@ export default class ManagerCreateUserPage extends Component {
             <div><Link to="/managerpage" style={{ color: 'inherit', textDecoration: 'none' }}><button>Back</button></Link></div>
             </div>
             <div className={styles.container}>
-            <div className={styles.titleText}>Manager: user creation</div>
+            <div className={styles.titleText}>Manager: account creation</div>
             <div className={styles.subtitleText}>Create an account by filling in the user's details</div>
                 <form onSubmit={this.onSubmit}>
                     <div className="form-group">
@@ -152,7 +152,7 @@ export default class ManagerCreateUserPage extends Component {
                         <input className={styles.textField9} type="text" value={this.state.root} onChange={this.onChangeRoot} />
                     </div>
                     <div className="form-group">
-                        <input className={styles.signInButton} type="submit" value="Create a User" />
+                        <input className={styles.signInButton} type="submit" value="Create an account" />
                     </div>
                 </form>
             </div>

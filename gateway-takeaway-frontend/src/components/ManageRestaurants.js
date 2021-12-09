@@ -26,7 +26,7 @@ import { Link } from "react-router-dom";
 
             
             }, 
-            url:" https://back-end-22-group.herokuapp.com/register_restaurant"
+            url:"https://back-end-22-group.herokuapp.com/register_restaurant"
           })
           .then((res)=>console.log(res));
        

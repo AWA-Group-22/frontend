@@ -1,46 +1,124 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import styles from './LoginPage.module.css';
 import axios from 'axios';
+import {UserAuthContext} from './Contexts'
 
-export default function LoginPage() {
+export default function LoginPage(props) {
 
-    let navigate = useNavigate();
+  const UserAuthContextValue = useContext(UserAuthContext);
 
-    const [loginUsername, setLoginUsername] = useState("");
-    const [loginPassword, setLoginPassword] = useState("");
+  let navigate = useNavigate();
 
-    const login = () => {
-        axios({
-            method: "post",
-            headers: { "Content-Type": "application/json" },
-            auth: { username: loginUsername, password: loginPassword },
-            url: "https://back-end-22-group.herokuapp.com/login",
-        })
-        .then((res) => console.log(res));
-            navigate('/home');
-    };
+  const [ loginProcessState, setLoginProcessState ] = useState("idle");
 
-    return (
-        <div>
-            <div className={styles.headerContainer}>
-                <Link to="/" style={{ color: 'inherit', textDecoration: 'none' }}><div className={ styles.brandText }>Gateway Takeaway</div></Link>
-            <div className={styles.container}>
-                <div className={styles.titleText}>Sign in</div>
-                <div className={styles.subtitleText}>Login with your account</div>
-                <div className={styles.lowerText}>Don't have an account?
-                    <Link to="/signup" style={{ textDecoration: 'none' }}>Sign up</Link></div>
-                <div>
-                    <input className={styles.usernameField} placeholder="username" onChange={e => setLoginUsername(e.target.value)} />
-                    <input className={styles.passwordField} placeholder="password" onChange={e => setLoginPassword(e.target.value)} />
-                    <button onClick={login} className={styles.signInButton}>Sign in</button>
-                        <Link to="/home" style={{ textDecoration: 'none' }}></Link>
-                </div>
-            </div>
-            </div>
-        </div>
-    )
+  const onSubmit = async (event) => {
+    event.preventDefault();
+    setLoginProcessState("processing");
+    try {
+      const result = await axios.post('https://back-end-22-group.herokuapp.com/login', null, {
+        auth: {
+          username: event.target.username.value,
+          password: event.target.password.value
+        }
+      })
+      console.log(result);
+      console.log(result.data);
+      setLoginProcessState("success");
+      setTimeout(() => {
+        setLoginProcessState("idle")
+        UserAuthContextValue.login(result.data.jwt);
+        navigate("/home", { replace: true });
+      }, 1500);
+    } catch (error) {
+      console.error(error.message);
+      setLoginProcessState("error");
+      setTimeout(() => setLoginProcessState("idle"), 1500);
+    }
+  }
+
+  let loginUIControls = null;
+  switch(loginProcessState) {
+    case "idle":
+      loginUIControls = <button className={styles.signInButton} type="submit">Login</button>
+      break;
+
+    case "processing":
+      loginUIControls = <span style={{color: 'blue'}}>Processing login...</span>
+      break;
+
+    case "success":
+      loginUIControls = <span style={{color: 'green'}}>Login successful</span>
+      break;
+
+    case "error":
+      loginUIControls = <span style={{color: 'red'}}>Error</span>
+      break;
+
+    default:
+      loginUIControls = <button className={styles.signInButton} type="submit">Login</button>
+  }
+
+  return (
+    <div>
+      <div className={styles.headerContainer}>
+          <Link to="/" style={{ color: 'inherit', textDecoration: 'none' }}><div className={ styles.brandText }>Gateway Takeaway</div></Link>
+          <div className={styles.container}>
+              <div className={styles.titleText}>Sign in</div>
+              <div className={styles.subtitleText}>Login with your account</div>
+              <div className={styles.lowerText}>Don't have an account?
+                  <Link to="/signup" style={{ textDecoration: 'none' }}>Sign up</Link></div>
+              <form onSubmit={ onSubmit }>
+                  <div className={styles.usernameText}>Username<input className={styles.usernameField} type="text" name="username"/></div>
+                  <div className={styles.passwordText}>Password <input className={styles.passwordField} type="password" name="password"/></div>
+                  <div>
+                      { loginUIControls }
+                  </div>
+                  <div className={styles.managerLoginLink}>
+                    <Link to="/managerlogin" style={{ textDecoration: 'none' }}>Manager sign in</Link>
+                  </div>
+              </form>
+          </div>
+      </div>
+    </div>
+  )
 }
+//     let navigate = useNavigate();
+
+//     const [loginUsername, setLoginUsername] = useState("");
+//     const [loginPassword, setLoginPassword] = useState("");
+
+//     const login = () => {
+//         axios({
+//             method: "post",
+//             headers: { "Content-Type": "application/json" },
+//             auth: { username: loginUsername, password: loginPassword },
+//             url: "https://back-end-22-group.herokuapp.com/login",
+//         })
+//         .then((res) => console.log(res));
+//             navigate('/home');
+//     };
+
+//     return (
+//         <div>
+            // <div className={styles.headerContainer}>
+            //     <Link to="/" style={{ color: 'inherit', textDecoration: 'none' }}><div className={ styles.brandText }>Gateway Takeaway</div></Link>
+            // <div className={styles.container}>
+//                 <div className={styles.titleText}>Sign in</div>
+//                 <div className={styles.subtitleText}>Login with your account</div>
+                // <div className={styles.lowerText}>Don't have an account?
+                //     <Link to="/signup" style={{ textDecoration: 'none' }}>Sign up</Link></div>
+//                 <div>
+//                     <input className={styles.usernameField} placeholder="username" onChange={e => setLoginUsername(e.target.value)} />
+//                     <input className={styles.passwordField} placeholder="password" onChange={e => setLoginPassword(e.target.value)} />
+//                     <button onClick={login} className={styles.signInButton}>Sign in</button>
+//                         <Link to="/home" style={{ textDecoration: 'none' }}></Link>
+//                 </div>
+//             </div>
+//             </div>
+//         </div>
+//     )
+// }
 
 // import React, { useState, Component } from 'react';
 // import axios from 'axios';

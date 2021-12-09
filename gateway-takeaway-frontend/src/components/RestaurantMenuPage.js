@@ -1,11 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import burger1 from './burger1.jpg';
 import { useParams } from 'react-router';
 import { Link } from 'react-router-dom';
 import styles from './RestaurantMenuPage.module.css';
 import axios from 'axios';
+import { UserAuthContext } from './Contexts'
 
-export default function RestaurantMenuPage() {
+export default function RestaurantMenuPage(props) {
+
+    const UserAuthContextValue = useContext(UserAuthContext);
 
     const { restaurant_id } = useParams();
 
@@ -13,17 +16,32 @@ export default function RestaurantMenuPage() {
     const [customers, setCustomers] = useState([]);
     const [products, setProducts] = useState([]);
 
-    const getCustomer = () => {
-        axios({
-          method: "get",
-          credentials: "include",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ customers }),
-          url: "https://back-end-22-group.herokuapp.com/customer",
-        }).then((res) => {
-          setCustomers(res.data);
-          console.log(res.data);
-        });
+    // const getCustomer = () => {
+    //     axios({
+    //       method: "get",
+    //       credentials: "include",
+    //       headers: { "Content-Type": "application/json" },
+    //       body: JSON.stringify({ customers }),
+    //       url: "https://back-end-22-group.herokuapp.com/customer",
+    //     }).then((res) => {
+    //       setCustomers(res.data);
+    //       console.log(res.data);
+    //     });
+    //   };
+
+    const getCustomer = async () => {
+        try {
+          const results = await axios.get('https://back-end-22-group.herokuapp.com/customer', {
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': 'Bearer ' + UserAuthContextValue.jwt
+              }
+          });
+    
+          setCustomers(results.data);
+        } catch (error) {
+          console.error(error);
+        }
       };
 
     const getRestaurant = () => {
@@ -73,7 +91,11 @@ export default function RestaurantMenuPage() {
             </div>
             <div>
             <img src={burger1}/>
-                <div className={ styles.deliveryText }>Delivery in 15-25 minutes to your address { customers.address }</div>
+            {
+                customers.map((customer) => {
+                    return <div className={ styles.deliveryText }>Delivery in 15-25 minutes to { customer.address }</div>
+                })
+            }
             </div>
             <div>
                 <div className={ styles.hourText }>Open today: { restaurants.operating_hours } </div>

@@ -1,54 +1,79 @@
-import React, { Component, useState } from "react"
+import React, { useContext, useState, useEffect } from "react"
 import { Link } from 'react-router-dom';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import styles from "./Home.module.css";
 import axios from "axios";
-import SearchView from "./SearchView";
 import jwt from 'jsonwebtoken';
+import { UserAuthContext } from './Contexts'
 
-export default class Home extends Component {
+export default function Home(props) {
 
-  constructor(props) {
-      super(props)
-      this.state = {
-      restaurants: [],
-    }
-  }
+  // let decodedJwt = jwt.decode(props.userJwt);
+  // console.log(decodedJwt);
 
-  componentDidMount() {
+  const UserAuthContextValue = useContext(UserAuthContext);
+
+  const [restaurants, setRestaurants] = useState([]);
+  const [customers, setCustomers] = useState([]);
+
+  const carouselSettings = {
+    dots: true,
+    arrows: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 3
+  };
+
+  useEffect(() => {
     axios.get('https://back-end-22-group.herokuapp.com/restaurants')
-        .then(res => {
-          this.setState({ restaurants: res.data });
-        })
-        .catch(function(error) {
-          console.log(error);
-        })
-  }
+      .then(res => {
+        setRestaurants(res.data);
+        console.log(res.data);
+      })
+  }, []);
 
-  render() {
-    const settings = {
-      dots: true,
-      arrows: true,
-      infinite: true,
-      speed: 500,
-      slidesToShow: 3,
-      slidesToScroll: 3
-    };
+  const getCustomer = async () => {
+    try {
+      const results = await axios.get('https://back-end-22-group.herokuapp.com/customer', {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + UserAuthContextValue.jwt
+          }
+      });
+
+      setCustomers(results.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  // componentDidMount() {
+  //   axios.get('https://back-end-22-group.herokuapp.com/restaurants')
+  //       .then(res => {
+  //         this.setState({ restaurants: res.data });
+  //       })
+  //       .catch(function(error) {
+  //         console.log(error);
+  //       })
+  // }
 
     return (
       <div>
       <div className={styles.headerContainer}>
       <Link to="/home" style={{ color: 'inherit', textDecoration: 'none' }}><div className={ styles.brandText }>Gateway Takeaway</div></Link>
+      <button onClick={ getCustomer }>Get customer data</button>
       <Link to="/orders" style={{ color: 'inherit', textDecoration: 'none' }}><div className={ styles.brandText2 }>Orders</div></Link>
-      <Link to="/" style={{ color: 'inherit', textDecoration: 'none' }}><button>Logout</button></Link>
+      <Link to="/" style={{ color: 'inherit', textDecoration: 'none' }}><button className={styles.logoutButton} onClick={() => UserAuthContextValue.logout()} >Logout</button></Link>
       </div>
+      
       <div className={styles.carousel}>
         <div className={styles.browse}>Browse restaurants</div>
-        <Slider {...settings}>
+        <Slider {...carouselSettings}>
           {
-            this.state.restaurants.map((restaurant) => { 
+            restaurants.map((restaurant) => { 
               return <div className={styles.container}>
               <div>
                   {/* <input type="image" src={"data:image/png;base64," + restaurant.image} width="336" height="180"/> */}
@@ -64,7 +89,6 @@ export default class Home extends Component {
       </div>
       </div>
     )
-  }
 }
 
 
