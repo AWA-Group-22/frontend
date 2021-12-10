@@ -6,6 +6,9 @@ import { UserAuthContext } from './Contexts';
 
 export default function ManageRestaurants() {
 
+  const [selectedFile, setSelectedFile] = useState();
+	const [isFilePicked, setIsFilePicked] = useState(false);
+
   const UserAuthContextValue = useContext(UserAuthContext);
 
   const [name,setName] = useState("");
@@ -34,7 +37,16 @@ export default function ManageRestaurants() {
   
   // };
 
+  const changeHandler = (event) => {
+		setSelectedFile(event.target.files[0]);
+		setIsFilePicked(true);
+	};
+
   const handleSubmit = () => {
+
+    const formData = new FormData();
+    formData.append('File', selectedFile);
+
     axios({
         headers: {
           'Content-Type': 'application/json',
@@ -47,12 +59,17 @@ export default function ManageRestaurants() {
           operating_hours: hours,
           type: type,
           price_level: price,
-          image: image
+          image: formData
         },
         url: "https://back-end-22-group.herokuapp.com/register_restaurant",
     })
-    .then((res) => console.log(res));
-    // navigate('/managerpage')
+    .then((res) => res.json())
+    .then((result) => {
+      console.log("Successfully created a menu:", result);
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
   };
 
   return (
@@ -68,7 +85,19 @@ export default function ManageRestaurants() {
                 <input className={styles.textField3} placeholder="operating hours*" onChange={e => setHours(e.target.value)} />
                 <input className={styles.textField4} placeholder="type*" onChange={e => setType(e.target.value)} />
                 <input className={styles.textField5} placeholder="price level*" onChange={e => setPrice(e.target.value)} />
-                <input className={styles.textField6} placeholder="image*" onChange={e => setImage(e.target.value)} />
+                <div className={styles.textField6}>
+                <input type="file" name="file" onChange={changeHandler} />
+                {isFilePicked ? (
+                  <div>
+                    <p>Filetype: {selectedFile.type}</p>
+                    <p>Size in bytes: {selectedFile.size}</p>
+                    </div>
+                ) : (
+                  <p>Select an image</p>
+                )}
+                </div>
+
+                {/* <input className={styles.textField6} placeholder="image*" onChange={e => setImage(e.target.value)} /> */}
                 <button onClick={handleSubmit} className={styles.signUpButton}>Create a restaurant</button>
                     {/* <Link to="/managerpage" style={{ textDecoration: 'none' }}></Link> */}
             </div>
