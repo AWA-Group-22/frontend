@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import styles from './UserOrderPage.module.css';
 import axios from 'axios';
-import { UserAuthContext } from './Contexts'
+import { UserAuthContext } from './Contexts';
 
 export default function UserOrderPage(props) {
 
@@ -10,6 +10,7 @@ export default function UserOrderPage(props) {
 
   const [orders, setOrders] = useState([]);
   const [ordersHistory, setOrdersHistory] = useState([]);
+  const [customers, setCustomers] = useState([]);
 
   // const getOrders = () => {
   //   axios({
@@ -22,6 +23,33 @@ export default function UserOrderPage(props) {
   //     console.log(res.data);
   //   });
   // };
+
+  useEffect(() => {
+    getCustomer();
+  }, []);
+
+  useEffect(() => {
+    getOrders();
+  }, []);
+
+  useEffect(() => {
+    getOrderHistory();
+  }, []);
+
+  const getCustomer = async () => {
+    try {
+      const results = await axios.get('https://back-end-22-group.herokuapp.com/customer', {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + UserAuthContextValue.jwt
+          }
+      });
+
+      setCustomers(results.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   const getOrders = async () => {
     try {
@@ -52,14 +80,14 @@ export default function UserOrderPage(props) {
 
   const getOrderHistory = async () => {
     try {
-      const results2 = await axios.get('https://back-end-22-group.herokuapp.com/customer/order/history', {
+      const results = await axios.get('https://back-end-22-group.herokuapp.com/customer/order/history', {
         headers: {
           'Content-Type': 'application/json',
           'Authorization': 'Bearer ' + UserAuthContextValue.jwt
           }
       });
 
-      setOrdersHistory(results2.data);
+      setOrdersHistory(results.data);
     } catch (error) {
       console.error(error);
     }
@@ -102,8 +130,8 @@ export default function UserOrderPage(props) {
     <div>
       <div className={styles.headerContainer}>
         <Link to="/home" style={{ color: 'inherit', textDecoration: 'none' }}><div className={ styles.brandText }>Gateway Takeaway</div></Link>
-        <button onClick={ getOrders }>Get orders</button>
-        <button onClick={ getOrderHistory }>Get order history</button>
+        {/* <button onClick={ getOrders }>Get orders</button>
+        <button onClick={ getOrderHistory }>Get order history</button> */}
       </div>
         <div>
         <div className={ styles.titleText }>Orders</div>
@@ -111,16 +139,26 @@ export default function UserOrderPage(props) {
             {
               orders.map((order, index) => {
                 return <div key={index}>
-                  <div className={ styles.orderStatusText }>Current order status: { order.order_status } </div>
-                  <div className={ styles.statusText }>  </div>
-                  <div className={ styles.restaurantName }> { orders.restaurant_name } </div>
+                  <div classname={ styles.orderContainer }>
+                  <div className={ styles.orderStatusText }>Current order:  </div>
+                  <div className={ styles.restaurantName }> Order status: { order.order_status } </div>
+                  <div className={ styles.restaurantName }> Ordered product(S) { order.product_name } </div>
                   <button onClick={ onConfirmOrder } className={ styles.buttonStyle }>Confirm received order</button>
+                  </div>
                 </div>
               })
             }
-              <div className={ styles.orderHistoryText }>Order history:</div>
-              <div className={ styles.orderHistoryContainer }> { ordersHistory.order_status }</div>
-
+            {
+              ordersHistory.map((history, index) => {
+                return <div key={index}>
+                  <div className={ styles.orderHistoryText }>Previous order:</div>
+                  <div className={ styles.orderHistoryContainer }>
+                    <div> Order status: { history.order_status } </div>
+                    <div> Delivered product(s): { history.product_name }</div>
+                </div>
+                </div>
+              })
+            }
         </div>
         </div>
     </div>
