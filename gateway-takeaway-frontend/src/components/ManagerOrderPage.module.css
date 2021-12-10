@@ -38,11 +38,18 @@
     font-weight: 600;
 }
 
+.bigOrderContainer {
+    display: flex;
+    flex-direction: column;
+    padding: 50px;
+    padding-bottom: 150px;
+}
+
 .orderContainer {
-    top: 240px;
-    left: 460px;
+    display: flex;
+    flex-direction: row;
     width: 850px;
-    height: 220px;
+    height: 160px;
     padding: 2px 2px 2px 2px;
     box-shadow: 5px 5px 20px 0px rgba(0, 0, 0, 0.18);
     border-radius: 10px;
@@ -52,7 +59,7 @@
 
 .orderHistoryText {
     padding-left: 70px;
-    margin-top: 350px;
+    margin-top: 300px;
     font-size: 20px;
     font-family: "Arial Normaali", "Arial", sans-serif;
     font-weight: 600;
@@ -144,26 +151,12 @@
     position: absolute;
 }
 
-.buttonStyleReceived {
-    height: 63px;
-    width: 165px;
-    padding: 2px 2px 2px 2px;
-    border-radius: 5px;
-    background-color: green;
-    box-sizing: border-box;
-    font-size: 20px;
-    font-family: "Arial Normaali", "Arial", sans-serif;
-    color: black;
-    text-align: center;
-    line-height: normal;
-}
-
 .buttonStylePreparing {
     height: 63px;
     width: 165px;
     padding: 2px 2px 2px 2px;
     border-radius: 5px;
-    background-color: gold;
+    background-color: violet;
     box-sizing: border-box;
     font-size: 20px;
     font-family: "Arial Normaali", "Arial", sans-serif;
@@ -177,7 +170,7 @@
     width: 165px;
     padding: 2px 2px 2px 2px;
     border-radius: 5px;
-    background-color: orange;
+    background-color: lightblue;
     box-sizing: border-box;
     font-size: 20px;
     font-family: "Arial Normaali", "Arial", sans-serif;
@@ -191,7 +184,7 @@
     width: 165px;
     padding: 2px 2px 2px 2px;
     border-radius: 5px;
-    background-color: lightblue;
+    background-color: #1e98d7;
     box-sizing: border-box;
     font-size: 20px;
     font-family: "Arial Normaali", "Arial", sans-serif;
@@ -205,7 +198,7 @@
     width: 165px;
     padding: 2px 2px 2px 2px;
     border-radius: 5px;
-    background-color: #1e98d7;
+    background-color: green;
     box-sizing: border-box;
     font-size: 20px;
     font-family: "Arial Normaali", "Arial", sans-serif;
