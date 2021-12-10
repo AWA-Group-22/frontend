@@ -54,7 +54,7 @@ export default function CreateMenu(props) {
           product_name: productName,
           price: price,
           description: description,
-          product_image: imageData
+          // product_image: imageData
         },
         url: "https://back-end-22-group.herokuapp.com/restaurant/menu",
     })
@@ -89,7 +89,7 @@ export default function CreateMenu(props) {
                 <input 
                   type="text"
                   required
-                  value={name}
+                  value={productName}
                   onChange={(e) => setProductName(e.target.value)}
                   />
                   <label>Description:</label>
@@ -107,12 +107,12 @@ export default function CreateMenu(props) {
                   onChange={(e) => setPrice(e.target.value)}
                   />
                   <label>Image</label>
-                <input 
+                {/* <input 
                   type="text"
                   required
                   value={image}
                   onChange={(e) =>imageUpload(e.target.value)}
-                  />
+                  /> */}
                   <button >Add restaurant</button>       
               </form>
             </div>
