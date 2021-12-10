@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import burger1 from './burger1.jpg';
 import { useParams } from 'react-router';
 import { Link } from 'react-router-dom';
@@ -15,6 +15,18 @@ export default function RestaurantMenuPage(props) {
     const [restaurants, setRestaurants] = useState({});
     const [customers, setCustomers] = useState([]);
     const [products, setProducts] = useState([]);
+
+    useEffect(() => {
+    getCustomer();
+    }, []);
+
+    useEffect(() => {
+    getRestaurant();
+    }, []);
+
+    useEffect(() => {
+    getProduct();
+    }, []);
 
     // const getCustomer = () => {
     //     axios({
@@ -84,13 +96,14 @@ export default function RestaurantMenuPage(props) {
         <div>
             <div className={styles.headerContainer}>
                 <Link to="/home" style={{ color: 'inherit', textDecoration: 'none' }}><div className={ styles.brandText }>Gateway Takeaway</div></Link>
-                    <button onClick={ getCustomer }>Get customer data</button>
+                    {/* <button onClick={ getCustomer }>Get customer data</button>
                     <button onClick={ getRestaurant }>Get restaurant data</button>
-                    <button onClick={ getProduct }>Get product data</button>
+                    <button onClick={ getProduct }>Get product data</button> */}
                 <Link to="/shoppingcart" style={{ color: 'inherit', textDecoration: 'none' }}><div className={ styles.shopCart }>Shopping cart</div></Link>
             </div>
             <div>
-            <img src={burger1}/>
+            {/* <img src={burger1}/> */}
+            <img src={ restaurants.image } width="1920" height="590" />
             {
                 customers.map((customer) => {
                     return <div className={ styles.deliveryText }>Delivery in 15-25 minutes to { customer.address }</div>
@@ -112,11 +125,15 @@ export default function RestaurantMenuPage(props) {
                 products.map((product, index) => {
                     return <div key={index} className={ styles.containeri }>
                         <div className={ styles.foodCategoryContainer }>
-                            <div className={ styles.prodNameStyle }>{ product.product_name }</div>
-                            <div className={ styles.prodPriceStyle }>{ product.price }€</div>
-                            <div className={ styles.prodDescStyle }>{ product.description }</div>
-                            {/* <div className={ styles.prodIMGStyle }> { product.product_image }</div> */}
-                            <button className={ styles.shopCartButton } onClick={ onSubmit }>🛒</button>
+                            <div>
+                                <img src={ product.product_image } width="250" height="150" />
+                                <div className={ styles.prodNameStyle }>{ product.product_name }</div>
+                                <div className={ styles.prodPriceStyle }>{ product.price }€</div>
+                                <div className={ styles.prodDescStyle }>{ product.description }</div>
+                                <div> { product.product_id } </div>
+                                {/* <div className={ styles.prodIMGStyle }> { product.product_image }</div> */}
+                                <button className={ styles.shopCartButton } onClick={ onSubmit }>🛒</button>
+                            </div>
                         </div>
                     </div>
                 })

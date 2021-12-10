@@ -55,11 +55,11 @@ export default function ManageRestaurants() {
         method: "post",
         data: {
           restaurant_name: name,
-          address: address,
+          address_restaurant: address,
           operating_hours: hours,
-          type: type,
+          restaurant_type: type,
           price_level: price,
-          image: formData
+          image: "testimage"
         },
         url: "https://back-end-22-group.herokuapp.com/register_restaurant",
     })

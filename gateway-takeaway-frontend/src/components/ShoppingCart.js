@@ -14,7 +14,7 @@ export default function ShoppingCart(props) {
   const [restaurants, setRestaurants] = useState([]);
   const [customers, setCustomers] = useState([]);
   const [order, setOrder] = useState("Received");
-  const [product, setproduct] = useState("22");
+  const [product, setproduct] = useState([]);
 
   useEffect(() => {
     axios.get('https://back-end-22-group.herokuapp.com/restaurants')
@@ -51,7 +51,7 @@ export default function ShoppingCart(props) {
         },
         method: "post",
         data: {
-            product_id: "22",
+            product_id: product,
             order_status: "Received"
         },
         url: "https://back-end-22-group.herokuapp.com/customer/order",
@@ -88,13 +88,13 @@ export default function ShoppingCart(props) {
               <div className={ styles.backButton }>
                 <Link to="/home" style={{ color: 'inherit', textDecoration: 'none' }}>Back</Link></div>
               <div className={ styles.container1 }>🚲 Delivery in 15-25 min to { customer.address } </div>
-          </div>  
+          </div>
           })
         }
       
-      <div className={ styles.container3 }>Cart contents</div>
+      <div className={ styles.container3 }>Shopping cart</div>
       <div className={ styles.container4 }>
-        <div>Crunchwrap supreme 5.50€</div>
+        <input placeholder="type product id*" onChange={e => setproduct(e.target.value)} />
       </div>
       <div className={ styles.CartContainer }>Prices include VAT
         <div>
