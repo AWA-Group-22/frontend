@@ -11,7 +11,7 @@ export default function ManagerPage(props) {
         <div>
             <div className={styles.headerContainer}>
             <Link to="/home" style={{ color: 'inherit', textDecoration: 'none' }}><div className={ styles.brandText }>Gateway Takeaway</div></Link>
-            <Link to="/" style={{ color: 'inherit', textDecoration: 'none' }}><button className={styles.logoutButton} onClick={() => UserAuthContextValue.logout()} >Logout</button></Link>
+            <Link to="/managerlogin" style={{ color: 'inherit', textDecoration: 'none' }}><button className={styles.logoutButton} onClick={() => UserAuthContextValue.logout()} >Logout</button></Link>
             </div>
 
             <div className={ styles.title }>Manager page</div>

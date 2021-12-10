@@ -6,7 +6,7 @@ import "slick-carousel/slick/slick-theme.css";
 import styles from "./Home.module.css";
 import axios from "axios";
 import jwt from 'jsonwebtoken';
-import { UserAuthContext } from './Contexts'
+import { UserAuthContext } from './Contexts';
 
 export default function Home(props) {
 
@@ -77,7 +77,7 @@ export default function Home(props) {
         })
       }
       <Link to="/orders" style={{ color: 'inherit', textDecoration: 'none' }}><div className={ styles.brandText2 }>Orders</div></Link>
-      <Link to="/" style={{ color: 'inherit', textDecoration: 'none' }}><button className={styles.logoutButton} onClick={() => UserAuthContextValue.logout()} >Logout</button></Link>
+      <Link to="/login" style={{ color: 'inherit', textDecoration: 'none' }}><button className={styles.logoutButton} onClick={() => UserAuthContextValue.logout()} >Logout</button></Link>
     </div>
     
     <div className={styles.carousel}>
