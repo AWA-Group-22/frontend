@@ -91,31 +91,23 @@ export default function ShoppingCart(props) {
           </div>
           })
         }
-      
-      <div className={ styles.container3 }>Shopping cart</div>
-      <div className={ styles.container4 }>
+      <div className={ styles.CartContainer }>
+        <div>
+          Type product id from the restaurant menu to order
+        </div>
         <input placeholder="type product id*" onChange={e => setproduct(e.target.value)} />
-      </div>
-      <div className={ styles.CartContainer }>Prices include VAT
-        <div>
-          1x 5.50€€
-        </div>
-        <div>
-          total: 5.50€
-        </div>
         <div className={ styles.orderButton }><button onClick={makeOrder}>Order now</button></div>
       </div>
-      <div className={ styles.CommentContainer }>🗨️  Comment for the restaurant </div>
-      <div className={ styles.PaymentText }>Payment </div>
+      <div className={ styles.CommentContainer }>
+        <input placeholder="🗨️  Comment for the restaurant " />
+      </div>
+      <div className={ styles.PaymentText }>Payment via:</div>
       <div className={ styles.ChoosePayment }>
-        <option value="Choose Payment method">💳 Choose Payment Method</option>
         <option value="Bisa electrum">💳 Bisa Electrum</option>
-        <option value="Kärkkäinen premium">💳 Kärkkäinen premium</option>
+        {/* <option value="Kärkkäinen premium">💳 Kärkkäinen premium</option>
         <option value="gPass">💳 gPass</option>
-        <option value="Bitcoin">₿ Bitcoin</option></div>
-
-
-
+        <option value="Bitcoin">₿ Bitcoin</option> */}
+        </div>
       </div>
 
   )

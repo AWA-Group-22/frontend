@@ -10,29 +10,35 @@ export default function ManagerOrderPage() {
 
     let navigate = useNavigate();
 
-    const [ManagerOrderPageData, setManagerOrderPageData] = useState([]);
-    const [orders, setOrders] = useState([]);
-    const [ordersHistory, setOrdersHistory] = useState([]);
+    const [ ManagerOrderPageData, setManagerOrderPageData ] = useState([]);
+    const [ orders, setOrders ] = useState([]);
+    const [ ordersHistory, setOrdersHistory ] = useState([]);
 
-    // useEffect(() => {
-    //     getOrders();
-    // }, []);
+    const [ changeOrderId, setChangeOrderId ] = useState("");
+    const [ changeOrderStatus, setChangeOrderStatus ] = useState("");
+
+    useEffect(() => {
+        getOrders();
+    }, []);
 
     useEffect(() => {
         getOrderHistory();
     }, []);
-  
-    // const getOrders = () => {
-    //   axios({
-    //     method: "get",
-    //     credentials: "include",
-    //     headers: { "Content-Type": "application/json" },
-    //     url: "https://back-end-22-group.herokuapp.com/customer/order/status",
-    //   }).then((res) => {
-    //     setOrders(res.data);
-    //     console.log(res.data);
-    //   });
-    // };
+
+    const getOrders = async () => {
+        try {
+          const results = await axios.get('https://back-end-22-group.herokuapp.com/manager/order/modify/status', {
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': 'Bearer ' + UserAuthContextValue.jwt
+              }
+          });
+    
+          setOrders(results.data);
+        } catch (error) {
+          console.error(error);
+        }
+      };
   
     const getOrderHistory = async () => {
         try {
@@ -49,7 +55,7 @@ export default function ManagerOrderPage() {
         }
       };
 
-    const handleButtonPreparing = () => {
+    const handleChangeOrderStatus = () => {
         axios({
             headers: {
               'Content-Type': 'application/json',
@@ -57,56 +63,13 @@ export default function ManagerOrderPage() {
             },
             method: "post",
             data: {
-                order_status: "Preparing"
+                order_id: changeOrderId,
+                order_status: changeOrderStatus
             },
             url: "https://back-end-22-group.herokuapp.com/manager/order/modify/status",
         })
         .then((res) => console.log(res));
-    };
-
-    const handleButtonRFD = () => {
-        axios({
-            headers: {
-              'Content-Type': 'application/json',
-              'Authorization': 'Bearer ' + UserAuthContextValue.jwt
-            },
-            method: "post",
-            data: {
-                order_status: "Ready for Delivery"
-            },
-            url: "https://back-end-22-group.herokuapp.com/manager/order/modify/status",
-        })
-        .then((res) => console.log(res));
-    };
-
-    const handleButtonDelivering = () => {
-        axios({
-            headers: {
-              'Content-Type': 'application/json',
-              'Authorization': 'Bearer ' + UserAuthContextValue.jwt
-            },
-            method: "post",
-            data: {
-                order_status: "Delivering"
-            },
-            url: "https://back-end-22-group.herokuapp.com/manager/order/modify/status",
-        })
-        .then((res) => console.log(res));
-    };
-
-    const handleButtonDelivered = () => {
-        axios({
-            headers: {
-              'Content-Type': 'application/json',
-              'Authorization': 'Bearer ' + UserAuthContextValue.jwt
-            },
-            method: "post",
-            data: {
-                order_status: "Delivered"
-            },
-            url: "https://back-end-22-group.herokuapp.com/manager/order/modify/status",
-        })
-        .then((res) => console.log(res));
+        navigate("/managerpage", { replace: true });
     };
 
     return (
@@ -120,21 +83,42 @@ export default function ManagerOrderPage() {
             </div>
                 <div>
                     <div className={ styles.titleText }>Manager order page</div>
-                    {
-                        // TODO: get all customer orders
-                        ordersHistory.map((history, index) => {
-                            return <div key={index} className={ styles.bigOrderContainer }>
-                                <div className={ styles.orderContainer }>
-                                    <div className={ styles.statusText }>Order status: { history.order_status } </div>
-                                    <div className={ styles.productText }>Ordered product(s): { history.product_name } </div>
-                                    <button onClick={ handleButtonPreparing } className={ styles.buttonStylePreparing }>Preparing</button>
-                                    <button onClick={ handleButtonRFD } className={ styles.buttonStyleRFD}>Ready for delivery</button>
-                                    <button onClick={ handleButtonDelivering } className={ styles.buttonStyleDelivering }>Delivering</button>
-                                    <button onClick={ handleButtonDelivered } className={ styles.buttonStyleDelivered }>Delivered</button>
-                                </div>
+                    <div className={ styles.changeOrderStatus }>
+                        Change a specific order status
+                        <input placeholder="order id" onChange={e => setChangeOrderId(e.target.value)} />
+                        <input placeholder="order status" onChange={e => setChangeOrderStatus(e.target.value)} />
+                            <button onClick={handleChangeOrderStatus} className={styles.signUpButton}>Change order status</button>
+                    </div>
+                {
+                    orders.map((order, index) => {
+                        return <div key={index}>
+                            <div className={ styles.currentOrderText }>Current user orders:</div>
+                            <div className={ styles.currentOrderContainer }>
+                                <div className={ styles.currentOrderId }> Order id: { order.order_id } </div>
+                                <div className={ styles.currentOrderStatus }> Order status: { order.order_status } </div>
+
+                                <div className={ styles.currentOrderProduct }> Ordered product(s): </div>
+                                <div className={ styles.currentProductId }> Product id: { order.product_id } </div>
+                                <div className={ styles.currentProductName }> Product name: { order.product_name } </div>
                             </div>
-                        })
-                    }
+                        </div>
+                    })
+                }
+                    <div className={ styles.historyDivText }> Order history: </div>
+                {
+                    ordersHistory.map((history, index) => {
+                        return <div key={index} className={ styles.bigOrderContainer }>
+                            <div className={ styles.orderContainer }>
+                            <div className={ styles.currentOrderId }> Order id: { history.order_id } </div>
+                                <div className={ styles.currentOrderStatus }> Order status: { history.order_status } </div>
+                                    {/* TODO: backend get order id */}
+                                <div className={ styles.currentOrderProduct }> Ordered product(s): </div>
+                                <div className={ styles.currentProductId }> Product id: { history.product_id } </div>
+                                <div className={ styles.currentProductName }> Product name: { history.product_name } </div>
+                            </div>
+                        </div>
+                    })
+                }
 
                 </div>
             

@@ -131,7 +131,7 @@
     box-sizing: border-box;
     position: absolute;
     left: 100px;
-    top: 1600px;
+    top: 1200px;
     line-height: normal;
     font-size: 20px;
     justify-content: center;
@@ -154,7 +154,7 @@
     color: #333333;
     text-align:left;
     line-height: normal;
-    top: 1800px;
+    top: 1400px;
     left: 100px;
     position: absolute;
 
@@ -169,7 +169,7 @@
     box-sizing: border-box;
     position: absolute;
     left: 100px;
-    top: 1850px;
+    top: 1450px;
     margin-bottom:100px;
     line-height: 140px;
     font-size: 20px;

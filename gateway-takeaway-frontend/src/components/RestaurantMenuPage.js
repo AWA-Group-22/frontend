@@ -1,12 +1,13 @@
 import React, { useState, useContext, useEffect } from 'react';
-import burger1 from './burger1.jpg';
-import { useParams } from 'react-router';
+import { useParams, useNavigate } from 'react-router';
 import { Link } from 'react-router-dom';
 import styles from './RestaurantMenuPage.module.css';
 import axios from 'axios';
 import { UserAuthContext } from './Contexts'
 
 export default function RestaurantMenuPage(props) {
+
+    let navigate = useNavigate();
 
     const UserAuthContextValue = useContext(UserAuthContext);
 
@@ -80,16 +81,17 @@ export default function RestaurantMenuPage(props) {
         });
     };    
 
-    const onSubmit = (e) => {
-        e.preventDefault()
+    const onSubmit = () => {
+        // e.preventDefault()
 
-        axios.post('https://back-end-22-group.herokuapp.com/customer/order')
-            .then((res) => {
-                console.log(res.data)
-                console.log("Item added to order successfully");
-            }).catch((error) => {
-                console.log(error)
-            });
+        // axios.post('https://back-end-22-group.herokuapp.com/customer/order')
+        //     .then((res) => {
+        //         console.log(res.data)
+        //         console.log("Item added to order successfully");
+                navigate("/shoppingcart", { replace: true });
+            // }).catch((error) => {
+            //     console.log(error)
+            // });
     };
     
     return (
@@ -99,6 +101,13 @@ export default function RestaurantMenuPage(props) {
                     {/* <button onClick={ getCustomer }>Get customer data</button>
                     <button onClick={ getRestaurant }>Get restaurant data</button>
                     <button onClick={ getProduct }>Get product data</button> */}
+            {
+                customers.map((customer) => {
+                    return <div>
+                        { customer.first_name } { customer.last_name }
+                    </div>
+                })
+            }
                 <Link to="/shoppingcart" style={{ color: 'inherit', textDecoration: 'none' }}><div className={ styles.shopCart }>Shopping cart</div></Link>
             </div>
             <div>
@@ -130,9 +139,10 @@ export default function RestaurantMenuPage(props) {
                                 <div className={ styles.prodNameStyle }>{ product.product_name }</div>
                                 <div className={ styles.prodPriceStyle }>{ product.price }€</div>
                                 <div className={ styles.prodDescStyle }>{ product.description }</div>
-                                <div> { product.product_id } </div>
+                                <div> Product id: { product.product_id } (type in the shopping cart to order) </div>
                                 {/* <div className={ styles.prodIMGStyle }> { product.product_image }</div> */}
-                                <button className={ styles.shopCartButton } onClick={ onSubmit }>🛒</button>
+                                <button className={ styles.shopCartButton } onClick={ onSubmit }> Go to shopping cart 🛒</button>
+
                             </div>
                         </div>
                     </div>

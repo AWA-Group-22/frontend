@@ -90,7 +90,7 @@ export default function Home(props) {
             <div>
                 {/* <input type="image" src={"data:image/png;base64," + restaurant.image.data} width="336" height="180"/> */}
                 {/* <img src={"data:image/png;base64," + restaurant.image.data } width="336" height="180" /> */}
-                <img src={ restaurant.image } />
+                <img src={ restaurant.image } width={336} height={180} />
                 {/* <img src={`data:image/jpeg;base64,${restaurant.image.data}`} width="336" height="180" /> */}
                 <div className={styles.restName}>{restaurant.restaurant_name}</div>
                 <div className={styles.restMotto}>{restaurant.operating_hours}</div>

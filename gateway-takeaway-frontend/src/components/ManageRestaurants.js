@@ -9,6 +9,8 @@ export default function ManageRestaurants() {
   const [selectedFile, setSelectedFile] = useState();
 	const [isFilePicked, setIsFilePicked] = useState(false);
 
+  // const [ file, setFile ] = useState(null);
+
   const UserAuthContextValue = useContext(UserAuthContext);
 
   const [name,setName] = useState("");
@@ -17,6 +19,11 @@ export default function ManageRestaurants() {
   const [type,setType] = useState("");
   const [price,setPrice] = useState("");
   const [image,setImage] = useState("");
+  // const imageRef = React.useRef(null);
+
+  // function uploader(e) {
+  //   const imageFile = e.targer.files[0];
+  // }
 
   let navigate = useNavigate();
 
@@ -37,19 +44,21 @@ export default function ManageRestaurants() {
   
   // };
 
-  const changeHandler = (event) => {
-		setSelectedFile(event.target.files[0]);
-		setIsFilePicked(true);
-	};
+  // const changeHandler = (event) => {
+	// 	setSelectedFile(event.target.files[0]);
+	// 	setIsFilePicked(true);
+	// };
 
   const handleSubmit = () => {
 
-    const formData = new FormData();
-    formData.append('File', selectedFile);
+    e.preventDefault()
+
+    // const formData = new FormData();
+    // formData.append('File', selectedFile);
 
     axios({
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': 'multipart/form-data',
           'Authorization': 'Bearer ' + UserAuthContextValue.jwt
         },
         method: "post",
@@ -57,9 +66,9 @@ export default function ManageRestaurants() {
           restaurant_name: name,
           address_restaurant: address,
           operating_hours: hours,
+          image: image,
           restaurant_type: type,
-          price_level: price,
-          image: "testimage"
+          price_level: price
         },
         url: "https://back-end-22-group.herokuapp.com/register_restaurant",
     })
@@ -75,7 +84,10 @@ export default function ManageRestaurants() {
   return (
     <div>
       <div className={styles.headerContainer}>
-            <Link to="/managerpage" style={{ color: 'inherit', textDecoration: 'none' }}><div className={ styles.brandText }>Gateway Takeaway</div></Link></div>
+            <Link to="/managerpage" style={{ color: 'inherit', textDecoration: 'none' }}><div className={ styles.brandText }>Gateway Takeaway</div></Link>
+              <div className={ styles.backButton }>
+                <Link to="/managerpage" style={{ color: 'inherit', textDecoration: 'none' }}>Back</Link></div>
+            </div>
         <div className={styles.container}>
             <div className={styles.titleText}>Manage restaurants</div>
             <div className={styles.subtitleText}>Create a new restaurant by filling in the details</div>
@@ -85,7 +97,9 @@ export default function ManageRestaurants() {
                 <input className={styles.textField3} placeholder="operating hours*" onChange={e => setHours(e.target.value)} />
                 <input className={styles.textField4} placeholder="type*" onChange={e => setType(e.target.value)} />
                 <input className={styles.textField5} placeholder="price level*" onChange={e => setPrice(e.target.value)} />
-                <div className={styles.textField6}>
+                <input className={styles.textField6} type="file" accept="image/*,.pdf" onChange={e => setImage(e.target.files)} />
+
+                {/* <div className={styles.textField6}>
                 <input type="file" name="file" onChange={changeHandler} />
                 {isFilePicked ? (
                   <div>
@@ -94,12 +108,12 @@ export default function ManageRestaurants() {
                     </div>
                 ) : (
                   <p>Select an image</p>
-                )}
-                </div>
+                )} */}
+                {/* </div> */}
 
                 {/* <input className={styles.textField6} placeholder="image*" onChange={e => setImage(e.target.value)} /> */}
                 <button onClick={handleSubmit} className={styles.signUpButton}>Create a restaurant</button>
-                    {/* <Link to="/managerpage" style={{ textDecoration: 'none' }}></Link> */}
+                    <Link to="/managerpage" style={{ textDecoration: 'none' }}></Link>
             </div>
         </div>
     </div>

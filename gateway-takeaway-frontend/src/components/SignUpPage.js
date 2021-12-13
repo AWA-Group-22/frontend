@@ -54,7 +54,6 @@ export default function SignUpPage() {
                     <input className={styles.textField7} placeholder="country*" onChange={e => setsignupCountry(e.target.value)} />
                     <input className={styles.textField8} placeholder="date of birth (YYYY-DD-MM)*" onChange={e => setSignupDateOfBirth(e.target.value)} />
                     <button onClick={signup} className={styles.signUpButton}>Sign Up</button>
-                        <Link to="/home" style={{ textDecoration: 'none' }}></Link>
                 </div>
             </div>
         </div>

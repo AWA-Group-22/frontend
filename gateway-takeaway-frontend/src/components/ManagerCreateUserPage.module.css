@@ -132,9 +132,8 @@
 
 .textField1 {
     position: absolute;
-    top: 197px;
+    margin-top: 7px;
     margin-left: 85px;
-    padding-top: 8px;
     height: 30px;
     width: 300px;
 }
@@ -166,7 +165,6 @@
 .textField5 {
     position: absolute;
     margin-left: 85px;
-    padding-top: 8px;
     height: 30px;
     width: 300px;
     margin-top: 7px;
@@ -175,7 +173,6 @@
 .textField6 {
     position: absolute;
     margin-left: 450px;
-    padding-top: 8px;
     height: 30px;
     width: 300px;
     margin-top: 7px;
@@ -184,7 +181,6 @@
 .textField7 {
     position: absolute;
     margin-left: 85px;
-    padding-top: 8px;
     height: 30px;
     width: 300px;
     margin-top: 7px;
@@ -193,7 +189,6 @@
 .textField8 {
     position: absolute;
     margin-left: 450px;
-    padding-top: 8px;
     height: 30px;
     width: 300px;
     margin-top: 7px;
@@ -202,7 +197,6 @@
 .textField9 {
     position: absolute;
     margin-left: 85px;
-    padding-top: 8px;
     height: 30px;
     width: 300px;
     margin-top: 7px;
@@ -223,3 +217,7 @@
     text-align: center;
     line-height: normal;
 }
+
+.backButton {
+    margin-left: 1300px;
+  }

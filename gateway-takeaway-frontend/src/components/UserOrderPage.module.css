@@ -30,6 +30,25 @@
     font-weight: 600;
 }
 
+.changeOrderStatus {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    right: 380px;
+    width: 350px;
+    height: 150px;
+    margin-top: 100px;
+    padding: 2px 2px 2px 2px;
+    box-shadow: 5px 5px 20px 0px rgba(0, 0, 0, 0.18);
+    border-radius: 10px;
+    box-sizing: border-box;
+    font-size: 20px;
+    font-family: "Arial Normaali", "Arial", sans-serif;
+    font-weight: 600;
+    padding: 20px;
+    gap: 10px;
+}
+
 .orderStatusText {
     padding-left: 70px;
     margin-top: 100px;

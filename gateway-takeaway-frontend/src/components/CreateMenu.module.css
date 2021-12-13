@@ -24,12 +24,11 @@
 
 .container {
   width: 860px;
-  height: 600px;
+  height: 470px;
   padding: 2px 2px 2px 2px;
   box-shadow: 5px 5px 20px 0px rgba(0, 0, 0, 0.18);
   border-radius: 4px;
   box-sizing: border-box;
-  position: absolute;
   margin-top: 70px;
   margin-left: 500px;
 }
@@ -62,7 +61,7 @@
 
 .textField1 {
   position: absolute;
-  top: 200px;
+  top: 350px;
   margin-left: 85px;
   height: 30px;
   width: 300px;
@@ -70,7 +69,7 @@
 
 .textField2 {
   position: absolute;
-  top: 200px;
+  top: 350px;
   height: 30px;
   width: 300px;
   margin-left: 450px;
@@ -78,14 +77,14 @@
 
 .textField3 {
   position: absolute;
-  top: 270px;
+  top: 420px;
   margin-left: 85px;
   height: 30px;
   width: 300px;
 }
 
 .textField4 {
-  top: 270px;
+  top: 420px;
   position: absolute;
   margin-left: 450px;
   height: 30px;
@@ -93,7 +92,7 @@
 }
 
 .textField5 {
-  top: 340px;
+  top: 490px;
   position: absolute;
   margin-left: 85px;
   height: 30px;
@@ -101,33 +100,17 @@
 }
 
 .textField6 {
-  top: 340px;
+  top: 490px;
   position: absolute;
   margin-left: 450px;
   height: 30px;
   width: 300px;
 }
 
-.textField7 {
-  top: 410px;
+.createButton {
   position: absolute;
-  margin-left: 85px;
-  height: 30px;
-  width: 300px;
-}
-
-.textField8 {
-  top: 410px;
-  position: absolute;
-  margin-left: 450px;
-  height: 30px;
-  width: 300px;
-}
-
-.signUpButton {
-  position: absolute;
-  margin-top: 365px;
-  left: 270px;
+  margin-left: 270px;
+  margin-top: 275px;
   width: 310px;
   height: 45px;
   padding: 2px 2px 2px 2px;
@@ -141,20 +124,9 @@
   line-height: normal;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.backButton {
+  margin-left: 1300px;
+}
 
 /* .CreateMenu {
     max-width:400px;
