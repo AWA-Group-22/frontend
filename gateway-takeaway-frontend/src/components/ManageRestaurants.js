@@ -1,15 +1,12 @@
 import React, { useState, useContext } from "react";
 import styles from './ManageRestaurants.module.css';
-import axios from 'axios';
+import axios, { post } from 'axios';
 import { Link, useNavigate } from "react-router-dom";
 import { UserAuthContext } from './Contexts';
 
 export default function ManageRestaurants() {
 
-  const [selectedFile, setSelectedFile] = useState();
-	const [isFilePicked, setIsFilePicked] = useState(false);
-
-  // const [ file, setFile ] = useState(null);
+  let navigate = useNavigate();
 
   const UserAuthContextValue = useContext(UserAuthContext);
 
@@ -19,67 +16,54 @@ export default function ManageRestaurants() {
   const [type,setType] = useState("");
   const [price,setPrice] = useState("");
   const [image,setImage] = useState("");
-  // const imageRef = React.useRef(null);
-
-  // function uploader(e) {
-  //   const imageFile = e.targer.files[0];
-  // }
-
-  let navigate = useNavigate();
+  
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    const url = 'https://back-end-22-group.herokuapp.com/register_restaurant';
+    const formData = new FormData();
+    formData.append('restaurant_name', name);
+    formData.append('address_restaurant', address);
+    formData.append('image', image);
+    formData.append('operating_hours', hours);
+    formData.append('restaurant_type', type);
+    formData.append('price_level', price);
+    
+    const config = {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+        'Authorization': 'Bearer ' + UserAuthContextValue.jwt
+    }
+    }
+    post(url, formData, config).then((response) => {
+      console.log(response.data);
+    });
+  };
 
   // const handleSubmit = () => {
   //   axios({
-  //     method: "post",
-  //     data: {
-        // restaurant_name: name,
-        // address_restaurant: address,
-        // operating_hours: hours,
-        // restaurant_type: type,
-        // price_level: price,
-        // image: image
-  //     }, 
-  //     url:"https://back-end-22-group.herokuapp.com/register_restaurant"
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //         'Authorization': 'Bearer ' + UserAuthContextValue.jwt
+  //       },
+  //       method: "post",
+  //       data: {
+  //         restaurant_name: name,
+  //         address_restaurant: address,
+  //         operating_hours: hours,
+  //         image: image,
+  //         restaurant_type: type,
+  //         price_level: price
+  //       },
+  //       url: "https://back-end-22-group.herokuapp.com/register_restaurant",
   //   })
-  //   .then((res)=>console.log(res));
-  
+  //   .then((res) => res.json())
+  //   .then((result) => {
+  //     console.log("Successfully created a menu:", result);
+  //   })
+  //   .catch((error) => {
+  //     console.error("Error:", error);
+  //   });
   // };
-
-  // const changeHandler = (event) => {
-	// 	setSelectedFile(event.target.files[0]);
-	// 	setIsFilePicked(true);
-	// };
-
-  const handleSubmit = () => {
-
-    e.preventDefault()
-
-    // const formData = new FormData();
-    // formData.append('File', selectedFile);
-
-    axios({
-        headers: {
-          'Content-Type': 'multipart/form-data',
-          'Authorization': 'Bearer ' + UserAuthContextValue.jwt
-        },
-        method: "post",
-        data: {
-          restaurant_name: name,
-          address_restaurant: address,
-          operating_hours: hours,
-          image: image,
-          restaurant_type: type,
-          price_level: price
-        },
-        url: "https://back-end-22-group.herokuapp.com/register_restaurant",
-    })
-    .then((res) => res.json())
-    .then((result) => {
-      console.log("Successfully created a menu:", result);
-    })
-    .catch((error) => {
-      console.error("Error:", error);
-    });
-  };
 
   return (
     <div>
@@ -90,30 +74,17 @@ export default function ManageRestaurants() {
             </div>
         <div className={styles.container}>
             <div className={styles.titleText}>Manage restaurants</div>
-            <div className={styles.subtitleText}>Create a new restaurant by filling in the details</div>
+            <div className={styles.subtitleText}>Create a new restaurant by filling in the details (max 1 per manager)</div>
             <div>
+              <form onSubmit={handleSubmit}>
                 <input className={styles.textField1} placeholder="name*" onChange={e => setName(e.target.value)} />
                 <input className={styles.textField2} placeholder="address*" onChange={e => setAddress(e.target.value)} />
                 <input className={styles.textField3} placeholder="operating hours*" onChange={e => setHours(e.target.value)} />
                 <input className={styles.textField4} placeholder="type*" onChange={e => setType(e.target.value)} />
                 <input className={styles.textField5} placeholder="price level*" onChange={e => setPrice(e.target.value)} />
-                <input className={styles.textField6} type="file" accept="image/*,.pdf" onChange={e => setImage(e.target.files)} />
-
-                {/* <div className={styles.textField6}>
-                <input type="file" name="file" onChange={changeHandler} />
-                {isFilePicked ? (
-                  <div>
-                    <p>Filetype: {selectedFile.type}</p>
-                    <p>Size in bytes: {selectedFile.size}</p>
-                    </div>
-                ) : (
-                  <p>Select an image</p>
-                )} */}
-                {/* </div> */}
-
-                {/* <input className={styles.textField6} placeholder="image*" onChange={e => setImage(e.target.value)} /> */}
-                <button onClick={handleSubmit} className={styles.signUpButton}>Create a restaurant</button>
-                    <Link to="/managerpage" style={{ textDecoration: 'none' }}></Link>
+                <input className={styles.textField6} type="file" onChange={e => setImage(e.target.files[0])} />
+                  <button type="submit" className={styles.signUpButton}>Create a restaurant</button>
+              </form>
             </div>
         </div>
     </div>

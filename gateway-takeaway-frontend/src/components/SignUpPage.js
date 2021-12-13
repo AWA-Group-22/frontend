@@ -46,7 +46,7 @@ export default function SignUpPage() {
                 <div className={styles.subtitleText}>Create an account by filling in the details</div>
                 <div>
                     <input className={styles.textField1} placeholder="username*" onChange={e => setSignupUsername(e.target.value)} />
-                    <input className={styles.textField2} placeholder="password*" onChange={e => setSignupPassword(e.target.value)} />
+                    <input className={styles.textField2} type="password" placeholder="password*" onChange={e => setSignupPassword(e.target.value)} />
                     <input className={styles.textField3} placeholder="first Name*" onChange={e => setsignupFirstName(e.target.value)} />
                     <input className={styles.textField4} placeholder="last Name*" onChange={e => setSignupLastName(e.target.value)} />
                     <input className={styles.textField5} placeholder="address*" onChange={e => setsignupAddress(e.target.value)} />

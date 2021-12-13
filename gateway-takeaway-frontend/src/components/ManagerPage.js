@@ -39,26 +39,26 @@ export default function ManagerPage(props) {
                     </div>
                 })
             }
-            <Link to="/managerlogin" style={{ color: 'inherit', textDecoration: 'none' }}><button className={styles.logoutButton} onClick={() => UserAuthContextValue.logout()} >Logout</button></Link>
+            <Link to="/" style={{ color: 'inherit', textDecoration: 'none' }}><button className={styles.logoutButton} onClick={() => UserAuthContextValue.logout()} >Logout</button></Link>
             </div>
-
             <div className={ styles.title }>Manager page</div>
-            <div className={ styles.container1 }>
-                <Link to="/managercreateuser" style={{ color: 'inherit', textDecoration: 'none' }}>Create user accounts</Link>
-            </div>
+            <div className={ styles.bigContainer }>
+                <div className={ styles.container1 }>
+                    <Link to="/managercreateuser" style={{ color: 'inherit', textDecoration: 'none' }}>Create user accounts</Link>
+                </div>
 
-            <div className={ styles.container2 }>
-                <Link to="/managerestaurants" style={{ color: 'inherit', textDecoration: 'none' }}>Create restaurants</Link>
-            </div>
+                <div className={ styles.container2 }>
+                    <Link to="/managerestaurants" style={{ color: 'inherit', textDecoration: 'none' }}>Create restaurants</Link>
+                </div>
 
-            <div className={ styles.container3 }>
-                <Link to="/managerorderpage" style={{ color: 'inherit', textDecoration: 'none' }}>Manage orders</Link>
-            </div>
+                <div className={ styles.container3 }>
+                    <Link to="/managerorderpage" style={{ color: 'inherit', textDecoration: 'none' }}>Manage orders</Link>
+                </div>
 
-            <div className={ styles.container4 }>
-                <Link to="/createmenu" style={{ color: 'inherit', textDecoration: 'none' }}>Create restaurant menus</Link>
+                <div className={ styles.container4 }>
+                    <Link to="/createmenu" style={{ color: 'inherit', textDecoration: 'none' }}>Create restaurant menus</Link>
+                </div>
             </div>
-
         </div>
         
     )

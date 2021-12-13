@@ -69,7 +69,7 @@ export default function ManagerOrderPage() {
             url: "https://back-end-22-group.herokuapp.com/manager/order/modify/status",
         })
         .then((res) => console.log(res));
-        navigate("/managerpage", { replace: true });
+        navigate("/managerorderpage", { replace: true });
     };
 
     return (
@@ -89,14 +89,13 @@ export default function ManagerOrderPage() {
                         <input placeholder="order status" onChange={e => setChangeOrderStatus(e.target.value)} />
                             <button onClick={handleChangeOrderStatus} className={styles.signUpButton}>Change order status</button>
                     </div>
+                    <div className={ styles.currentOrderText }>Current user orders:</div>
                 {
                     orders.map((order, index) => {
                         return <div key={index}>
-                            <div className={ styles.currentOrderText }>Current user orders:</div>
                             <div className={ styles.currentOrderContainer }>
                                 <div className={ styles.currentOrderId }> Order id: { order.order_id } </div>
                                 <div className={ styles.currentOrderStatus }> Order status: { order.order_status } </div>
-
                                 <div className={ styles.currentOrderProduct }> Ordered product(s): </div>
                                 <div className={ styles.currentProductId }> Product id: { order.product_id } </div>
                                 <div className={ styles.currentProductName }> Product name: { order.product_name } </div>

@@ -14,6 +14,7 @@
 
 .brandText {
     background-color: rgba(255, 255, 255, 0);
+    width: 300px;
     font-size: 32px;
     font-family: "Merriweather", sans-serif;
     color: #333333;
@@ -30,6 +31,13 @@
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
 }
 
+.bigContainer {
+    padding: 100px;
+    display: flex;
+    flex-flow: row;
+    gap: 50px;
+}
+
 .container1 {
     width: 310px;
     height: 168px;
@@ -37,9 +45,6 @@
     box-shadow: 1px 3px 6px 6px lightgrey;
     border-radius: 4px;
     box-sizing: border-box;
-    position: absolute;
-    left: 300px;
-    top: 285px;
     text-align: center;
     line-height: 140px;
     font-size: 20px;
@@ -52,9 +57,6 @@
     box-shadow: 1px 3px 6px 6px lightgrey;
     border-radius: 4px;
     box-sizing: border-box;
-    position: absolute;
-    left: 795px;
-    top: 285px;
     text-align: center;
     line-height: 140px;
     font-size: 20px;
@@ -67,9 +69,6 @@
     box-shadow: 1px 3px 6px 6px lightgrey;
     border-radius: 4px;
     box-sizing: border-box;
-    position: absolute;
-    right: 300px;
-    top: 285px;
     text-align: center;
     line-height: 140px;
     font-size: 20px;
@@ -82,9 +81,6 @@
     box-shadow: 1px 3px 6px 6px lightgrey;
     border-radius: 4px;
     box-sizing: border-box;
-    position: absolute;
-    left: 795px;
-    top: 525px;
     text-align: center;
     line-height: 140px;
     font-size: 20px;

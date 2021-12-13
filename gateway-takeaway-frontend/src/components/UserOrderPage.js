@@ -81,8 +81,9 @@ export default function UserOrderPage(props) {
       });
 
       setOrdersHistory(results.data);
-    } catch (error) {
-      console.error(error);
+      console.log(results.data);
+    } catch (err) {
+      // console.log(err.response.data.message);
     }
   };
 
@@ -96,26 +97,12 @@ export default function UserOrderPage(props) {
         method: "post",
         data: {
             order_id: changeOrderId,
-            order_status: changeOrderStatus
         },
         url: "https://back-end-22-group.herokuapp.com/customer/order/confirm",
     })
     .then((res) => console.log(res));
-    navigate("/managerpage", { replace: true });
+    navigate("/orders", { replace: true });
 };
-
-  
-  const onConfirmOrder = async (event) => {
-    event.preventDefault();
-    try {
-      const result = await axios.post('https://back-end-22-group.herokuapp.com/customer/order/confirm', {
-        order_status: "Delivered"
-      })
-      console.log(result);
-    } catch (error) {
-      console.error(error);
-    }
-  };
 
   return (
     <div>
@@ -125,34 +112,44 @@ export default function UserOrderPage(props) {
         <button onClick={ getOrderHistory }>Get order history</button> */}
       </div>
         <div>
-        <div className={ styles.titleText }>Orders</div>
+          {
+            customers.map((customer, index) => {
+              return <div key={index}>
+                <div className={ styles.titleText }>Orders of { customer.first_name } { customer.last_name } </div>
+              </div>
+            })
+          }
+        
           <div className={ styles.changeOrderStatus }>
-              Change a specific order status
+              Confirm order with status "Delivered"
               <input placeholder="order id" onChange={e => setChangeOrderId(e.target.value)} />
-              <input placeholder="order status" onChange={e => setChangeOrderStatus(e.target.value)} />
-                  <button onClick={handleChangeOrderStatus} className={styles.signUpButton}>Change order status</button>
+                  <button onClick={handleChangeOrderStatus} className={styles.buttonStyle}>Confirm order Delivered</button>
           </div>
           <div>
+          <div className={ styles.currentOrderText }>Current orders:</div>
             {
               orders.map((order, index) => {
                 return <div key={index}>
-                  <div classname={ styles.orderContainer }>
-                  <div className={ styles.orderStatusText }>Current order:  </div>
-                  <div className={ styles.restaurantName }> Order status: { order.order_status } </div>
-                  <div className={ styles.restaurantName }> Ordered product(S) { order.product_name } </div>
-                  </div>
+                    <div className={ styles.currentOrderContainer }>
+                      <div className={ styles.currentOrderId }> Order id: { order.order_id } </div>
+                      <div className={ styles.currentOrderStatus }> Order status: { order.order_status } </div>
+                      <div className={ styles.currentOrderProduct }> Ordered product(s): </div>
+                      <div className={ styles.currentProductId }> Product id: { order.product_id } </div>
+                      <div className={ styles.currentProductName }> Product name: { order.product_name } </div>
+                    </div>
                 </div>
               })
             }
+          <div className={ styles.historyDivText }> Order history: </div>              
             {
-              ordersHistory.map((history, index) => {
-                return <div key={index}>
-                  <div className={ styles.orderHistoryText }>Previous order:</div>
-                  <div className={ styles.orderHistoryContainer }>
-                    <div> Order status: { history.order_status } </div>
-                    <div> Delivered product(s): { history.product_name }</div>
-                </div>
-                </div>
+              ordersHistory.map((history, index) => {                    
+                return <div key={index} className={ styles.bigOrderContainer }>
+                  <div className={ styles.currentOrderId }> Order id: { history.order_id } </div>
+                    <div className={ styles.currentOrderStatus }> Order status: { history.order_status } </div>
+                    <div className={ styles.currentOrderProduct }> Ordered product(s): </div>
+                    <div className={ styles.currentProductId }> Product id: { history.product_id } </div>
+                    <div className={ styles.currentProductName }> Product name: { history.product_name } </div>
+                  </div>                        
               })
             }
         </div>
@@ -160,39 +157,3 @@ export default function UserOrderPage(props) {
     </div>
   )
 }
-
-
-
-
-// export default function UserOrderPage(props) {
-
-//     return (
-        // <div>
-        //     <div className={styles.headerContainer}>
-        //     <Link to="/home" style={{ color: 'inherit', textDecoration: 'none' }}><div className={ styles.brandText }>Gateway Takeaway</div></Link>
-        //     </div>
-        //         <div>
-        //             <div className={ styles.styles.titleText }>Orders</div>
-        //             <div className={ styles.orderStatusText }>Current order status: </div>
-        //             <div className={ styles.orderHistoryText }>Order history:</div>
-        //             <div className={ styles.orderContainer }>
-        //                 <div className={ styles.restaurantName }></div>
-        //                     <button className={ styles.buttonStyle }>Confirm received order</button>
-        //                 <div className={ styles.statusText }>
-        //                     Example status text lorem ipsum datum el macaron
-        //                 </div>
-        //             </div>
-        //             <div className={ styles.orderHistoryContainer1 }>
-        //                 <div className={ styles.restaurantName }>
-        //                     Example restaurant
-        //                 </div>
-        //             </div>
-        //             <div className={ styles.orderHistoryContainer2 }>
-        //                 <div className={ styles.restaurantName }>
-        //                     Example restaurant
-        //                 </div>
-        //             </div>
-        //         </div>
-        // </div>
-//     )
-// }

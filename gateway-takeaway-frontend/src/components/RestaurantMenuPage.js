@@ -112,7 +112,7 @@ export default function RestaurantMenuPage(props) {
             </div>
             <div>
             {/* <img src={burger1}/> */}
-            <img src={ restaurants.image } width="1920" height="590" />
+            <img src={ restaurants.image } width="1900" height="590" />
             {
                 customers.map((customer) => {
                     return <div className={ styles.deliveryText }>Delivery in 15-25 minutes to { customer.address }</div>
@@ -128,7 +128,7 @@ export default function RestaurantMenuPage(props) {
                 <div className={ styles.deliveryCost }>DELIVERY: 7.90€</div>
                 <div className={ styles.minOrder }>MIN. ORDER: 20€</div>
                 <div className={ styles.subContainer }></div>
-                <div className={ styles.outText }>Price level:{ restaurants.price_level } </div>
+                <div className={ styles.outText }>Price level: { restaurants.price_level } </div>
             </div>
             {
                 products.map((product, index) => {
