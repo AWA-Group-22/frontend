@@ -1,11 +1,15 @@
-import React, { useState } from 'react';
-import burger1 from './burger1.jpg';
-import { useParams } from 'react-router';
+import React, { useState, useContext, useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router';
 import { Link } from 'react-router-dom';
 import styles from './RestaurantMenuPage.module.css';
 import axios from 'axios';
+import { UserAuthContext } from './Contexts'
 
-export default function RestaurantMenuPage() {
+export default function RestaurantMenuPage(props) {
+
+    let navigate = useNavigate();
+
+    const UserAuthContextValue = useContext(UserAuthContext);
 
     const { restaurant_id } = useParams();
 
@@ -13,17 +17,44 @@ export default function RestaurantMenuPage() {
     const [customers, setCustomers] = useState([]);
     const [products, setProducts] = useState([]);
 
-    const getCustomer = () => {
-        axios({
-          method: "get",
-          credentials: "include",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ customers }),
-          url: "https://back-end-22-group.herokuapp.com/customer",
-        }).then((res) => {
-          setCustomers(res.data);
-          console.log(res.data);
-        });
+    useEffect(() => {
+    getCustomer();
+    }, []);
+
+    useEffect(() => {
+    getRestaurant();
+    }, []);
+
+    useEffect(() => {
+    getProduct();
+    }, []);
+
+    // const getCustomer = () => {
+    //     axios({
+    //       method: "get",
+    //       credentials: "include",
+    //       headers: { "Content-Type": "application/json" },
+    //       body: JSON.stringify({ customers }),
+    //       url: "https://back-end-22-group.herokuapp.com/customer",
+    //     }).then((res) => {
+    //       setCustomers(res.data);
+    //       console.log(res.data);
+    //     });
+    //   };
+
+    const getCustomer = async () => {
+        try {
+          const results = await axios.get('https://back-end-22-group.herokuapp.com/customer', {
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': 'Bearer ' + UserAuthContextValue.jwt
+              }
+          });
+    
+          setCustomers(results.data);
+        } catch (error) {
+          console.error(error);
+        }
       };
 
     const getRestaurant = () => {
@@ -50,30 +81,43 @@ export default function RestaurantMenuPage() {
         });
     };    
 
-    const onSubmit = (e) => {
-        e.preventDefault()
+    const onSubmit = () => {
+        // e.preventDefault()
 
-        axios.post('https://back-end-22-group.herokuapp.com/customer/order')
-            .then((res) => {
-                console.log(res.data)
-                console.log("Item added to order successfully");
-            }).catch((error) => {
-                console.log(error)
-            });
+        // axios.post('https://back-end-22-group.herokuapp.com/customer/order')
+        //     .then((res) => {
+        //         console.log(res.data)
+        //         console.log("Item added to order successfully");
+                navigate("/shoppingcart", { replace: true });
+            // }).catch((error) => {
+            //     console.log(error)
+            // });
     };
     
     return (
         <div>
             <div className={styles.headerContainer}>
                 <Link to="/home" style={{ color: 'inherit', textDecoration: 'none' }}><div className={ styles.brandText }>Gateway Takeaway</div></Link>
-                    <button onClick={ getCustomer }>Get customer data</button>
+                    {/* <button onClick={ getCustomer }>Get customer data</button>
                     <button onClick={ getRestaurant }>Get restaurant data</button>
-                    <button onClick={ getProduct }>Get product data</button>
+                    <button onClick={ getProduct }>Get product data</button> */}
+            {
+                customers.map((customer) => {
+                    return <div>
+                        { customer.first_name } { customer.last_name }
+                    </div>
+                })
+            }
                 <Link to="/shoppingcart" style={{ color: 'inherit', textDecoration: 'none' }}><div className={ styles.shopCart }>Shopping cart</div></Link>
             </div>
             <div>
-            <img src={burger1}/>
-                <div className={ styles.deliveryText }>Delivery in 15-25 minutes to your address { customers.address }</div>
+            {/* <img src={burger1}/> */}
+            <img src={ restaurants.image } width="1900" height="590" />
+            {
+                customers.map((customer) => {
+                    return <div className={ styles.deliveryText }>Delivery in 15-25 minutes to { customer.address }</div>
+                })
+            }
             </div>
             <div>
                 <div className={ styles.hourText }>Open today: { restaurants.operating_hours } </div>
@@ -84,17 +128,22 @@ export default function RestaurantMenuPage() {
                 <div className={ styles.deliveryCost }>DELIVERY: 7.90€</div>
                 <div className={ styles.minOrder }>MIN. ORDER: 20€</div>
                 <div className={ styles.subContainer }></div>
-                <div className={ styles.outText }>Price level:{ restaurants.price_level } </div>
+                <div className={ styles.outText }>Price level: { restaurants.price_level } </div>
             </div>
             {
                 products.map((product, index) => {
                     return <div key={index} className={ styles.containeri }>
                         <div className={ styles.foodCategoryContainer }>
-                            <div className={ styles.prodNameStyle }>{ product.product_name }</div>
-                            <div className={ styles.prodPriceStyle }>{ product.price }€</div>
-                            <div className={ styles.prodDescStyle }>{ product.description }</div>
-                            {/* <div className={ styles.prodIMGStyle }> { product.product_image }</div> */}
-                            <button className={ styles.shopCartButton } onClick={ onSubmit }>🛒</button>
+                            <div>
+                                <img src={ product.product_image } width="250" height="150" />
+                                <div className={ styles.prodNameStyle }>{ product.product_name }</div>
+                                <div className={ styles.prodPriceStyle }>{ product.price }€</div>
+                                <div className={ styles.prodDescStyle }>{ product.description }</div>
+                                <div> Product id: { product.product_id } (type in the shopping cart to order) </div>
+                                {/* <div className={ styles.prodIMGStyle }> { product.product_image }</div> */}
+                                <button className={ styles.shopCartButton } onClick={ onSubmit }> Go to shopping cart 🛒</button>
+
+                            </div>
                         </div>
                     </div>
                 })

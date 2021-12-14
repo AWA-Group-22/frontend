@@ -1,116 +1,162 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import styles from './UserOrderPage.module.css';
 import axios from 'axios';
+import { UserAuthContext } from './Contexts';
 
-export default function UserOrderPage() {
+export default function UserOrderPage(props) {
+
+  const UserAuthContextValue = useContext(UserAuthContext);
+
+  let navigate = useNavigate();
 
   const [orders, setOrders] = useState([]);
   const [ordersHistory, setOrdersHistory] = useState([]);
+  const [customers, setCustomers] = useState([]);
 
-  const getOrders = () => {
-    axios({
-      method: "get",
-      credentials: "include",
-      headers: { "Content-Type": "application/json" },
-      url: "https://back-end-22-group.herokuapp.com/customer/order/status",
-    }).then((res) => {
-      setOrders(res.data);
-      console.log(res.data);
-    });
+  const [ changeOrderId, setChangeOrderId ] = useState("");
+  const [ changeOrderStatus, setChangeOrderStatus ] = useState("");
+
+  // const getOrders = () => {
+  //   axios({
+  //     method: "get",
+  //     credentials: "include",
+  //     headers: { "Content-Type": "application/json" },
+  //     url: "https://back-end-22-group.herokuapp.com/customer/order/status",
+  //   }).then((res) => {
+  //     setOrders(res.data);
+  //     console.log(res.data);
+  //   });
+  // };
+
+  useEffect(() => {
+    getCustomer();
+  }, []);
+
+  useEffect(() => {
+    getOrders();
+  }, []);
+
+  useEffect(() => {
+    getOrderHistory();
+  }, []);
+
+  const getCustomer = async () => {
+    try {
+      const results = await axios.get('https://back-end-22-group.herokuapp.com/customer', {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + UserAuthContextValue.jwt
+          }
+      });
+
+      setCustomers(results.data);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
-  const getOrderHistory = () => {
-    axios({
-      method: "get",
-      credentials: "include",
-      headers: { "Content-Type": "application/json" },
-      url: "https://back-end-22-group.herokuapp.com/customer/order/history",
-    }).then((res) => {
-      setOrdersHistory(res.data);
-      console.log(res.data);
-    });
+  const getOrders = async () => {
+    try {
+      const results = await axios.get('https://back-end-22-group.herokuapp.com/customer/order/status', {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + UserAuthContextValue.jwt
+          }
+      });
+
+      setOrders(results.data);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
-  const onConfirmOrder = (e) => {
-    e.preventDefault()
+  const getOrderHistory = async () => {
+    try {
+      const results = await axios.get('https://back-end-22-group.herokuapp.com/customer/order/history', {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + UserAuthContextValue.jwt
+          }
+      });
 
-    const userObject = {
-        order_status: orders.order_status
-    };
-
-    axios({
-      method: "post",
-      withCredentials: "include",
-      url: "https://back-end-22-group.herokuapp.com/customer/order/confirm" + userObject,
-    }).then((res) => {
-      console.log(res.data)
-      console.log("Order confirmed successfully");
-    });
-      this.setState({
-      order_status: 'Confirmed'
-    });
+      setOrdersHistory(results.data);
+      console.log(results.data);
+    } catch (err) {
+      // console.log(err.response.data.message);
+    }
   };
+
+
+  const handleChangeOrderStatus = () => {
+    axios({
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + UserAuthContextValue.jwt
+        },
+        method: "post",
+        data: {
+            order_id: changeOrderId,
+        },
+        url: "https://back-end-22-group.herokuapp.com/customer/order/confirm",
+    })
+    .then((res) => console.log(res));
+    navigate("/orders", { replace: true });
+};
 
   return (
     <div>
       <div className={styles.headerContainer}>
         <Link to="/home" style={{ color: 'inherit', textDecoration: 'none' }}><div className={ styles.brandText }>Gateway Takeaway</div></Link>
-        <button onClick={ getOrders }>Get orders</button>
-        <button onClick={ getOrderHistory }>Get order history</button>
+        {/* <button onClick={ getOrders }>Get orders</button>
+        <button onClick={ getOrderHistory }>Get order history</button> */}
       </div>
         <div>
-        <div className={ styles.titleText }>Orders</div>
-          <div>
-                <div className={ styles.orderStatusText }>Current order status: </div>
-                <div className={ styles.orderContainer }> MCDonalds order:
-                <div className={ styles.statusText }> Order status: Preparing{ orders.order_status } </div>
-                <div className={ styles.restaurantName }> { orders.restaurant_name } </div>
-                    <button onClick={ onConfirmOrder } className={ styles.buttonStyle }>Confirm received order</button>
-            </div>
+          {
+            customers.map((customer, index) => {
+              return <div key={index}>
+                <div className={ styles.titleText }>Orders of { customer.first_name } { customer.last_name } </div>
               </div>
-            <div className={ styles.orderHistoryText }>Order history:</div>
-
-            <div className={ styles.orderHistoryContainer }>
-                <div className={ styles.historyRestaurantName }>FaFa's: halloumi tofu: 4.90€</div>
-            </div>
-      </div>
+            })
+          }
+        
+          <div className={ styles.changeOrderStatus }>
+              Confirm order with status "Delivered"
+              <input placeholder="order id" onChange={e => setChangeOrderId(e.target.value)} />
+                  <button onClick={handleChangeOrderStatus} className={styles.buttonStyle}>Confirm order Delivered</button>
+                  <button onClick={() => window.location.reload(false)}>Refresh page</button>
+          </div>
+          <div>
+          <div className={ styles.currentOrderText }>Current orders:</div>
+            {
+              orders.map((order, index) => {
+                return <div key={index}>
+                    <div className={ styles.currentOrderContainer }>
+                      <div className={ styles.currentOrderId }> Order id: { order.order_id } </div>
+                      <div className={ styles.currentOrderStatus }> Order status: { order.order_status } </div>
+                      <div className={ styles.currentOrderProduct }> Ordered product(s): </div>
+                      <div className={ styles.currentProductId }> Product id: { order.product_id } </div>
+                      <div className={ styles.currentProductName }> Product name: { order.product_name } </div>
+                    </div>
+                </div>
+              })
+            }
+          <div className={ styles.historyDivText }> Order history: </div>              
+            {
+              ordersHistory.map((history, index) => {                    
+                return <div key={index} className={ styles.bigOrderContainer }>
+                  <div className={ styles.orderContainer }>
+                  <div className={ styles.currentOrderId }> Order id: { history.order_id } </div>
+                    <div className={ styles.currentOrderStatus }> Order status: { history.order_status } </div>
+                    <div className={ styles.currentOrderProduct }> Ordered product(s): </div>
+                    <div className={ styles.currentProductId }> Product id: { history.product_id } </div>
+                    <div className={ styles.currentProductName }> Product name: { history.product_name } </div>
+                  </div>
+                  </div>
+              })
+            }
+        </div>
+        </div>
     </div>
   )
 }
-
-
-
-
-// export default function UserOrderPage(props) {
-
-//     return (
-        // <div>
-        //     <div className={styles.headerContainer}>
-        //     <Link to="/home" style={{ color: 'inherit', textDecoration: 'none' }}><div className={ styles.brandText }>Gateway Takeaway</div></Link>
-        //     </div>
-        //         <div>
-        //             <div className={ styles.styles.titleText }>Orders</div>
-        //             <div className={ styles.orderStatusText }>Current order status: </div>
-        //             <div className={ styles.orderHistoryText }>Order history:</div>
-        //             <div className={ styles.orderContainer }>
-        //                 <div className={ styles.restaurantName }></div>
-        //                     <button className={ styles.buttonStyle }>Confirm received order</button>
-        //                 <div className={ styles.statusText }>
-        //                     Example status text lorem ipsum datum el macaron
-        //                 </div>
-        //             </div>
-        //             <div className={ styles.orderHistoryContainer1 }>
-        //                 <div className={ styles.restaurantName }>
-        //                     Example restaurant
-        //                 </div>
-        //             </div>
-        //             <div className={ styles.orderHistoryContainer2 }>
-        //                 <div className={ styles.restaurantName }>
-        //                     Example restaurant
-        //                 </div>
-        //             </div>
-        //         </div>
-        // </div>
-//     )
-// }

@@ -14,6 +14,7 @@
 
 .brandText {
     background-color: rgba(255, 255, 255, 0);
+    width: 300px;
     font-size: 32px;
     font-family: "Merriweather", sans-serif;
     color: #333333;
@@ -30,6 +31,25 @@
     font-weight: 600;
 }
 
+.changeOrderStatus {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    right: 380px;
+    width: 350px;
+    height: 200px;
+    margin-top: 100px;
+    padding: 2px 2px 2px 2px;
+    box-shadow: 5px 5px 20px 0px rgba(0, 0, 0, 0.18);
+    border-radius: 10px;
+    box-sizing: border-box;
+    font-size: 20px;
+    font-family: "Arial Normaali", "Arial", sans-serif;
+    font-weight: 600;
+    padding: 20px;
+    gap: 10px;
+}
+
 .orderStatusText {
     padding-left: 70px;
     margin-top: 100px;
@@ -38,11 +58,86 @@
     font-weight: 600;
 }
 
-.orderContainer {
-    top: 240px;
-    left: 460px;
+.currentOrderText {
+    padding-left: 70px;
+    margin-top: 50px;
+    font-size: 20px;
+    font-family: "Arial Normaali", "Arial", sans-serif;
+    font-weight: 600;
+}
+
+.currentOrderContainer {
+    display: flex;
     width: 850px;
-    height: 220px;
+    height: 100px;
+    margin-top: 30px;
+    margin-left: 70px;
+    padding: 2px 2px 2px 2px;
+    box-shadow: 5px 5px 20px 0px rgba(0, 0, 0, 0.18);
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
+.currentOrderId {
+    padding: 20px;
+    font-size: 20px;
+    font-family: "Open Sans", sans-serif;
+    color: blue;
+}
+
+.currentUserId {
+    padding: 20px;
+    font-size: 20px;
+    font-family: "Open Sans", sans-serif;
+    color: blue;
+}
+
+.currentOrderStatus {
+    padding: 20px;
+    font-size: 20px;
+    font-family: "Open Sans", sans-serif;
+    color: green;
+}
+
+.currentOrderProduct {
+    padding: 20px;
+    font-size: 20px;
+    font-family: "Open Sans", sans-serif;
+}
+
+.currentProductId {
+    padding: 20px;
+    font-size: 20px;
+    font-family: "Open Sans", sans-serif;
+    color: blue;
+}
+
+.currentProductName {
+    padding: 20px;
+    font-size: 20px;
+    font-family: "Open Sans", sans-serif;
+}
+
+.historyDivText {
+    padding-left: 70px;
+    margin-top: 50px;
+    font-size: 20px;
+    font-family: "Arial Normaali", "Arial", sans-serif;
+    font-weight: 600;
+}
+
+.bigOrderContainer {
+    display: flex;
+    flex-direction: column;
+    padding: 50px;
+    padding-bottom: 150px;
+}
+
+.orderContainer {
+    display: flex;
+    flex-direction: row;
+    width: 850px;
+    height: 130px;
     padding: 2px 2px 2px 2px;
     box-shadow: 5px 5px 20px 0px rgba(0, 0, 0, 0.18);
     border-radius: 10px;
@@ -52,7 +147,7 @@
 
 .orderHistoryText {
     padding-left: 70px;
-    margin-top: 350px;
+    margin-top: 300px;
     font-size: 20px;
     font-family: "Arial Normaali", "Arial", sans-serif;
     font-weight: 600;
@@ -86,8 +181,13 @@
 }
 
 .statusText {
-    margin-top: -42px;
-    margin-left: 15px;
+    padding: 20px;
+    font-size: 20px;
+    font-family: "Open Sans", sans-serif;
+}
+
+.productText {
+    padding: 20px;
     font-size: 20px;
     font-family: "Open Sans", sans-serif;
 }
@@ -137,76 +237,6 @@
     border-radius: 10px;
     box-sizing: border-box;
     position: absolute;
-}
-
-.buttonStyleReceived {
-    height: 63px;
-    width: 165px;
-    padding: 2px 2px 2px 2px;
-    border-radius: 5px;
-    background-color: green;
-    box-sizing: border-box;
-    font-size: 20px;
-    font-family: "Arial Normaali", "Arial", sans-serif;
-    color: black;
-    text-align: center;
-    line-height: normal;
-}
-
-.buttonStylePreparing {
-    height: 63px;
-    width: 165px;
-    padding: 2px 2px 2px 2px;
-    border-radius: 5px;
-    background-color: gold;
-    box-sizing: border-box;
-    font-size: 20px;
-    font-family: "Arial Normaali", "Arial", sans-serif;
-    color: black;
-    text-align: center;
-    line-height: normal;
-}
-
-.buttonStyleRFD {
-    height: 63px;
-    width: 165px;
-    padding: 2px 2px 2px 2px;
-    border-radius: 5px;
-    background-color: orange;
-    box-sizing: border-box;
-    font-size: 20px;
-    font-family: "Arial Normaali", "Arial", sans-serif;
-    color: black;
-    text-align: center;
-    line-height: normal;
-}
-
-.buttonStyleDelivering {
-    height: 63px;
-    width: 165px;
-    padding: 2px 2px 2px 2px;
-    border-radius: 5px;
-    background-color: lightblue;
-    box-sizing: border-box;
-    font-size: 20px;
-    font-family: "Arial Normaali", "Arial", sans-serif;
-    color: black;
-    text-align: center;
-    line-height: normal;
-}
-
-.buttonStyleDelivered {
-    height: 63px;
-    width: 165px;
-    padding: 2px 2px 2px 2px;
-    border-radius: 5px;
-    background-color: #1e98d7;
-    box-sizing: border-box;
-    font-size: 20px;
-    font-family: "Arial Normaali", "Arial", sans-serif;
-    color: black;
-    text-align: center;
-    line-height: normal;
 }
 
 .buttonContainer {

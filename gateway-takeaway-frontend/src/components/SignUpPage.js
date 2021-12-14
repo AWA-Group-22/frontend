@@ -46,7 +46,7 @@ export default function SignUpPage() {
                 <div className={styles.subtitleText}>Create an account by filling in the details</div>
                 <div>
                     <input className={styles.textField1} placeholder="username*" onChange={e => setSignupUsername(e.target.value)} />
-                    <input className={styles.textField2} placeholder="password*" onChange={e => setSignupPassword(e.target.value)} />
+                    <input className={styles.textField2} type="password" placeholder="password*" onChange={e => setSignupPassword(e.target.value)} />
                     <input className={styles.textField3} placeholder="first Name*" onChange={e => setsignupFirstName(e.target.value)} />
                     <input className={styles.textField4} placeholder="last Name*" onChange={e => setSignupLastName(e.target.value)} />
                     <input className={styles.textField5} placeholder="address*" onChange={e => setsignupAddress(e.target.value)} />
@@ -54,7 +54,6 @@ export default function SignUpPage() {
                     <input className={styles.textField7} placeholder="country*" onChange={e => setsignupCountry(e.target.value)} />
                     <input className={styles.textField8} placeholder="date of birth (YYYY-DD-MM)*" onChange={e => setSignupDateOfBirth(e.target.value)} />
                     <button onClick={signup} className={styles.signUpButton}>Sign Up</button>
-                        <Link to="/home" style={{ textDecoration: 'none' }}></Link>
                 </div>
             </div>
         </div>

@@ -1,5 +1,5 @@
 .container1 {
-    width: 400px;
+    width: 500px;
     height: 100px;
     padding: 2px 2px 2px 2px;
     box-shadow: 1px 3px 6px 6px lightgrey;
@@ -22,7 +22,7 @@
 
     .title {
     font-size: 25px;
-    width: 400px;
+    width: 700px;
     height: 60px;
     background-color: rgba(255, 255, 255, 0);
     box-sizing: border-box;
@@ -131,7 +131,7 @@
     box-sizing: border-box;
     position: absolute;
     left: 100px;
-    top: 1600px;
+    top: 1200px;
     line-height: normal;
     font-size: 20px;
     justify-content: center;
@@ -154,7 +154,7 @@
     color: #333333;
     text-align:left;
     line-height: normal;
-    top: 1800px;
+    top: 1400px;
     left: 100px;
     position: absolute;
 
@@ -169,7 +169,7 @@
     box-sizing: border-box;
     position: absolute;
     left: 100px;
-    top: 1850px;
+    top: 1450px;
     margin-bottom:100px;
     line-height: 140px;
     font-size: 20px;
@@ -220,5 +220,22 @@
     font-size: 16px;
     border-radius: 10px;
 
+}
+
+.orderButton {
+    justify-content: center;
+    margin-left: 45px;
+    margin-top: 350px;
+    align-items: center;
+    width: 310px;
+    height: 45px;
+    padding: 2px 2px 2px 2px;
+    border-radius: 4px;
+    background-color: green;
+    box-sizing: border-box;
+    font-size: 19px;
+    font-family: "Roboto", sans-serif;
+    color: #ffffff;
+    text-align: center;
 }
 
