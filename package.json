@@ -25,10 +25,8 @@
     "node": "14.17.6"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "cd gateway-takeaway-frontend && npm install && npm run build"
   },
   "eslintConfig": {
     "extends": [

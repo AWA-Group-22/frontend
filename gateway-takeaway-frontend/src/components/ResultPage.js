@@ -16,10 +16,24 @@ export default function ResultPage() {
         getCustomer();
     }, []);
 
-    useEffect(() => {
-        postSearchRestaurant();
-    }, []);
+    let textInput = React.createRef();
 
+    let searchRestaurant = (e) => {
+        axios({
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': 'Bearer ' + UserAuthContextValue.jwt
+            },
+            method: "post",
+            data: {
+                restaurant_name: textInput.current.value,
+            },
+            url: "https://back-end-22-group.herokuapp.com/restaurant/search",
+        })
+        .then((res) => console.log(res));
+        console.log(textInput.current.value);
+    };
+        
     const getCustomer = async () => {
         try {
           const results = await axios.get('https://back-end-22-group.herokuapp.com/customer', {
@@ -35,20 +49,20 @@ export default function ResultPage() {
         }
       };
     
-    const postSearchRestaurant = () => {
-        axios({
-            headers: {
-              'Content-Type': 'application/json',
-              'Authorization': 'Bearer ' + UserAuthContextValue.jwt
-            },
-            method: "post",
-            data: {
-                restaurant_name: restaurants,
-            },
-            url: "https://back-end-22-group.herokuapp.com/restaurant/search",
-        })
-        .then((res) => console.log(res));
-    };
+    // const postSearchRestaurant = () => {
+    //     axios({
+    //         headers: {
+    //           'Content-Type': 'application/json',
+    //           'Authorization': 'Bearer ' + UserAuthContextValue.jwt
+    //         },
+    //         method: "post",
+    //         data: {
+    //             restaurant_name: restaurants,
+    //         },
+    //         url: "https://back-end-22-group.herokuapp.com/restaurant/search",
+    //     })
+    //     .then((res) => console.log(res));
+    // };
     
 
     return (
@@ -62,9 +76,20 @@ export default function ResultPage() {
                     </div>
                 })
             }
-            <input placeholder="type a restaurant" onChange={e => setRestaurants(e.target.value)} />
-            <button onClick={postSearchRestaurant}> Search </button>
+            <div className="App">  
+                <input ref={textInput} type="text" />  
+                <button onClick={searchRestaurant}>Search</button>  
+            </div>
+            {/* <input placeholder="type a restaurant" onClick={e => setRestaurants(e.target.value)} /> */}
+            {/* <button onClick={postSearchRestaurant}> Search </button>
+            <button >  </button> */}
         </div>
+
+        {
+            restaurants && restaurants.length > 0 ? restaurants.map(restaurant => {
+                return <div key={restaurant.restaurant_name}>{restaurant.address}</div>;
+            }) : "Testing!"
+        }
 
         {/* <div className={ styles.restaurantContainer }>
                     {restaurants.length ? restaurants : <div> No restaurant yet </div>}
@@ -74,12 +99,12 @@ export default function ResultPage() {
                     <div> {restaurants.operating_hours} </div>
                     <div> {restaurants.type} </div>
                     <div> {restaurants.price_level} </div>
-                </div> */}
+                </div>
 
         {
             restaurants.map((restaurant) => {
                 return <div className={ styles.restaurantContainer }>
-                    {/* {restaurant.length ? restaurant : <div> No restaurant yet </div>} */}
+                    {/* {restaurant.length ? restaurant : <div> No restaurant yet </div>}
                     <img src={restaurant.image} width={336} height={180} />
                     <div> {restaurant.restaurant_name} </div>
                     <div> {restaurant.address} </div>
@@ -89,14 +114,11 @@ export default function ResultPage() {
                 </div>
             })
         }
-        {/* return(
+        return(
         <div className='list'>
             {notes.length ? notes : <p>Default Markup</p>}
         </div>
         ); */}
-
-
-
         </div>
     )
 }
