@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/static/css/main.fd1f79c3.chunk.css",
+    "main.js": "/static/js/main.645a5fef.chunk.js",
+    "main.js.map": "/static/js/main.645a5fef.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.52408b8a.js",
+    "runtime-main.js.map": "/static/js/runtime-main.52408b8a.js.map",
+    "static/css/2.165ff965.chunk.css": "/static/css/2.165ff965.chunk.css",
+    "static/js/2.7722bcd7.chunk.js": "/static/js/2.7722bcd7.chunk.js",
+    "static/js/2.7722bcd7.chunk.js.map": "/static/js/2.7722bcd7.chunk.js.map",
+    "static/js/3.3ebda5e1.chunk.js": "/static/js/3.3ebda5e1.chunk.js",
+    "static/js/3.3ebda5e1.chunk.js.map": "/static/js/3.3ebda5e1.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/2.165ff965.chunk.css.map": "/static/css/2.165ff965.chunk.css.map",
+    "static/css/main.fd1f79c3.chunk.css.map": "/static/css/main.fd1f79c3.chunk.css.map",
+    "static/js/2.7722bcd7.chunk.js.LICENSE.txt": "/static/js/2.7722bcd7.chunk.js.LICENSE.txt",
+    "static/media/kartta.4d1cec13.png": "/static/media/kartta.4d1cec13.png",
+    "static/media/slick-theme.css": "/static/media/slick.c94f7671.ttf"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.52408b8a.js",
+    "static/css/2.165ff965.chunk.css",
+    "static/js/2.7722bcd7.chunk.js",
+    "static/css/main.fd1f79c3.chunk.css",
+    "static/js/main.645a5fef.chunk.js"
+  ]
+}
