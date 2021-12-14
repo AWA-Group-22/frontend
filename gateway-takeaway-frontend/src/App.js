@@ -17,6 +17,8 @@ import CreateMenu from './components/CreateMenu';
 import OrderDonePage from './components/OrderDonePage';
 import jwt from 'jsonwebtoken';
 import { UserAuthContext } from './components/Contexts';
+import ManagerCreateCategory from './components/ManagerCreateCategory';
+import ResultPage from './components/ResultPage';
 
 const jwtFromStorage = window.localStorage.getItem('appAuthData');
 
@@ -40,10 +42,10 @@ function App(props) {
   const [ userAuthData, setUserAuthData ] = useState({...initialAuthData});
 
   let authRoutes = <>
-            <Route path="/login" element={ <LoginPage /> } />
-            <Route path="/managerlogin" element={ <ManagerLoginPage /> } />
-            <Route path="/signup" element={ <SignUpPage /> } />
-          </>
+    <Route path="/login" element={ <LoginPage /> } />
+    <Route path="/managerlogin" element={ <ManagerLoginPage /> } />
+    <Route path="/signup" element={ <SignUpPage /> } />
+  </>
 
   if(userAuthData.jwt) {
     authRoutes = <>
@@ -57,6 +59,8 @@ function App(props) {
     <Route path="/managerestaurants" element={ <ManageRestaurants /> }/>
     <Route path="/createmenu" element={ <CreateMenu /> }/>
     <Route path="/orderdonepage" element={ <OrderDonePage /> }/>
+    <Route path="/createcategory" element={ <ManagerCreateCategory /> }/>
+    <Route path="/resultpage" element={ <ResultPage /> }/>
     </>
   }
 

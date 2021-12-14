@@ -86,6 +86,18 @@
     font-size: 20px;
 }
 
+.container5 {
+    width: 310px;
+    height: 168px;
+    padding: 2px 2px 2px 2px;
+    box-shadow: 1px 3px 6px 6px lightgrey;
+    border-radius: 4px;
+    box-sizing: border-box;
+    text-align: center;
+    line-height: 140px;
+    font-size: 20px;
+}
+
 .logoutButton {
     position: absolute;
     right: 50px;

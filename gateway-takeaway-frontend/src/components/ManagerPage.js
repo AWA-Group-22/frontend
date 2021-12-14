@@ -55,6 +55,10 @@ export default function ManagerPage(props) {
                     <Link to="/managerorderpage" style={{ color: 'inherit', textDecoration: 'none' }}>Manage orders</Link>
                 </div>
 
+                <div className={ styles.container5 }>
+                    <Link to="/createcategory" style={{ color: 'inherit', textDecoration: 'none' }}>Create categories</Link>
+                </div>
+
                 <div className={ styles.container4 }>
                     <Link to="/createmenu" style={{ color: 'inherit', textDecoration: 'none' }}>Create restaurant menus</Link>
                 </div>

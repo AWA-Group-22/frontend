@@ -55,7 +55,6 @@ export default function Home(props) {
     <div>
     <div className={styles.headerContainer}>
       <Link to="/home" style={{ color: 'inherit', textDecoration: 'none' }}><div className={ styles.brandText }>Gateway Takeaway</div></Link>
-      {/* <button onClick={ getCustomer }>Get customer data</button> */}
       {
         customers.map((customer) => {
           return <div>
@@ -63,6 +62,7 @@ export default function Home(props) {
         </div>
         })
       }
+      <Link to="/resultpage" style={{ color: 'inherit', textDecoration: 'none' }}><div>Search for restaurants</div></Link>
       <Link to="/orders" style={{ color: 'inherit', textDecoration: 'none' }}><div className={ styles.brandText2 }>Orders</div></Link>
       <Link to="/" style={{ color: 'inherit', textDecoration: 'none' }}><button className={styles.logoutButton} onClick={() => UserAuthContextValue.logout()} >Logout</button></Link>
     </div>
@@ -72,7 +72,6 @@ export default function Home(props) {
       <Slider {...carouselSettings}>
         {
           restaurants.map((restaurant) => { 
-
             return <div className={styles.container}>
             <div>
                 <img src={ restaurant.image } width={336} height={180} />

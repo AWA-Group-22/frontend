@@ -124,6 +124,7 @@ export default function UserOrderPage(props) {
               Confirm order with status "Delivered"
               <input placeholder="order id" onChange={e => setChangeOrderId(e.target.value)} />
                   <button onClick={handleChangeOrderStatus} className={styles.buttonStyle}>Confirm order Delivered</button>
+                  <button onClick={() => window.location.reload(false)}>Refresh page</button>
           </div>
           <div>
           <div className={ styles.currentOrderText }>Current orders:</div>
@@ -144,12 +145,14 @@ export default function UserOrderPage(props) {
             {
               ordersHistory.map((history, index) => {                    
                 return <div key={index} className={ styles.bigOrderContainer }>
+                  <div className={ styles.orderContainer }>
                   <div className={ styles.currentOrderId }> Order id: { history.order_id } </div>
                     <div className={ styles.currentOrderStatus }> Order status: { history.order_status } </div>
                     <div className={ styles.currentOrderProduct }> Ordered product(s): </div>
                     <div className={ styles.currentProductId }> Product id: { history.product_id } </div>
                     <div className={ styles.currentProductName }> Product name: { history.product_name } </div>
-                  </div>                        
+                  </div>
+                  </div>
               })
             }
         </div>
