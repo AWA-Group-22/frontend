@@ -25,21 +25,3 @@ export default function StartPage() {
       </div>
     )
   }
-
-//     return (
-//         <div>
-//             <div className={styles.headerContainer}>
-//                 <div className={styles.brandText}>Gateway Takeaway</div>
-//             </div>
-//             <div className={ styles.titleText }>
-//                 { props.userJwt != null ? <Link to="home">Go to home page </Link> :
-//                     <>
-//                     <div><button onClick={ props.logout } >Logout</button></div>
-//                         
-//                         
-//                     </>
-//                 }
-//             </div>
-//         </div>
-//     )
-// }
