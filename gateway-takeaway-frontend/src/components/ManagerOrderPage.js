@@ -92,9 +92,22 @@ export default function ManagerOrderPage() {
                             <button onClick={() => window.location.reload(false)}>Refresh page</button>
                     </div>
                     <div className={ styles.currentOrderText }>Current user orders:</div>
+                            {/* {
+                    orders && orders.length > 0 ? orders.map(order => {
+                        return <div key={order.order_id}>
+                            <div className={ styles.currentOrderContainer }>
+                            <div className={ styles.currentOrderId }> Order id: { order.order_id } </div>
+                            <div className={ styles.currentOrderStatus }> Order status: { order.order_status } </div>
+                            <div className={ styles.currentOrderProduct }> Ordered product(s): </div>
+                            <div className={ styles.currentProductId }> Product id: { order.product_id } </div>
+                            <div className={ styles.currentProductName }> Product name: { order.product_name } </div>
+                            </div>
+                        </div>;
+                    }) : "No data yet!"
+                    } */}
                 {
-                    orders.map((order, index) => {
-                        return <div key={index}>
+                    orders && orders.length > 0 ? orders.map(order => {
+                        return <div key={order.order_id}>
                             <div className={ styles.currentOrderContainer }>
                                 <div className={ styles.currentOrderId }> Order id: { order.order_id } </div>
                                 <div className={ styles.currentOrderStatus }> Order status: { order.order_status } </div>
@@ -102,13 +115,13 @@ export default function ManagerOrderPage() {
                                 <div className={ styles.currentProductId }> Product id: { order.product_id } </div>
                                 <div className={ styles.currentProductName }> Product name: { order.product_name } </div>
                             </div>
-                        </div>
-                    })
+                        </div>;
+                    }) : "No data yet!"
                 }
                     <div className={ styles.historyDivText }> Order history: </div>
                 {
-                    ordersHistory.map((history, index) => {
-                        return <div key={index} className={ styles.bigOrderContainer }>
+                    ordersHistory && ordersHistory.length > 0 ? ordersHistory.map(history => {
+                        return <div key={history.order_id} className={ styles.bigOrderContainer }>
                             <div className={ styles.orderContainer }>
                             <div className={ styles.currentOrderId }> Order id: { history.order_id } </div>
                                 <div className={ styles.currentOrderStatus }> Order status: { history.order_status } </div>
@@ -117,8 +130,8 @@ export default function ManagerOrderPage() {
                                 <div className={ styles.currentProductId }> Product id: { history.product_id } </div>
                                 <div className={ styles.currentProductName }> Product name: { history.product_name } </div>
                             </div>
-                        </div>
-                    })
+                        </div>;
+                    }) : "No data yet!"
                 }
 
                 </div>

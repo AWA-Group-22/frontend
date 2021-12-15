@@ -30,7 +30,7 @@ export default function ResultPage() {
             },
             url: "https://back-end-22-group.herokuapp.com/restaurant/search",
         })
-        .then((res) => console.log(res));
+        .then((res) => setRestaurants(res.data));
         console.log(textInput.current.value);
     };
         
@@ -87,8 +87,17 @@ export default function ResultPage() {
 
         {
             restaurants && restaurants.length > 0 ? restaurants.map(restaurant => {
-                return <div key={restaurant.restaurant_name}>{restaurant.address}</div>;
-            }) : "Testing!"
+                return <div key={restaurant.restaurant_name}>
+                <div className={ styles.restaurantContainer }>
+                <img src={restaurant.image} width={336} height={180} />
+                <div> {restaurant.restaurant_name} </div>
+                <div> {restaurant.address} </div>
+                <div> {restaurant.operating_hours} </div>
+                <div> {restaurant.type} </div>
+                <div> {restaurant.price_level} </div>
+            </div>
+            </div>;
+            }) : "No data yet!"
         }
 
         {/* <div className={ styles.restaurantContainer }>

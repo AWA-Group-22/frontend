@@ -21,13 +21,13 @@
     "uuid": "^8.3.2",
     "web-vitals": "^1.1.2"
   },
-  "engines": {
-    "node": "14.17.6"
-  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "cd gateway-takeaway-frontend && npm install && npm run build"
-  },
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+
+},
   "eslintConfig": {
     "extends": [
       "react-app",

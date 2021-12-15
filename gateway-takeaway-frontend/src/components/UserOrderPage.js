@@ -128,9 +128,23 @@ export default function UserOrderPage(props) {
           </div>
           <div>
           <div className={ styles.currentOrderText }>Current orders:</div>
+          {/* {
+            restaurants && restaurants.length > 0 ? restaurants.map(restaurant => {
+                return <div key={restaurant.restaurant_name}>
+                <div className={ styles.restaurantContainer }>
+                <img src={restaurant.image} width={336} height={180} />
+                <div> {restaurant.restaurant_name} </div>
+                <div> {restaurant.address} </div>
+                <div> {restaurant.operating_hours} </div>
+                <div> {restaurant.type} </div>
+                <div> {restaurant.price_level} </div>
+            </div>
+            </div>;
+            }) : "No data yet!"
+        } */}
             {
-              orders.map((order, index) => {
-                return <div key={index}>
+              orders && orders.length > 0 ? orders.map(order => {
+                return <div key={order.order_id}>
                     <div className={ styles.currentOrderContainer }>
                       <div className={ styles.currentOrderId }> Order id: { order.order_id } </div>
                       <div className={ styles.currentOrderStatus }> Order status: { order.order_status } </div>
@@ -138,13 +152,13 @@ export default function UserOrderPage(props) {
                       <div className={ styles.currentProductId }> Product id: { order.product_id } </div>
                       <div className={ styles.currentProductName }> Product name: { order.product_name } </div>
                     </div>
-                </div>
-              })
+                </div>;
+              }) : "No data yet!"
             }
           <div className={ styles.historyDivText }> Order history: </div>              
             {
-              ordersHistory.map((history, index) => {                    
-                return <div key={index} className={ styles.bigOrderContainer }>
+              ordersHistory && ordersHistory.length > 0 ? ordersHistory.map(history => {                  
+                return <div key={history.order_id} className={ styles.bigOrderContainer }>
                   <div className={ styles.orderContainer }>
                   <div className={ styles.currentOrderId }> Order id: { history.order_id } </div>
                     <div className={ styles.currentOrderStatus }> Order status: { history.order_status } </div>
@@ -152,8 +166,8 @@ export default function UserOrderPage(props) {
                     <div className={ styles.currentProductId }> Product id: { history.product_id } </div>
                     <div className={ styles.currentProductName }> Product name: { history.product_name } </div>
                   </div>
-                  </div>
-              })
+                  </div>;
+              }) : "No data yet!"
             }
         </div>
         </div>
