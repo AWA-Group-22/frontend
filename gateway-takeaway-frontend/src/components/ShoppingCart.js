@@ -60,24 +60,6 @@ export default function ShoppingCart(props) {
     navigate('/orderdonepage')
 };
 
-  // const onSubmit = async (event) => {
-  //   event.preventDefault();
-  //   try {
-  //     const result = await axios.post('https://back-end-22-group.herokuapp.com/customer/order', null, {
-  //       headers: {
-  //         'Content-Type': 'application/json',
-  //         'Authorization': 'Bearer ' + UserAuthContextValue.jwt,
-  //         },
-  //         body: JSON.stringify({ order_status: order, product_id: product })
-  //     })
-  //     console.log(result);
-  //     console.log(result.data);
-  //     navigate("/orderdonepage", { replace: true });
-  //   } catch (error) {
-  //     console.error(error.message);
-  //   }
-  // }
-
   return (
     <div>
       <img src={kartta} width="1920" height="761"/>
@@ -104,9 +86,6 @@ export default function ShoppingCart(props) {
       <div className={ styles.PaymentText }>Payment via:</div>
       <div className={ styles.ChoosePayment }>
         <option value="Bisa electrum">💳 Bisa Electrum</option>
-        {/* <option value="Kärkkäinen premium">💳 Kärkkäinen premium</option>
-        <option value="gPass">💳 gPass</option>
-        <option value="Bitcoin">₿ Bitcoin</option> */}
         </div>
       </div>
 
