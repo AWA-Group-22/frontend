@@ -17,18 +17,6 @@ export default function UserOrderPage(props) {
   const [ changeOrderId, setChangeOrderId ] = useState("");
   const [ changeOrderStatus, setChangeOrderStatus ] = useState("");
 
-  // const getOrders = () => {
-  //   axios({
-  //     method: "get",
-  //     credentials: "include",
-  //     headers: { "Content-Type": "application/json" },
-  //     url: "https://back-end-22-group.herokuapp.com/customer/order/status",
-  //   }).then((res) => {
-  //     setOrders(res.data);
-  //     console.log(res.data);
-  //   });
-  // };
-
   useEffect(() => {
     getCustomer();
   }, []);
@@ -83,7 +71,6 @@ export default function UserOrderPage(props) {
       setOrdersHistory(results.data);
       console.log(results.data);
     } catch (err) {
-      // console.log(err.response.data.message);
     }
   };
 
@@ -108,8 +95,6 @@ export default function UserOrderPage(props) {
     <div>
       <div className={styles.headerContainer}>
         <Link to="/home" style={{ color: 'inherit', textDecoration: 'none' }}><div className={ styles.brandText }>Gateway Takeaway</div></Link>
-        {/* <button onClick={ getOrders }>Get orders</button>
-        <button onClick={ getOrderHistory }>Get order history</button> */}
       </div>
         <div>
           {
@@ -128,20 +113,6 @@ export default function UserOrderPage(props) {
           </div>
           <div>
           <div className={ styles.currentOrderText }>Current orders:</div>
-          {/* {
-            restaurants && restaurants.length > 0 ? restaurants.map(restaurant => {
-                return <div key={restaurant.restaurant_name}>
-                <div className={ styles.restaurantContainer }>
-                <img src={restaurant.image} width={336} height={180} />
-                <div> {restaurant.restaurant_name} </div>
-                <div> {restaurant.address} </div>
-                <div> {restaurant.operating_hours} </div>
-                <div> {restaurant.type} </div>
-                <div> {restaurant.price_level} </div>
-            </div>
-            </div>;
-            }) : "No data yet!"
-        } */}
             {
               orders && orders.length > 0 ? orders.map(order => {
                 return <div key={order.order_id}>
