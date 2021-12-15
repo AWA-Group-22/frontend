@@ -29,19 +29,6 @@ export default function RestaurantMenuPage(props) {
     getProduct();
     }, []);
 
-    // const getCustomer = () => {
-    //     axios({
-    //       method: "get",
-    //       credentials: "include",
-    //       headers: { "Content-Type": "application/json" },
-    //       body: JSON.stringify({ customers }),
-    //       url: "https://back-end-22-group.herokuapp.com/customer",
-    //     }).then((res) => {
-    //       setCustomers(res.data);
-    //       console.log(res.data);
-    //     });
-    //   };
-
     const getCustomer = async () => {
         try {
           const results = await axios.get('https://back-end-22-group.herokuapp.com/customer', {
@@ -82,25 +69,13 @@ export default function RestaurantMenuPage(props) {
     };    
 
     const onSubmit = () => {
-        // e.preventDefault()
-
-        // axios.post('https://back-end-22-group.herokuapp.com/customer/order')
-        //     .then((res) => {
-        //         console.log(res.data)
-        //         console.log("Item added to order successfully");
-                navigate("/shoppingcart", { replace: true });
-            // }).catch((error) => {
-            //     console.log(error)
-            // });
+          navigate("/shoppingcart", { replace: true });
     };
     
     return (
         <div>
             <div className={styles.headerContainer}>
                 <Link to="/home" style={{ color: 'inherit', textDecoration: 'none' }}><div className={ styles.brandText }>Gateway Takeaway</div></Link>
-                    {/* <button onClick={ getCustomer }>Get customer data</button>
-                    <button onClick={ getRestaurant }>Get restaurant data</button>
-                    <button onClick={ getProduct }>Get product data</button> */}
             {
                 customers.map((customer) => {
                     return <div>
@@ -111,7 +86,6 @@ export default function RestaurantMenuPage(props) {
                 <Link to="/shoppingcart" style={{ color: 'inherit', textDecoration: 'none' }}><div className={ styles.shopCart }>Shopping cart</div></Link>
             </div>
             <div>
-            {/* <img src={burger1}/> */}
             <img src={ restaurants.image } width="1900" height="590" />
             {
                 customers.map((customer) => {
@@ -151,49 +125,3 @@ export default function RestaurantMenuPage(props) {
         </div>
     )
 }
-
-//     return (
-        // <div>
-        //     <div className={styles.headerContainer}>
-        //         <Link to="/home" style={{ color: 'inherit', textDecoration: 'none' }}><div className={ styles.brandText }>Gateway Takeaway</div></Link>
-        //     </div>
-        //     <button onClick={ loadData }>Load data</button>
-        //     { menuPageData.map(menu => 
-        //         <div>
-        //         <div className={ styles.deliveryText }>Delivery in 15-25 minutes to #sample address#</div>
-        //         <div className={ styles.hourText }>Open today: { menu.restaurant.operating_hours } </div>
-        //         <div className={ styles.backButton }>
-        //             <Link to="/home" style={{ color: 'inherit', textDecoration: 'none' }}>Back</Link></div>
-        //         <div className={ styles.restaurantTitle }> { menu.restaurant_name } </div>
-        //         <div className={ styles.restaurantMotto }>Address: { menu.restaurant.address } </div>
-        //         <div className={ styles.deliveryCost }>DELIVERY: null</div>
-        //         <div className={ styles.minOrder }>MIN. ORDER: 20</div>
-        //         <div className={ styles.subContainer }>🙂 8.9</div>
-        //         <div className={ styles.outText }>price level: { menu.restaurant.price_level } </div>
-        //         <div className={ styles.foodCategory1 }> { menu.category.category_name } </div>
-        //         <div className={ styles.foodCategory2 }> { menu.category.category_name } </div>
-        //         <div className={ styles.foodCategory3 }> { menu.category.category_name } </div>
-        //         <div className={ styles.foodCategoryContainer1 }>
-        //             Product:  { menu.product.product_name }
-        //             Price:  { menu.product.price } 
-        //             Description:  { menu.product.description } 
-        //             Image:  { menu.product.product_image }
-        //             <button onClick={ handleAddToShopCartButton }>Add to shopping cart</button>
-        //         </div>
-        //         <div className={ styles.foodCategoryContainer2 }>
-        //             Product:  { menu.product.product_name }
-        //             Price:  { menu.product.price } 
-        //             Description:  { menu.product.description } 
-        //             Image:  { menu.product.product_image } 
-        //         </div>
-        //         <div className={ styles.foodCategoryContainer3 }>
-        //             Product:  { menu.product.product_name }
-        //             Price:  { menu.product.price } 
-        //             Description:  { menu.product.description } 
-        //             Image:  { menu.product.product_image } 
-        //         </div>
-        //         </div>
-        //     )}
-        // </div>
-//     )
-// }
